@@ -1,4 +1,4 @@
-" ^datetime^
+" Tue 19 Jul 2022 01:18:55 PM MSK
 
 se nocompatible number
 se wrap linebreak textwidth=100 wrapmargin=0
@@ -37,9 +37,8 @@ function CheckFiletype()
         end
 endfunction
 function PrepareBeforeWrite()
-        :%s/\s\+$//e
-	let b:t = system("date -R")
-	exec ":%s/\^datetime\^/" . b:t . "/e"
+        %s/\s\+$//e
+	%s/\^datetime\^/\=strftime("%c")/e
 endfunction
 augroup FiletypeDetection
 autocmd CursorMovedI * call CheckFiletype()
