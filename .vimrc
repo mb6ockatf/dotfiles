@@ -2,7 +2,7 @@
 
 se nocompatible number
 se wrap linebreak textwidth=100 wrapmargin=0
-se whichwrap+=<,>,h,l colorcolumn=80
+se whichwrap+=<,>,h,l colorcolumn=100
 se backspace=2
 se autoindent
 se laststatus=2
