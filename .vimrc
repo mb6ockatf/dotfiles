@@ -7,7 +7,7 @@ se backspace=2
 se autoindent
 se laststatus=2
 set statusline=%f%=%{&filetype}
-let color_list = ["darkblue", "morning", "desert", "evening"]
+let color_list = ["darkblue", "desert", "desert", "evening"]
 colo default
 let color_choice = strftime("%H") / 6
 if colors_name !~ g:color_list[g:color_choice]
