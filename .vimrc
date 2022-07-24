@@ -1,19 +1,20 @@
-" Tue 19 Jul 2022 01:18:55 PM MSK
+﻿" 7/24/2022 2:12:25 PM
+" repository: https://github.com/mb6ockatf/cute-vimrc
 
-se nocompatible number
-se wrap linebreak textwidth=100 wrapmargin=0
-se whichwrap+=<,>,h,l colorcolumn=100
+se nocompatible nu nobomb
+se wrap linebreak textwidth=100 wrapmargin=0 colorcolumn=100
+se whichwrap+=<,>,h,l
 se backspace=2
 se autoindent
 se laststatus=2
-set statusline=%f%=%{&filetype}
+se statusline=%f%=%{&filetype}
 let color_list = ["darkblue", "desert", "desert", "evening"]
 colo default
 let color_choice = strftime("%H") / 6
 if colors_name !~ g:color_list[g:color_choice]
         execute "colorscheme " . g:color_list[g:color_choice]
-filetype detect
 endif
+filetype detect
 if &filetype == "python"
 	ia im import
 	ia fr from
@@ -31,6 +32,7 @@ end
 function PrepareBeforeWrite()
         %s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
+	se fenc=utf-8
 endfunction
 augroup PreWriteEdits
 autocmd BufWritePre * call PrepareBeforeWrite()
