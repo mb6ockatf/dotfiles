@@ -1,4 +1,4 @@
-﻿" ^datatime^
+﻿" Fri 18 Nov 2022 08:51:23 PM MSK
 " repository: https://github.com/mb6ockatf/cute-vimrc
 
 " se stands for set
@@ -20,8 +20,21 @@ se colorcolumn=80  " draw a coloured line at this width
 se backspace=2  " allows backspace to go to the previous line
 se autoindent
 se laststatus=2  "show last window's status line
-se statusline=%f%=%{&filetype}
+" se statusline=%f%=%{&filetype}
 let color_list = ["darkblue", "desert", "desert", "evening"]
+
+se history=50  " store X lines of search & commands history
+
+se ruler  " display cursor position
+se showcmd  " show current entered command
+se wildmenu  " show completion matches in a statusline
+
+se ttimeout
+se ttimeoutlen=100
+
+se display=truncate
+
+se cmdheight=3
 
 " colo stands for colorscheme
 colo default
@@ -49,7 +62,7 @@ end
 func PrepareBeforeWrite()
         %s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
-	se fenc=utf-8
+	se fenc=utf-8  " set File ENCoding
 " endf stands for endfunction
 endf
 " aug stands for augroup
