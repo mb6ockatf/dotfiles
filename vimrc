@@ -1,4 +1,4 @@
-﻿" Fri 18 Nov 2022 08:51:23 PM MSK
+﻿" Fri 18 Nov 2022 10:44:43 PM MSK
 " repository: https://github.com/mb6ockatf/cute-vimrc
 
 " se stands for set
@@ -35,6 +35,14 @@ se ttimeoutlen=100
 se display=truncate
 
 se cmdheight=3
+
+" no stands for noremap
+no <Up> <Nop>
+no <Down> <Nop>
+no <Left> <Nop>
+no <Right> <Nop>
+
+se mouse-=a
 
 " colo stands for colorscheme
 colo default
