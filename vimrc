@@ -68,6 +68,10 @@ if &filetype == "python"
 end
 " func stands for function
 func PrepareBeforeWrite()
+	if &filetype == "python"
+	" substitute tabs with spaces in python files
+		%s/	/    /
+	end
         %s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
 	se fenc=utf-8  " set File ENCoding
