@@ -49,6 +49,7 @@ if &filetype == "python"
     se tabstop=4
     se expandtab
     se shiftwidth=4
+end
 
 " colo stands for colorscheme
 colo default
