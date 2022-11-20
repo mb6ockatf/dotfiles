@@ -44,13 +44,18 @@ no <Right> <Nop>
 
 se mouse-=a
 
+filetype detect
+if &filetype == "python"
+    se tabstop=4
+    se expandtab
+    se shiftwidth=4
+
 " colo stands for colorscheme
 colo default
 let color_choice = strftime("%H") / 6
 if colors_name !~ g:color_list[g:color_choice]
         execute "colorscheme " . g:color_list[g:color_choice]
 endif
-filetype detect
 if &filetype == "python"
 	" ia stands for iabbrev
 	ia im import
