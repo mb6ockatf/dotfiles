@@ -76,7 +76,7 @@ end
 func PrepareBeforeWrite()
 	if &filetype == "python"
 	" substitute tabs with spaces in python files
-		%s/	/    /
+		%s/	/    /e
 	end
         %s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
