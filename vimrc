@@ -1,7 +1,7 @@
-﻿" Fri 18 Nov 2022 10:44:43 PM MSK
+" Sat 21 Jan 2023 03:21:09 PM MSK
 " repository: https://github.com/mb6ockatf/cute-vimrc
 
-" se stands for set
+" se == set
 
 " makes sure that VIM is using your .vimrc file, not system defaults
 se nocompatible  " disable vi compatibility
@@ -20,8 +20,8 @@ se colorcolumn=80  " draw a coloured line at this width
 se backspace=2  " allows backspace to go to the previous line
 se autoindent
 se laststatus=2  "show last window's status line
-" se statusline=%f%=%{&filetype}
-let color_list = ["darkblue", "desert", "desert", "evening"]
+se statusline=%f%=%{&filetype}
+" let color_list = ["darkblue", "desert", "desert", "evening"]
 
 se history=50  " store X lines of search & commands history
 
@@ -42,6 +42,16 @@ no <Down> <Nop>
 no <Left> <Nop>
 no <Right> <Nop>
 
+vn <Up> <Nop>
+vn <Down> <Nop>
+vn <Left> <Nop>
+vn <Right> <Nop>
+
+ino <Up> <Nop>
+ino <Down> <Nop>
+ino <Left> <Nop>
+ino <Right> <Nop>
+
 se mouse-=a
 
 filetype detect
@@ -53,10 +63,17 @@ end
 
 " colo stands for colorscheme
 colo default
-let color_choice = strftime("%H") / 6
-if colors_name !~ g:color_list[g:color_choice]
-        execute "colorscheme " . g:color_list[g:color_choice]
-endif
+
+call plug#begin()
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+colo gruvbox
+se bg=light
+" let color_choice = strftime("%H") / 6
+" if colors_name !~ g:color_list[g:color_choice]
+"         execute "colorscheme " . g:color_list[g:color_choice]
+" endif
 if &filetype == "python"
 	" ia stands for iabbrev
 	ia im import
@@ -87,6 +104,7 @@ endf
 aug PreWriteEdits
 " au stands for autocmd
 au BufWritePre * call PrepareBeforeWrite()
+au vimenter * ++nested colo gruvbox
 aug END
 syntax on
 
