@@ -81,7 +81,7 @@ function PrepareBeforeWrite()
 		%s/	/    /e
 	endif
         %s/\s\+$//e
-	%s/\^datetime\^/\=strftime(#%c")/e
+	%s/\^datetime\^/\=strftime("%c")/e
 	set fenc=utf-8  # set File encoding
 endfunction
 augroup PreWriteEdits
