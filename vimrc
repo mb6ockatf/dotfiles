@@ -1,24 +1,30 @@
 ﻿vim9script
-# Mon 06 Feb 2023 07:06:24 PM MSK : https://github.com/mb6ockatf/cute-vimrc
-set nocompatible
-set number
-set nobomb
-set wrap
-set linebreak
-set textwidth=80
-set colorcolumn=80
-set backspace=2
+# Thu 23 Feb 2023 01:03:58 PM MSK
+# repository: https://github.com/mb6ockatf/cute-vimrc
+# makes sure that VIM is using your .vimrc file, not system defaults
+set nocompatible  # disable vi compatibility
+set nu  # display line number
+set nobomb  # do not write Byte Order Mark
+# do not affect the contents, but how the file is displayed:
+set wrap  # wraps displayed text
+set linebreak  # breaks the line in two when it's too long; requires wrap = True
+set textwidth=80  # line cannot be longer than that
+# set wrapmargin=0 not needed when textwidth is set. Vi-compatible
+set colorcolumn=80  # draw a coloured line at this width
+# set whichwrap+=<,>l,h
+set backspace=2  # allows backspace to go to the previous line
 set autoindent
-set laststatus=2
-set history=50
-set ruler
-set showcmd
-set wildmenu
+set laststatus=2  # show last window's status line
+# set statusline=%f%=%{&filetype}
+var color_list = ["darkblue", "desert", "desert", "evening"]
+set history=50  # store X lines of search & commands history
+set ruler  # display cursor position
+set showcmd  # show current entered command
+set wildmenu  # show completion matches in a statusline
 set ttimeout
 set ttimeoutlen=100
 set display=truncate
 set cmdheight=3
-set mouse-=a
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -34,12 +40,14 @@ inoremap <Right> <Nop>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
+set mouse-=a
 filetype detect
 if &filetype == "python"
-    set tabstop=4
-    set expandtab
-    set shiftwidth=4
+    se tabstop=4
+    se expandtab
+    se shiftwidth=4
 endif
+# colo stands for colorscheme
 colorscheme default
 call plug#begin()
 Plug 'morhetz/gruvbox'
@@ -49,7 +57,6 @@ call plug#end()
 # PlugInstall
 colorscheme gruvbox
 set bg=dark
-# var color_list = ["darkblue", "desert", "desert", "evening"]
 # let color_choice = strftime(#%H") / 6
 # if colors_name !~ g:color_list[g:color_choice]
 #         execute "colorscheme " . g:color_list[g:color_choice]
@@ -74,7 +81,7 @@ function PrepareBeforeWrite()
 	endif
         %s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
-	set fileencoding=utf-8
+	set fenc=utf-8
 endfunction
 augroup PreWriteEdits
 autocmd BufWritePre * call PrepareBeforeWrite()
