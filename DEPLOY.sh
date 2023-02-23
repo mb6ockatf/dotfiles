@@ -6,7 +6,7 @@ dot_files[bashrc]="$HOME/.bashrc"
 dot_files[colors.sh]="$HOME/.colors.sh"
 dot_files[settings.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
-dot_files[bash_aliases]="$HOME/.bash-aliases"
+dot_files[bash_aliases]="$HOME/.bash_aliases"
 dot_files[bash_functions]="$HOME/.bash_functions"
 if [ "$1" == "pack" ]
 then
