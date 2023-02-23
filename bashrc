@@ -2,7 +2,7 @@
 # ~/.bashrc
 #
 [[ $- != *i* ]] && return
-source "$HOME/.bash_functions"
+source "$HOME/.bash_files/bash_functions.sh"
 bash_completion_path="/usr/share/bash-completion/bash_completion"
 if [ -r $bash_completion_path ]
 then
@@ -46,7 +46,11 @@ shopt -s 'checkwinsize'
 shopt -s 'expand_aliases'
 export QT_SELECT=4
 shopt -s histappend
-source ~/.bash_aliases
+source ~/.bash_files/bash_aliases.sh
+source ~/.bash_files/colors.sh
 source ~/.bash_completion/alacritty
-source /usr/share/pyenv/pyenv.d/pyenv_user_setup.bash
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
