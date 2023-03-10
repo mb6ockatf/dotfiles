@@ -1,6 +1,6 @@
 ﻿vim9script
-# Sat 25 Feb 2023 12:20:16 AM MSK
-# repository: https://github.com/mb6ockatf/cute - vimrc
+# Sun 26 Feb 2023 02:08:01 PM MSK
+# repository: https://github.com/mb6ockatf/cute-configs
 set nocompatible
 set nu
 set nobomb
@@ -45,11 +45,21 @@ colorscheme default
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'mb6ockatf/citify'
+Plug 'lervag/vimtex'
+Plug 'sirver/ultisnips'
 call plug#end()
 # PlugUpdate
 # PlugInstall
 colorscheme gruvbox
 set bg=dark
+g:tex_flavor = 'latex'
+g:vimtex_view_method = 'zathura'
+g:vimtex_quickfix_mode = 0
+set conceallevel=1
+g:tex_conceal = 'abdmg'
+g:UltiSnipsExpandTrigger = '<tab>'
+g:UltiSnipsJumpForwardTrigger = '<tab>'
+g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 function PrepareBeforeWrite()
 	if &filetype == "python"
 		%s/^	/    /e
@@ -63,4 +73,3 @@ autocmd BufWritePre * call PrepareBeforeWrite()
 autocmd vimenter * ++nested colo gruvbox
 augroup END
 syntax on
-
