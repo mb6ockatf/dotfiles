@@ -5,9 +5,14 @@ dot_files[alacritty.yml]="$HOME/.alacritty.yml"
 dot_files[bashrc]="$HOME/.bashrc"
 dot_files[settings.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
+dot_files[bash_files/bash_aliases.sh]="$HOME/.bash_files/bash_aliases.sh"
+dot_files[bash_files/bash_colors.sh]="$HOME/.bash_files/bash_colors.sh"
+dot_files[bash_files/bash_functions.sh]="$HOME/.bash_files/bash_functions.sh"
 
-declare -A dot_folders
-dot_folders[bash_files]="$HOME/.bash_files"
+declare -a dot_folders
+dot_folders[0]="$HOME/.bash_files"
+dot_folders[1]="$HOME/.vim"
+dot_folders[2]="$HOME/.config/Code/User"
 
 usage() {
 	name="./${BASH_SOURCE}"
@@ -21,37 +26,41 @@ usage() {
 	echo -e "\t $name install"
 	echo "----------------------------------------------------------------"
 	echo "mb6ockatf, Thu 23 Feb 2023 09:55:35 PM MSK"
+	unset name
 }
 
-mode=$1
-if [ $mode == "pack" ]
-then
-	for filename in ${!dot_files[@]}
-	do
-		cp -v $"${dot_files[$filename]}" "$filename"
-	done
-	echo "${#dot_files[@]} dotfiles successfully packed"
-	for foldername in ${!dot_folders[@]}
-	do
-		cp -vr $"${dot_folders[$foldername]}" "$foldername"
-	done
-	echo "${#dot_folders[@]} dotfolders successfully packed"
-elif [ $mode == "install" ]
-then
-	for filename in ${!dot_files[@]}; do
-		cp -v "$filename" "${dot_files[$filename]}"
-	done
-	echo "${#dot_files[@]} dotfiles successfully installed"
-	for foldername in ${!dot_folders[@]}
-	do
-		cp -vr "$foldername" "${dot_files[$filename]}"
-	done
-	echo "${#dot_folders[@]} dotfolders successfully installed"
-elif [ "$mode" == "-h" ] || [ $mode == "--help" ]
-then
-	usage
-else
-	echo "no mode value provided"
-	usage
-fi
-
+case $1 in
+	pack | --pack | -p )
+		for foldername in ${dot_folders[@]}
+		do
+			mkdir -v -p "$foldername"
+		done
+		for filename in ${!dot_files[@]}
+		do
+			cp -vu $"${dot_files[$filename]}" "$filename"
+		done
+		;;
+	install | --install | -i )
+		for foldername in ${!dot_folders[@]}
+		do
+			mkdir -v -p "${dot_folders[$foldername]}"
+		done
+		for filename in ${!dot_files[@]}
+		do
+			cp -vu "$filename" "${dot_files[$filename]}"
+		done
+		;;
+	help | --help | -h)
+		usage
+		;;
+	*)
+		echo "no mode value provided"
+		usage
+	;;
+esac
+unset filename
+unset foldername
+unset usage
+unset dot_files
+unset dot_folders
+exit
