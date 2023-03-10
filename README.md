@@ -59,6 +59,3 @@ will track system file `$HOME/.vim/vimrc` as just `vimrc` in project.
 
 [^1]: Note that `DEPLOY.sh` will only update files if replacing older file or if
     old file does not exist.
-
-*by mb6ockatf, Fri 10 Mar 2023 11:37:04 PM MSK
-
