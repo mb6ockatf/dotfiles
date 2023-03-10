@@ -1,6 +1,6 @@
 # cute-configs
 
-Set of simple configuration files. Currently, there are:
+Set of simple dotfiles. Currently, there are:
 - `alacritty.yml` for [Alacritty terminal emulator](https://github.com/alacritty/alacritty)
 - `vimrc` for [Vim text editor](https://vimhelp.org/)
 - `bashrc` for [Bash command interpreter](https://tiswww.case.edu/php/chet/bash/bashtop.html)
@@ -10,62 +10,55 @@ Set of simple configuration files. Currently, there are:
     - `bash_functions`
 - `settings.json` for [vscode](https://code.visualstudio.com/)
 
-# deploy
+## DEPLOY.sh
 There's a `DEPLOY.sh` file, which has 2 launch modes:
 - `pack` - to update project files with current system ones
 - `install` - to update system configuration files with ones inside project
+You can read more with "./DEPLOY.sh --help"
 
-# usage howto
-if you're not me, fork this repository first and do the following with it.
-1. clone the repository and get into it
+## Usage HOWTO
+1. Fork, if needed, and clone the repository
 ```sh
 git clone git@github.com:mb6ockatf/cute-configs.git
 cd HOME/cute-configs
 ```
-2. to install all the configs into your system, run
+2. To install[^1] all dotfiles into your system, run
 ```sh
-source DEPLOY.sh install
+./DEPLOY.sh install
 ```
 
-If you've made a change in one of installed files, you can pack it into project
-catalogue with
+To pack[^1] your dotfiles to this project, run
 ```sh
-source DEPLOY.sh pack
+./DEPLOY.sh pack
 ```
+
+Then, push them to your repository with
+```sh
+git add <files>
+git commit
+git push
+```
+
+## Tracking new files
+You may want to add more dotfiles into `DEPLOY.sh`.
+1. Add path of your new dotfile's folder into `dot_folders` array
+2. Add your dotfile into `dotfiles` associative array. *Key* is a path, where
+   inside project your dotfile will be stored, and *value* is a path where in
+   system your dotfile will be stored.
+
+For instance,
+```sh
+dot_folders[6]="$HOME/.vim"
+dot_files[vimrc]="$HOME/.vim/vimrc"
+```
+will track system file `$HOME/.vim/vimrc` as just `vimrc` in project.
+`./DEPLOY.sh install` will copy `cte-vimrc` to `$HOME/.vim/vimrc`;
+`./DEPLOY.sh pack` will do the vise versa.
 
 ------
 
-Vim editing commands (just not to forget):
-- a
-- i
-- o
-- s
-- r
-- c
-- w
-- e
-- r
-- y
-- hjkl
-- x
-- J
-- H
-- M
-- L
-- ^
-- $
-- n|
-- ()
-- {}
-- [[]]
-- /
-- n
-- f
-- t
-- ;
-- ,
-- G
-- m
+[^1]: Note that `DEPLOY.sh` will only update files if replacing older file or if
+    old file does not exist.
 
-*by mb6ockatf, Thu 23 Feb 2023 08:41:22 PM MSK*
+*by mb6ockatf, Fri 10 Mar 2023 11:37:04 PM MSK
 
