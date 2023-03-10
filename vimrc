@@ -64,8 +64,8 @@ function PrepareBeforeWrite()
 	if &filetype == "python"
 		%s/^	/    /e
 	endif
- 	%s/\s\+$//e
- 	%s/\^datetime\^/\=strftime("%c")/e
+	%s/\s\+$//e
+	%s/\^datetime\^/\=strftime("%c")/e
 	set fenc=utf-8
 endfunction
 augroup PreWriteEdits
@@ -73,4 +73,3 @@ autocmd BufWritePre * call PrepareBeforeWrite()
 autocmd vimenter * ++nested colo gruvbox
 augroup END
 syntax on
-
