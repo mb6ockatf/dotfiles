@@ -1,4 +1,4 @@
-# cute-configs
+# dotfiles
 
 Set of simple dotfiles. Currently, there are:
 - `alacritty.yml` for [Alacritty terminal emulator](https://github.com/alacritty/alacritty)
