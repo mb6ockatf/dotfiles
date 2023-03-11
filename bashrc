@@ -46,7 +46,7 @@ shopt -s 'checkwinsize'
 shopt -s 'expand_aliases'
 export QT_SELECT=4
 shopt -s histappend
-source ~/.bash_files/aliases.sh
+source ~/.bash_files/bash_aliases.sh
 source ~/.bash_files/colors.sh
 source ~/.bash_completion/alacritty
 

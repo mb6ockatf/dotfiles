@@ -5,16 +5,14 @@ dot_files[alacritty.yml]="$HOME/.alacritty.yml"
 dot_files[bashrc]="$HOME/.bashrc"
 dot_files[settings.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
-dot_files[bash_files/aliases.sh]="$HOME/.bash_files/aliases.sh"
-dot_files[bash_files/colors.sh]="$HOME/.bash_files/colors.sh"
-dot_files[bash_files/functions.sh]="$HOME/.bash_files/functions.sh"
+dot_files[bash_files/bash_aliases.sh]="$HOME/.bash_files/bash_aliases.sh"
+dot_files[bash_files/bash_colors.sh]="$HOME/.bash_files/bash_colors.sh"
+dot_files[bash_files/bash_functions.sh]="$HOME/.bash_files/bash_functions.sh"
 
 declare -a dot_folders
 dot_folders[0]="$HOME/.bash_files"
 dot_folders[1]="$HOME/.vim"
 dot_folders[2]="$HOME/.config/Code/User"
-
-line="----------------------------------------------------------------"
 
 usage() {
 	name="./${BASH_SOURCE}"
@@ -26,7 +24,7 @@ usage() {
 	echo -e "\t $name pack branch_name commit_message is_signed"
 	echo -e "- install your configuration files to system"
 	echo -e "\t $name install"
-	echo $line
+	echo "----------------------------------------------------------------"
 	echo "mb6ockatf, Thu 23 Feb 2023 09:55:35 PM MSK"
 	unset name
 }
@@ -60,11 +58,9 @@ case $1 in
 		usage
 	;;
 esac
-echo
 unset filename
 unset foldername
 unset usage
 unset dot_files
 unset dot_folders
 exit
-
