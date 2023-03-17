@@ -31,6 +31,7 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+inoremap <S-Left> <Nop>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
