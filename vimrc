@@ -31,15 +31,24 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+inoremap <S-Left> <Nop>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
 set mouse-=a
 filetype detect
 if &filetype == "python"
-	se tabstop=4
-	se expandtab
-	se shiftwidth=4
+	set tabstop=4
+	set expandtab
+	set shiftwidth=4
+endif
+if &filetype == "html" || &filetype == "css"
+	set tabstop=2
+	set shiftwidth=2
+	set nolinebreak
+	set colorcolumn=140
+	set textwidth=140
+	set wrap
 endif
 colorscheme default
 call plug#begin()
