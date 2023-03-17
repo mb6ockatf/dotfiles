@@ -3,16 +3,22 @@
 declare -A dot_files
 dot_files[alacritty.yml]="$HOME/.alacritty.yml"
 dot_files[bashrc]="$HOME/.bashrc"
-dot_files[settings.json]="$HOME/.config/Code/User/settings.json"
+dot_files[config/Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
 dot_files[bash_files/aliases.sh]="$HOME/.bash_files/aliases.sh"
 dot_files[bash_files/colors.sh]="$HOME/.bash_files/colors.sh"
 dot_files[bash_files/functions.sh]="$HOME/.bash_files/functions.sh"
+dot_files[config/bspwm/bspwmrc]="$HOME/.config/bspwm/bspwmrc"
+dot_files[config/sxhkd/sxhkdrc]="$HOME/.config/sxhkd/sxhkdrc"
+dot_files[config/neofetch/config.conf]="$HOME/.config/neofetch/config.conf"
 
 declare -a dot_folders
 dot_folders[0]="$HOME/.bash_files"
 dot_folders[1]="$HOME/.vim"
 dot_folders[2]="$HOME/.config/Code/User"
+dot_folders[3]="$HOME/.config/bspwm"
+dot_folders[4]="$HOME/.config/sxhkd"
+dot_folders[5]="$HOME/.config/neofetch"
 
 line="----------------------------------------------------------------"
 
