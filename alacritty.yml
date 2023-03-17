@@ -99,7 +99,7 @@ window:
   # Override the variant of the System theme/GTK theme/Wayland client side
   # decorations. Commonly supported values are `Dark`, `Light`, and `None` for
   # auto pick-up. Set this to `None` to use the default theme variant.
-  decorations_theme_variant: None
+  decorations_theme_variant: Dark
 
   # Make `Option` key behave as `Alt` (macOS only):
   #   - OnlyLeft
@@ -363,10 +363,10 @@ bell:
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
-  duration: 500
+  duration: 400
 
   # Visual bell animation color.
-  color: '#ffffff'
+  color: '#ff0000'
 
   # Bell Command
   #
@@ -381,7 +381,7 @@ bell:
   #
   command:
     program: notify-send
-    args: ["aboba"]
+    args: ["warning"]
 
 #selection:
   # This string contains all characters that are used as separators for

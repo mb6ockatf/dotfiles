@@ -1,14 +1,36 @@
 # dotfiles
 
 Set of simple dotfiles. Currently, there are:
+```ascii
+.
+├── alacritty.yml
+├── bash_files
+│   ├── aliases.sh
+│   ├── colors.sh
+│   └── functions.sh
+├── bashrc
+├── config
+│   ├── bspwm
+│   │   └── bspwmrc
+│   ├── Code
+│   │   └── User
+│   │       └── settings.json
+│   └── sxhkd
+│       └── sxhkdrc
+└── vimrc
+```
 - `alacritty.yml` for [Alacritty terminal emulator](https://github.com/alacritty/alacritty)
 - `vimrc` for [Vim text editor](https://vimhelp.org/)
 - `bashrc` for [Bash command interpreter](https://tiswww.case.edu/php/chet/bash/bashtop.html)
 - files sourced in `bashrc`:
-    - `colors.sh`
-    - `bash_aliases`
-    - `bash_functions`
-- `settings.json` for [vscode](https://code.visualstudio.com/)
+    - `bash_files/colors.sh`
+    - `bash_files/aliases.sh`
+    - `bash_files/functions.sh`
+- `config/Code/User/settings.json` for [vscode](https://code.visualstudio.com/)
+------
+In development (not yet fully configured)
+- `config/bspwm/bspwmrc` for bspwm display manager
+- `config/sxhkd/sxhkdrc` for sxhkdrc hotkey manager
 
 ## DEPLOY.sh
 There's a `DEPLOY.sh` file, which has 2 launch modes:
@@ -54,8 +76,7 @@ dot_files[vimrc]="$HOME/.vim/vimrc"
 will track system file `$HOME/.vim/vimrc` as just `vimrc` in project.
 `./DEPLOY.sh install` will copy `cte-vimrc` to `$HOME/.vim/vimrc`;
 `./DEPLOY.sh pack` will do the vise versa.
-
 ------
-
 [^1]: Note that `DEPLOY.sh` will only update files if replacing older file or if
     old file does not exist.
+

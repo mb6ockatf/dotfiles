@@ -23,7 +23,7 @@ dot_folders[5]="$HOME/.config/neofetch"
 line="----------------------------------------------------------------"
 
 usage() {
-	name="./${BASH_SOURCE}"
+	name="${BASH_SOURCE}"
 	echo -e "Process your configuration files"
 	echo -e "USAGE"
 	echo -e "- show this message (default)"
