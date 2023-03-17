@@ -2,8 +2,8 @@
 # ~/.bashrc
 #
 [[ $- != *i* ]] && return
-source "$HOME/.bash_files/bash_functions.sh"
-bash_completion_path="/usr/share/bash-completion/bash_completion"
+source "$HOME/.bash_files/functions.sh"
+bash_completion_path="/usr/share/bash-completion/completion.sh"
 if [ -r $bash_completion_path ]
 then
 	source $bash_completion_path
