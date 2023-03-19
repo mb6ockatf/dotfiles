@@ -3,14 +3,14 @@
 declare -A dot_files
 dot_files[alacritty.yml]="$HOME/.alacritty.yml"
 dot_files[bashrc]="$HOME/.bashrc"
-dot_files[config/Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
+dot_files[Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
 dot_files[bash_files/aliases.sh]="$HOME/.bash_files/aliases.sh"
 dot_files[bash_files/colors.sh]="$HOME/.bash_files/colors.sh"
 dot_files[bash_files/functions.sh]="$HOME/.bash_files/functions.sh"
-dot_files[config/bspwm/bspwmrc]="$HOME/.config/bspwm/bspwmrc"
-dot_files[config/sxhkd/sxhkdrc]="$HOME/.config/sxhkd/sxhkdrc"
-dot_files[config/neofetch/config.conf]="$HOME/.config/neofetch/config.conf"
+dot_files[bspwm/bspwmrc]="$HOME/.config/bspwm/bspwmrc"
+dot_files[sxhkd/sxhkdrc]="$HOME/.config/sxhkd/sxhkdrc"
+dot_files[neofetch/config.conf]="$HOME/.config/neofetch/config.conf"
 dot_files[polybar/launch.sh]="$HOME/.config/polybar/launch.sh"
 dot_files[polybar/config.ini]="$HOME/.config/polybar/config.ini"
 
@@ -48,7 +48,7 @@ case $1 in
 		done
 		for filename in ${!dot_files[@]}
 		do
-			cp -v $"${dot_files[$filename]}" "$filename"
+			cp -vu $"${dot_files[$filename]}" "$filename"
 		done
 		;;
 	install | --install | -i )
@@ -58,7 +58,7 @@ case $1 in
 		done
 		for filename in ${!dot_files[@]}
 		do
-			cp -v "$filename" "${dot_files[$filename]}"
+			cp -vu "$filename" "${dot_files[$filename]}"
 		done
 		;;
 	help | --help | -h)
