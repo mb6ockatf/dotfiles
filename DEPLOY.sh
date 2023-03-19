@@ -12,24 +12,7 @@ dot_files[config/bspwm/bspwmrc]="$HOME/.config/bspwm/bspwmrc"
 dot_files[config/sxhkd/sxhkdrc]="$HOME/.config/sxhkd/sxhkdrc"
 dot_files[config/neofetch/config.conf]="$HOME/.config/neofetch/config.conf"
 dot_files[polybar/launch.sh]="$HOME/.config/polybar/launch.sh"
-dot_files[polybar/colors.ini]="$HOME/.config/polybar/colors.ini"
 dot_files[polybar/config.ini]="$HOME/.config/polybar/config.ini"
-dot_files[polybar/fonts.ini]="$HOME/.config/polybar/fonts.ini"
-dot_files[polybar/modules/battery.ini]="$HOME/.config/polybar/modules/battery.ini"
-dot_files[polybar/modules/bspwm.ini]="$HOME/.config/polybar/modules/bspwm.ini"
-dot_files[polybar/modules/cpu.ini]="$HOME/.config/polybar/modules/cpu.ini"
-dot_files[polybar/modules/date.ini]="$HOME/.config/polybar/modules/date.ini"
-dot_files[polybar/modules/filesystem.ini]="$HOME/.config/polybar/modules/filesystem.ini"
-dot_files[polybar/modules/launcher.ini]="$HOME/.config/polybar/modules/launcher.ini"
-dot_files[polybar/modules/memory.ini]="$HOME/.config/polybar/modules/memory.ini"
-dot_files[polybar/modules/network.ini]="$HOME/.config/polybar/modules/network.ini"
-dot_files[polybar/modules/pulseaudio.ini]="$HOME/.config/polybar/modules/pulseaudio.ini"
-dot_files[polybar/modules/round-left.ini]="$HOME/.config/polybar/modules/round-left.ini"
-dot_files[polybar/modules/round-right.ini]="$HOME/.config/polybar/modules/round-right.ini"
-dot_files[polybar/modules/screenshot.ini]="$HOME/.config/polybar/modules/screenshot.ini"
-dot_files[polybar/modules/sep.ini]="$HOME/.config/polybar/modules/sep.ini"
-dot_files[polybar/modules/temperature.ini]="$HOME/.config/polybar/modules/temperature.ini"
-dot_files[polybar/modules/title.ini]="$HOME/.config/polybar/modules/title.ini"
 
 declare -a dot_folders
 dot_folders[0]="$HOME/.bash_files"
@@ -39,7 +22,6 @@ dot_folders[3]="$HOME/.config/bspwm"
 dot_folders[4]="$HOME/.config/sxhkd"
 dot_folders[5]="$HOME/.config/neofetch"
 dot_folders[6]="$HOME/.config/polybar"
-dot_folders[7]="$HOME/.config/polybar/modules"
 
 line="----------------------------------------------------------------"
 
@@ -54,7 +36,7 @@ usage() {
 	echo -e "- install your configuration files to system"
 	echo -e "\t $name install"
 	echo $line
-	echo "mb6ockatf, Thu 23 Feb 2023 09:55:35 PM MSK"
+	echo "mb6ockatf, Sun 19 Mar 2023 04:17:10 PM MSK"
 	unset name
 }
 
@@ -66,7 +48,7 @@ case $1 in
 		done
 		for filename in ${!dot_files[@]}
 		do
-			cp -vu $"${dot_files[$filename]}" "$filename"
+			cp -v $"${dot_files[$filename]}" "$filename"
 		done
 		;;
 	install | --install | -i )
@@ -76,7 +58,7 @@ case $1 in
 		done
 		for filename in ${!dot_files[@]}
 		do
-			cp -vu "$filename" "${dot_files[$filename]}"
+			cp -v "$filename" "${dot_files[$filename]}"
 		done
 		;;
 	help | --help | -h)
