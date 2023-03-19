@@ -44,3 +44,21 @@ ex () {
 	fi
 }
 
+light () {
+	file="/sys/class/backlight/intel_backlight/brightness"
+	current=$(cat "$file")
+	new="$current"
+	if [ "$1" = "-dec" ]
+	then
+		new=$(( current - $2 ))
+	elif [ "$1" = "-inc" ]
+	then
+		new=$(( current + $2 ))
+	elif [ "$1" = "night" ]
+	then
+		new=1
+	fi
+	[[ "$new" -ge 0 ]] || exit
+	echo "$new" | sudo tee "$file"
+}
+

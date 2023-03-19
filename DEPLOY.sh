@@ -3,14 +3,16 @@
 declare -A dot_files
 dot_files[alacritty.yml]="$HOME/.alacritty.yml"
 dot_files[bashrc]="$HOME/.bashrc"
-dot_files[config/Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
+dot_files[Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
 dot_files[bash_files/aliases.sh]="$HOME/.bash_files/aliases.sh"
 dot_files[bash_files/colors.sh]="$HOME/.bash_files/colors.sh"
 dot_files[bash_files/functions.sh]="$HOME/.bash_files/functions.sh"
-dot_files[config/bspwm/bspwmrc]="$HOME/.config/bspwm/bspwmrc"
-dot_files[config/sxhkd/sxhkdrc]="$HOME/.config/sxhkd/sxhkdrc"
-dot_files[config/neofetch/config.conf]="$HOME/.config/neofetch/config.conf"
+dot_files[bspwm/bspwmrc]="$HOME/.config/bspwm/bspwmrc"
+dot_files[sxhkd/sxhkdrc]="$HOME/.config/sxhkd/sxhkdrc"
+dot_files[neofetch/config.conf]="$HOME/.config/neofetch/config.conf"
+dot_files[polybar/launch.sh]="$HOME/.config/polybar/launch.sh"
+dot_files[polybar/config.ini]="$HOME/.config/polybar/config.ini"
 
 declare -a dot_folders
 dot_folders[0]="$HOME/.bash_files"
@@ -19,6 +21,7 @@ dot_folders[2]="$HOME/.config/Code/User"
 dot_folders[3]="$HOME/.config/bspwm"
 dot_folders[4]="$HOME/.config/sxhkd"
 dot_folders[5]="$HOME/.config/neofetch"
+dot_folders[6]="$HOME/.config/polybar"
 
 line="----------------------------------------------------------------"
 
@@ -33,7 +36,7 @@ usage() {
 	echo -e "- install your configuration files to system"
 	echo -e "\t $name install"
 	echo $line
-	echo "mb6ockatf, Thu 23 Feb 2023 09:55:35 PM MSK"
+	echo "mb6ockatf, Sun 19 Mar 2023 04:17:10 PM MSK"
 	unset name
 }
 

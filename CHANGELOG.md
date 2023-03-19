@@ -7,13 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- `bash_aliases.sh` script
-- `bash_functions.sh` script
+- `aliases.sh`
+- `functions.sh`
    - `ex` function to extract any archive
    - `colors` function to check terminal colors
 - `bash_colors.sh`
 - `vimrc`
 - `alacritty.yml`
 - `settings.json` (vscode user config)
-- `DEPLOY.sh` script
+- `DEPLOY.sh`
+- `sxhkdrc`
+- `bspwmrc`
+- `neofetch/config.conf`
 

@@ -9,15 +9,22 @@ Set of simple dotfiles. Currently, there are:
 │   ├── colors.sh
 │   └── functions.sh
 ├── bashrc
-├── config
-│   ├── bspwm
-│   │   └── bspwmrc
-│   ├── Code
-│   │   └── User
-│   │       └── settings.json
-│   └── sxhkd
-│       └── sxhkdrc
+├── bspwm
+│   └── bspwmrc
+├── Code
+│   └── User
+│       └── settings.json
+├── neofetch
+│   └── config.conf
+├── polybar
+│   ├── config.ini
+│   └── launch.sh
+├── settings.json
+├── sxhkd
+│   └── sxhkdrc
 └── vimrc
+
+8 directories, 13 files
 ```
 - `alacritty.yml` for [Alacritty terminal emulator](https://github.com/alacritty/alacritty)
 - `vimrc` for [Vim text editor](https://vimhelp.org/)
@@ -27,10 +34,10 @@ Set of simple dotfiles. Currently, there are:
     - `bash_files/aliases.sh`
     - `bash_files/functions.sh`
 - `config/Code/User/settings.json` for [vscode](https://code.visualstudio.com/)
-------
-In development (not yet fully configured)
-- `config/bspwm/bspwmrc` for bspwm display manager
-- `config/sxhkd/sxhkdrc` for sxhkdrc hotkey manager
+- `bspwm/bspwmrc` for [bspwm display manager](https://github.com/baskerville/bspwm)
+- `sxhkd/sxhkdrc` for [sxhkd hotkey manager](https://github.com/baskerville/sxhkd)
+- `neofetch/config.conf` for [neofetch](https://github.com/dylanaraps/neofetch)
+- `polybar/` for [polybar](https://github.com/polybar/polybar)
 
 ## DEPLOY.sh
 There's a `DEPLOY.sh` file, which has 2 launch modes:
