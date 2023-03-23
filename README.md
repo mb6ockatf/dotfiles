@@ -23,8 +23,6 @@ Set of simple dotfiles. Currently, there are:
 ├── sxhkd
 │   └── sxhkdrc
 └── vimrc
-
-8 directories, 13 files
 ```
 - `alacritty.yml` for [Alacritty terminal emulator](https://github.com/alacritty/alacritty)
 - `vimrc` for [Vim text editor](https://vimhelp.org/)
@@ -38,6 +36,8 @@ Set of simple dotfiles. Currently, there are:
 - `sxhkd/sxhkdrc` for [sxhkd hotkey manager](https://github.com/baskerville/sxhkd)
 - `neofetch/config.conf` for [neofetch](https://github.com/dylanaraps/neofetch)
 - `polybar/` for [polybar](https://github.com/polybar/polybar)
+
+For rofi there is [@adi1090x's configuration setup](https://github.com/adi1090x/rofi)
 
 ## DEPLOY.sh
 There's a `DEPLOY.sh` file, which has 2 launch modes:
