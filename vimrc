@@ -37,7 +37,7 @@ map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
 set mouse-=a
 filetype detect
-if &filetype == "python"
+if &filetype == "python" || &filetype == "sh" || &filetype == "vim"
 	set tabstop=4
 	set expandtab
 	set shiftwidth=4
@@ -82,3 +82,4 @@ autocmd BufWritePre * call PrepareBeforeWrite()
 autocmd vimenter * ++nested colo gruvbox
 augroup END
 syntax on
+
