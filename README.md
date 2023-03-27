@@ -84,6 +84,11 @@ will track system file `$HOME/.vim/vimrc` as just `vimrc` in project.
 `./DEPLOY.sh install` will copy `vimrc` to `$HOME/.vim/vimrc`;
 `./DEPLOY.sh pack` will do the vise versa.
 
+## Other
+
+Checkout quick vim commands reference in
+[wiki](https://github.com/mb6ockatf/dotfiles/wiki/short-vim-commands-reference)
+
 ------
 
 [^1]: Note that `DEPLOY.sh` will only update files if replacing older file or if
