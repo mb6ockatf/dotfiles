@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ~/.bash-aliases
+# ~/.bash_files/bash-aliases.sh
 #
 
 alias cp='cp -i'
