@@ -48,6 +48,7 @@ export QT_SELECT=4
 shopt -s histappend
 source ~/.bash_files/aliases.sh
 source ~/.bash_files/colors.sh
+source ~/.bash_files/prompt.sh
 source ~/.bash_completion/alacritty
 
 export PYENV_ROOT="$HOME/.pyenv"
