@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 ### Added
+
+### Fixed
+
+
+## [0.0.2]
+### Added
 - `prompt.sh`
 - `bspwmrc`
 - polybar
 - `sxhkdrc`
 - neofetch
+- `.bash_files/functions.sh`: gum commit
+- vimrc: NERDTree plugin
+- vimrc: NERDTree is now set to open/close automatically
 
 ## [0.0.1]
 ### Added
@@ -27,5 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 [unreleased]: https://github.com/mb6ockatf/dotfiles/compare/v0.0.1...HEAD
+[0.0.2]: https://github.com/mb6ockatf/dotfiles/releases/tag/v0.0.2
 [0.0.1]: https://github.com/mb6ockatf/dotfiles/releases/tag/v0.0.1
 
