@@ -208,6 +208,7 @@ Plug 'morhetz/gruvbox'
 Plug 'mb6ockatf/citify'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
+Plug 'preservim/nerdtree'
 call plug#end()
 " PlugUpdate
 " PlugInstall
