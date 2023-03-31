@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `sxhkdrc`
 - neofetch
 - `.bash_files/functions.sh`: gum commit
-- vimrc: NERDTree
+- vimrc: NERDTree plugin
+- vimrc: NERDTree is now set to open/close automatically
 
 ## [0.0.1]
 ### Added
