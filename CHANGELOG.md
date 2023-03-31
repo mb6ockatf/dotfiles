@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - polybar
 - `sxhkdrc`
 - neofetch
+- `.bash_files/functions.sh`: gum commit
+- vimrc: NERDTree
 
 ## [0.0.1]
 ### Added
