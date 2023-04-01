@@ -1,4 +1,4 @@
-" Tue 28 Mar 2023 05:52:28 PM MSK
+" Sat 01 Apr 2023 01:08:26 PM MSK
 " repository: https://github.com/mb6ockatf/dotfiles
 set nocompatible
 set nu
@@ -61,8 +61,8 @@ function StatuslineTabWarning()
 			return b:statusline_tab_warning
 		endif
 		let tabs = search('^\t', 'nw') != 0
-		" find spaces that aren't used as alignment in the first indent
-		" column
+"		" find spaces that aren't used as alignment in the first indent
+"		" column
 		let spaces = search('^ \{' . &ts . ',}[^\t]', 'nw') != 0
 		if tabs && spaces
 			b:statusline_tab_warning = '[mixed-indenting]'
@@ -145,9 +145,9 @@ set statusline+=%m             " modified flag
 " set statusline+=fugitive_statisline_string
 
 " display a warning if &et is wrong, or we have mixed-indenting
-set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
-set statusline+=%*
+" set statusline+=%#error#
+" set statusline+=%{StatuslineTabWarning()}
+" set statusline+=%*
 
 set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%{StatuslineLongLineWarning()}
@@ -209,6 +209,8 @@ Plug 'mb6ockatf/citify'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 Plug 'preservim/nerdtree'
+Plug 'dense-analysis/ale'
+" Plug 'vim-airline/vim-airline'
 call plug#end()
 " PlugUpdate
 " PlugInstall
@@ -239,12 +241,10 @@ autocmd vimenter * ++nested colo gruvbox
 autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 &&
-			\ exists('b:NERDTree') && b:NERDTree.isTabTree() | quit |
-		\ endif
+			\ exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') &&
-			\ b:NERDTree.isTabTree() | quit |
-		\ endif
+			\ b:NERDTree.isTabTree() | quit | endif
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 augroup END
