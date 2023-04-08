@@ -65,54 +65,14 @@ install_configuration() {
 	done
 }
 
-install_gum_ubuntu() {
-	sudo mkdir -p /etc/apt/keyrings
-	gpg_key=$(curl -fsSL https://repo.charm.sh/apt/gpg.key)
-	sources_list_path
-	echo $gpg_key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
-	echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] "\
-	"https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
-	sudo apt update
-	sudo apt install gum
+pacman_install() {
+	sudo pacman -S --needed "$1"
 }
 
-install_dependencies() {
-	os_name="$(lsb_release -is)"
-	if [ -f /etc/os-release ]
-	then
-    	# freedesktop.org and systemd
-    	. /etc/os-release
-    	OS=$NAME
-    	VER=$VERSION_ID
-	elif type lsb_release >/dev/null 2>&1
-	then
-    	# linuxbase.org
-    	OS=$(lsb_release -si)
-    	VER=$(lsb_release -sr)
-	elif [ -f /etc/lsb-release ]
-	then
-    	# For some versions of Debian/Ubuntu without lsb_release command
-    	. /etc/lsb-release
-    	OS=$DISTRIB_ID
-    	VER=$DISTRIB_RELEASE
-	elif [ -f /etc/debian_version ]
-	then
-    	# Older Debian/Ubuntu/etc.
-    	OS=Debian
-    	VER=$(cat /etc/debian_version)
-	elif [ -f /etc/SuSe-release ]
-	then
-    	# Older SuSE/etc.
-    	...
-	elif [ -f /etc/redhat-release ]
-	then
-    	# Older Red Hat, CentOS, etc.
-    	...
-	else
-    	# Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
-    	OS=$(uname -s)
-    	VER=$(uname -r)
-	fi
+pprint() {
+	message=$1
+	message=`gum style --border normal --border-foreground 3 "$message"`
+	echo "$message"
 }
 
 case $1 in
@@ -124,6 +84,14 @@ case $1 in
 		;;
 	help | --help | -h)
 		usage
+		;;
+	depends )
+		echo "running system upgrade"
+		sudo pacman -Syuu
+		echo "installing gum"
+		pacman_install gum
+		pprint "installing pyenv"
+		pacman_install pyenv
 		;;
 	*)
 		echo "no mode value provided"
@@ -137,3 +105,4 @@ unset usage
 unset dot_files
 unset dot_folders
 exit
+
