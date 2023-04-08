@@ -4,7 +4,7 @@ declare -A dot_files
 dot_files[alacritty/alacritty.yml]="$HOME/.alacritty.yml"
 dot_files[alacritty/bash_completion.sh]="$HOME/.bash_completion/alacritty"
 dot_files[bashrc]="$HOME/.bashrc"
-dot_files[Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
+dot_files[Code/User/argv.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
 dot_files[bash_files/aliases.sh]="$HOME/.bash_files/aliases.sh"
 dot_files[bash_files/colors.sh]="$HOME/.bash_files/colors.sh"

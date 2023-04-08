@@ -1,5 +1,6 @@
 {
     "workbench.editor.enablePreview": false,
+    "disable-hardware-acceleration": true,
     "workbench.action.configureLocale": "en",
     "codeQL.telemetry.enableTelemetry": false,
     "editor.fontFamily": "'monospace', monospace",
