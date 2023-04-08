@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 declare -A dot_files
-dot_files[alacritty.yml]="$HOME/.alacritty.yml"
+dot_files[alacritty/alacritty.yml]="$HOME/.alacritty.yml"
+dot_files[alacritty/bash_completion.sh]="$HOME/.bash_completion/alacritty"
 dot_files[bashrc]="$HOME/.bashrc"
 dot_files[Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
@@ -23,6 +24,7 @@ dot_folders[3]="$HOME/.config/bspwm"
 dot_folders[4]="$HOME/.config/sxhkd"
 dot_folders[5]="$HOME/.config/neofetch"
 dot_folders[6]="$HOME/.config/polybar"
+dot_folders[7]="$HOME/.bash_completion"
 
 line="----------------------------------------------------------------"
 
