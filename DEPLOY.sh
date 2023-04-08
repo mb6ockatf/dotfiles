@@ -51,7 +51,7 @@ collect_configuration() {
 	for filename in ${!dot_files[@]}
 	do
 		cp -vu $"${dot_files[$filename]}" "$filename"
-	done~
+	done
 }
 
 install_configuration() {
