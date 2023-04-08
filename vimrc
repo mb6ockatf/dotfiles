@@ -4,6 +4,7 @@ set nocompatible
 set nu
 set nobomb
 set wrap
+set wrapmargin=80
 set linebreak
 set textwidth=80
 set colorcolumn=80
