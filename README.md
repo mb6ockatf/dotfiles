@@ -95,6 +95,13 @@ will track system file `$HOME/.vim/vimrc` as just `vimrc` in project.
 Checkout quick vim commands reference in
 [wiki](https://github.com/mb6ockatf/dotfiles/wiki/short-vim-commands-reference)
 
+`raspberry-release` branch is needed for keeping a special dotfiles version for
+raspberry PI machine.
+A larger font is configured there, and some other little platform-dependent
+enhancements (currently, i use tv as a monitor for my raspberry).
+This branch is supposed to be merged with `master` before any new tagged version
+comes out.
+
 ------
 
 [^1]: Note that [`DEPLOY.sh`](DEPLOY.sh) will only update files if replacing
