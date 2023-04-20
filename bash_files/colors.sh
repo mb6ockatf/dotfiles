@@ -1,5 +1,6 @@
-#!/usr/bin/bash
-# colors
+#!/usr/bin/env bash
+# Thu Apr 20 14:45:00 2023 | repository: https://github.com/mb6ockatf/dotfiles
+
 end="\033[0m"
 black="\033[0;30m"
 blackb="\033[1;30m"
@@ -17,7 +18,6 @@ purple="\033[0;35m"
 purpleb="\033[1;35m"
 lightblue="\033[0;36m"
 lightblueb="\033[1;36m"
-
 function black      { echo -e "${black}${1}${end}"      ; }
 function blackb     { echo -e "${blackb}${1}${end}"     ; }
 function white      { echo -e "${white}${1}${end}"      ; }
@@ -34,8 +34,7 @@ function purple     { echo -e "${purple}${1}${end}"     ; }
 function purpleb    { echo -e "${purpleb}${1}${end}"    ; }
 function lightblue  { echo -e "${lightblue}${1}${end}"  ; }
 function lightblueb { echo -e "${lightblueb}${1}${end}" ; }
-
-function colors {
+colors() {
 	black "black"
 	blackb "blackb"
 	white "white"
@@ -54,7 +53,7 @@ function colors {
 	lightblueb "lightblueb"
 }
 
-function colortest {
+colortest() {
 	T='gYw'
 	echo -e "\n                 40m     41m     42m     43m\
 	 44m     45m     46m     47m";
@@ -70,3 +69,4 @@ function colortest {
 	done
 	echo
 }
+
