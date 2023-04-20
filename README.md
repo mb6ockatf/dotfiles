@@ -2,26 +2,33 @@
 
 Set of simple dotfiles. Currently, there are:
 ```ascii
-├── alacritty.yml
+├── Code
+│   └── User
+│       └── argv.json
+├── DEPLOY.sh
+├── alacritty
+│   ├── alacritty.yml
+│   └── bash_completion.sh
 ├── bash_files
-│   ├── aliases.sh
-│   ├── colors.sh
-│   ├── functions.sh
-│   └── prompt.sh
+│   ├── aliases.sh
+│   ├── colors.sh
+│   ├── functions.sh
+│   └── prompt.sh
 ├── bashrc
 ├── bspwm
-│   └── bspwmrc
-├── Code
-│   └── User
-│       └── settings.json
+│   └── bspwmrc
 ├── neofetch
-│   └── config.conf
+│   └── config.conf
 ├── polybar
-│   ├── config.ini
-│   └── launch.sh
+│   ├── config.ini
+│   └── launch.sh
 ├── sxhkd
-│   └── sxhkdrc
-└── vimrc
+│   └── sxhkdrc
+└── vimfiles
+    ├── basic.vim
+    ├── plugins.vim
+    ├── statusline.vim
+    └── vimrc
 ```
 
 - [`alacritty.yml`](alacritty.yml) for
@@ -87,8 +94,9 @@ dot_files[vimrc]="$HOME/.vim/vimrc"
 will track system file `$HOME/.vim/vimrc` as just `vimrc` in project.
 
 `./DEPLOY.sh install` will copy `vimrc` to `$HOME/.vim/vimrc`;
-
 `./DEPLOY.sh pack` will do the vise versa.
+Checkout `./DEPLOY.sh help` for more information
+
 
 ## Other
 
