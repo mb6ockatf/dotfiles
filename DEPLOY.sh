@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 declare -A dot_files
-dot_files[alacritty.yml]="$HOME/.alacritty.yml"
+dot_files[alacritty/alacritty.yml]="$HOME/.alacritty.yml"
+dot_files[alacritty/bash_completion.sh]="$HOME/.bash_completion/alacritty"
 dot_files[bashrc]="$HOME/.bashrc"
-dot_files[Code/User/settings.json]="$HOME/.config/Code/User/settings.json"
-dot_files[vimrc]="$HOME/.vim/vimrc"
+dot_files[Code/User/argv.json]="$HOME/.config/Code/User/settings.json"
+dot_files[vimfiles/vimrc]="$HOME/.vim/vimrc"
+dot_files[vimfiles/statusline.vim]="$HOME/.vim/statusline.vim"
 dot_files[bash_files/aliases.sh]="$HOME/.bash_files/aliases.sh"
 dot_files[bash_files/colors.sh]="$HOME/.bash_files/colors.sh"
 dot_files[bash_files/functions.sh]="$HOME/.bash_files/functions.sh"
@@ -23,6 +25,7 @@ dot_folders[3]="$HOME/.config/bspwm"
 dot_folders[4]="$HOME/.config/sxhkd"
 dot_folders[5]="$HOME/.config/neofetch"
 dot_folders[6]="$HOME/.config/polybar"
+dot_folders[7]="$HOME/.bash_completion"
 
 line="----------------------------------------------------------------"
 
@@ -41,29 +44,55 @@ usage() {
 	unset name
 }
 
+collect_configuration() {
+	for foldername in ${dot_folders[@]}
+	do
+		mkdir -v -p "$foldername"
+	done
+	for filename in ${!dot_files[@]}
+	do
+		cp -vu $"${dot_files[$filename]}" "$filename"
+	done
+}
+
+install_configuration() {
+	for foldername in ${!dot_folders[@]}
+	do
+		mkdir -v -p "${dot_folders[$foldername]}"
+	done
+	for filename in ${!dot_files[@]}
+	do
+		cp -vu "$filename" "${dot_files[$filename]}"
+	done
+}
+
+pacman_install() {
+	sudo pacman -S --needed "$1"
+}
+
+pprint() {
+	message=$1
+	message=`gum style --border normal --border-foreground 3 "$message"`
+	echo "$message"
+}
+
 case $1 in
 	pack | --pack | -p )
-		for foldername in ${dot_folders[@]}
-		do
-			mkdir -v -p "$foldername"
-		done
-		for filename in ${!dot_files[@]}
-		do
-			cp -vu $"${dot_files[$filename]}" "$filename"
-		done
+		collect_configuration
 		;;
 	install | --install | -i )
-		for foldername in ${!dot_folders[@]}
-		do
-			mkdir -v -p "${dot_folders[$foldername]}"
-		done
-		for filename in ${!dot_files[@]}
-		do
-			cp -vu "$filename" "${dot_files[$filename]}"
-		done
+		install_configuration
 		;;
 	help | --help | -h)
 		usage
+		;;
+	depends )
+		echo "running system upgrade"
+		sudo pacman -Syuu
+		echo "installing gum"
+		pacman_install gum
+		pprint "installing pyenv"
+		pacman_install pyenv
 		;;
 	*)
 		echo "no mode value provided"

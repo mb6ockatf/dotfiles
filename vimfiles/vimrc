@@ -1,0 +1,38 @@
+" Thu Apr 20 13:11:45 2023 | repository: https://github.com/mb6ockatf/dotfiles
+
+source ~/.vim/statusline.vim
+source ~/.vim/basic.vim
+source ~/.vim/plugins.vim
+filetype detect
+if &filetype == "python"
+	set tabstop=4
+	set expandtab
+	set shiftwidth=4
+elseif &filetype == "vim"
+	set tabstop=4
+	set shiftwidth=4
+elseif &filetype == "html" || &filetype == "css"
+	set tabstop=2
+	set shiftwidth=2
+	set nolinebreak
+	set colorcolumn=140
+	set textwidth=140
+	set wrap
+endif
+colorscheme default
+
+function PrepareBeforeWrite()
+	if &filetype == "python"
+		%s/^	/    /e
+	endif
+	%s/\s\+$//e
+	%s/\^datetime\^/\=strftime("%c")/e
+	set fenc=utf-8
+endfunction
+
+augroup PreWriteEdits
+autocmd BufWritePre * call PrepareBeforeWrite()
+autocmd vimenter * ++nested colo gruvbox
+augroup END
+syntax on
+
