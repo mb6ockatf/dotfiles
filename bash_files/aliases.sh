@@ -20,4 +20,10 @@ alias status='git status'
 alias pull='git pull'
 alias push='git push'
 alias add='git add'
+if [ -d "$HOME/.atom" ]
+then
+	alias atom="~/.atom/atom &"
+else
+	echo "atom directory does not exist"
+fi
 
