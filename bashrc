@@ -1,8 +1,7 @@
-#
 # ~/.bashrc
-#
 [[ $- != *i* ]] && return
 source "$HOME/.bash_files/functions.sh"
+export HISTCONTROL=ignoreboth:erasedups
 bash_completion_path="/usr/share/bash-completion/completion.sh"
 if [ -r $bash_completion_path ]
 then
@@ -50,8 +49,6 @@ source ~/.bash_files/aliases.sh
 source ~/.bash_files/colors.sh
 source ~/.bash_files/prompt.sh
 source ~/.bash_completion/alacritty
-
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
