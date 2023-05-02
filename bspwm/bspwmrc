@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV
+bspc monitor -d 0001 0010 0011 0100
 bspc config border_width         0
 bspc config window_gap           0
 bspc config split_ratio          0.52
