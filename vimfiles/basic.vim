@@ -1,6 +1,3 @@
-" Thu Apr 20 13:11:45 2023 | repository: https://github.com/mb6ockatf/dotfiles
-" basic settings
-
 set nocompatible
 set number
 set nobomb
@@ -21,6 +18,8 @@ set ttimeoutlen=100
 set display=truncate
 set cmdheight=1
 set mouse-=a
+set conceallevel=1
+set bg=dark
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>

@@ -7,6 +7,8 @@ dot_files[bashrc]="$HOME/.bashrc"
 dot_files[Code/User/argv.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimfiles/vimrc]="$HOME/.vim/vimrc"
 dot_files[vimfiles/statusline.vim]="$HOME/.vim/statusline.vim"
+dot_files[vimfiles/basic.vim]="$HOME/.vim/basic.vim"
+dot_files[vimfiles/plugins.vim]="$HOME/.vim/plugins.vim"
 dot_files[bash_files/aliases.sh]="$HOME/.bash_files/aliases.sh"
 dot_files[bash_files/colors.sh]="$HOME/.bash_files/colors.sh"
 dot_files[bash_files/functions.sh]="$HOME/.bash_files/functions.sh"
@@ -106,4 +108,3 @@ unset usage
 unset dot_files
 unset dot_folders
 exit
-

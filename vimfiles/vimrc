@@ -1,15 +1,10 @@
-" Thu Apr 20 13:11:45 2023 | repository: https://github.com/mb6ockatf/dotfiles
-
-source ~/.vim/statusline.vim
 source ~/.vim/basic.vim
 source ~/.vim/plugins.vim
+source ~/.vim/statusline.vim
 filetype detect
-if &filetype == "python"
+if &filetype == "python" || &filetype == "vim"
 	set tabstop=4
 	set expandtab
-	set shiftwidth=4
-elseif &filetype == "vim"
-	set tabstop=4
 	set shiftwidth=4
 elseif &filetype == "html" || &filetype == "css"
 	set tabstop=2
@@ -19,7 +14,6 @@ elseif &filetype == "html" || &filetype == "css"
 	set textwidth=140
 	set wrap
 endif
-colorscheme default
 
 function PrepareBeforeWrite()
 	if &filetype == "python"
@@ -32,7 +26,5 @@ endfunction
 
 augroup PreWriteEdits
 autocmd BufWritePre * call PrepareBeforeWrite()
-autocmd vimenter * ++nested colo gruvbox
 augroup END
 syntax on
-
