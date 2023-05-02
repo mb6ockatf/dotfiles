@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # ~/.bash_files/aliases.sh
 # Sat 08 Apr 2023 01:52:12 PM MSK
-
 alias cp='cp -i'
 alias df='df -h'
 alias free='free -m'
@@ -20,4 +19,9 @@ alias status='git status'
 alias pull='git pull'
 alias push='git push'
 alias add='git add'
-
+if [ -d "$HOME/.atom" ]
+then
+	alias atom="~/.atom/atom &"
+else
+	echo "atom directory does not exist"
+fi
