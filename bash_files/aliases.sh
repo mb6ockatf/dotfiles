@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # ~/.bash_files/aliases.sh
 # Sat 08 Apr 2023 01:52:12 PM MSK
-
 alias cp='cp -i'
 alias df='df -h'
 alias free='free -m'
@@ -26,4 +25,3 @@ then
 else
 	echo "atom directory does not exist"
 fi
-
