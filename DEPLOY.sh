@@ -68,9 +68,7 @@ install_configuration() {
 	done
 }
 
-pacman_install() {
-	sudo pacman -S --needed "$1"
-}
+pacman_install() { sudo pacman -S --needed "$1"; }
 
 pprint() {
 	message=$1
@@ -102,9 +100,5 @@ case $1 in
 	;;
 esac
 echo
-unset filename
-unset foldername
-unset usage
-unset dot_files
-unset dot_folders
+unset filename foldername usage dot_files dot_folders
 exit
