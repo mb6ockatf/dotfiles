@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-
 bspc monitor -d 0001 0010 0011 0100
 bspc config border_width         0
 bspc config window_gap           0
@@ -28,4 +27,3 @@ feh --bg-scale ~/Downloads/City36.jpg &
 picom -b --config ~/.config/picom/config.ini &
 bash ~/.config/polybar/launch.sh &
 xsetroot -cursor_name left_ptr &
-

@@ -1,5 +1,84 @@
-" Thu Apr 20 13:11:45 2023 | repository: https://github.com/mb6ockatf/dotfiles
-" functions required for generating statusline. should be sourced in vimrc
+set nocompatible
+set number
+set nobomb
+set wrap
+set wrapmargin=80
+set linebreak
+set textwidth=80
+set colorcolumn=80
+set backspace=2
+set autoindent
+set history=50
+set ruler
+set nopaste
+set showcmd
+set wildmenu
+set ttimeout
+set ttimeoutlen=100
+set display=truncate
+set cmdheight=1
+set mouse-=a
+set conceallevel=1
+set bg=dark
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+map <F1> :w<CR>
+map <F2> :wq<CR>
+map <F3> :NERDTree<CR>
+map <F7> :tabp<CR>
+map <F8> :tabn<CR>
+map <F9> :tabnew<CR>
+call plug#begin()
+Plug 'morhetz/gruvbox'
+Plug 'lervag/vimtex'
+Plug 'sirver/ultisnips'
+Plug 'preservim/nerdtree'
+Plug 'dense-analysis/ale'
+call plug#end()
+" PlugUpdate
+" PlugInstall
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_quickfix_mode = 0
+let g:tex_conceal = 'abdmg'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+filetype detect
+if &filetype == "python" || &filetype == "vim"
+	set tabstop=4
+	set expandtab
+	set shiftwidth=4
+elseif &filetype == "html" || &filetype == "css"
+	set tabstop=2
+	set shiftwidth=2
+	set nolinebreak
+	set colorcolumn=140
+	set textwidth=140
+	set wrap
+endif
+
+function PrepareBeforeWrite()
+	if &filetype == "python"
+		%s/^	/    /e
+	endif
+	%s/\s\+$//e
+	%s/\^datetime\^/\=strftime("%c")/e
+	set fenc=utf-8
+endfunction
+
 
 " return '[\s]' if trailing whitespace is detected, return '' otherwise
 function StatuslineTrailingSpaceWarning()
@@ -134,3 +213,9 @@ set statusline+=%l/%L
 set statusline+=\ %P
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
+
+
+augroup PreWriteEdits
+autocmd BufWritePre * call PrepareBeforeWrite()
+augroup END
+syntax on
