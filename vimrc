@@ -57,7 +57,7 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 filetype detect
-if &filetype == "python" || &filetype == "vim"
+if &filetype == "python" || &filetype == "vim" || &filetype == "sh"
 	set tabstop=4
 	set expandtab
 	set shiftwidth=4
