@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ^datetime^ | https://github.com/mb6ockatf/dotfiles
+# Fri 12 May 2023 07:51:46 PM MSK | https://github.com/mb6ockatf/dotfiles
 # ~/.bashrc
 
 readonly END="\033[0m"
@@ -101,9 +101,9 @@ color::color_table() {
 # output: colors table
 ###############################################################################
 color::colorful() {
-	for x in {0..8}; do 
-    	for fg in {30..37}; do 
-        	for bg in {40..47}; do 
+	for x in {0..8}; do
+    	for fg in {30..37}; do
+        	for bg in {40..47}; do
             	echo -ne "\e[$x;$fg;$bg""m\\\e[$x;$fg;$bg""m\e[0;37;40m "
         	done
         	echo
@@ -256,5 +256,6 @@ export QT_SELECT=4
 export PYENV_ROOT="$HOME/.pyenv"
 export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND=set_bash_prompt
+export BROWSER=/usr/bin/chromium
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
