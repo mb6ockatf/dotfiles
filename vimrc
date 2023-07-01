@@ -1,25 +1,25 @@
-set nocompatible
-set number
-set nobomb
-set wrap
-set wrapmargin=80
-set linebreak
-set textwidth=80
-set colorcolumn=80
-set backspace=2
-set autoindent
-set history=50
-set ruler
-set nopaste
-set showcmd
-set wildmenu
-set ttimeout
-set ttimeoutlen=100
-set display=truncate
-set cmdheight=1
-set mouse-=a
-set conceallevel=1
-set bg=dark
+se nocompatible
+se number
+se nobomb
+se wrap
+se wrapmargin=80
+se linebreak
+se textwidth=80
+se colorcolumn=80
+se backspace=2
+se autoindent
+se history=50
+se ruler
+se nopaste
+se showcmd
+se wildmenu
+se ttimeout
+se ttimeoutlen=100
+se display=truncate
+se cmdheight=1
+se mouse-=a
+se conceallevel=1
+se bg=dark
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -47,7 +47,7 @@ Plug 'dense-analysis/ale'
 call plug#end()
 " PlugUpdate
 " PlugInstall
-colorscheme gruvbox
+colo gruvbox
 let g:gruvbox_contrast_dark = 'hard'
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
@@ -58,16 +58,16 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 filetype detect
 if &filetype == "python" || &filetype == "vim" || &filetype == "sh"
-	set tabstop=4
-	set expandtab
-	set shiftwidth=4
+	se tabstop=4
+	se expandtab
+	se shiftwidth=4
 elseif &filetype == "html" || &filetype == "css"
-	set tabstop=2
-	set shiftwidth=2
-	set nolinebreak
-	set colorcolumn=140
-	set textwidth=140
-	set wrap
+	se tabstop=2
+	se shiftwidth=2
+	se nolinebreak
+	se colorcolumn=140
+	se textwidth=140
+	se wrap
 endif
 
 function PrepareBeforeWrite()
@@ -76,11 +76,11 @@ function PrepareBeforeWrite()
 	endif
 	%s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
-	set fenc=utf-8
+	se fenc=utf-8
 endfunction
 
 
-" return '[\s]' if trailing whitespace is detected, return '' otherwise
+" return '[\s]' if trailing whitespace is detected || return ''
 function StatuslineTrailingSpaceWarning()
 	if !exists("b:statusline_trailing_space_warning")
 		if !&modifiable
@@ -96,44 +96,10 @@ function StatuslineTrailingSpaceWarning()
 	return b:statusline_trailing_space_warning
 endfunction
 
-" return syntax highlight group under cursor, or ''
+" return syntax highlight group under cursor || return ''
 function StatuslineCurrentHighlight()
-	let name = synIDattr(synID(line('.'),col('.'),1),'name')
-	if name == ''
-		return ''
-	else
-		return '[' . name . ']'
-	endif
-endfunction
-
-" return '[&et]' if &et is set wrong highlight group under cursor ''
-function StatuslineCurrentHightlight()
-	let name = synIDattr(synID(line('.'),col('.'),1),'name')
-	if name == ''
-		return ''
-	else
-		return '[' . name . ']'
-	endif
-endfunction
-
-" return '[mixed-indenting]' if spaces and tabs are used to indent, otherwise
-" return empty string
-function StatuslineTabWarning()
-	if !exists("b:statusline_tab_warning")
-		let b:statusline_tab_warning = ""
-		if !&modifiable
-			return b:statusline_tab_warning
-		endif
-		let tabs = search('^\t', 'nw') != 0
-"       find spaces that aren't used as alignment in first indent column
-		let spaces = search('^ \{' . &ts . ',}[^\t]', 'nw') != 0
-		if tabs && spaces
-			b:statusline_tab_warning = '[mixed-indenting]'
-		elseif (spaces && !&et) || (tabs && &et)
-			b:statusline_tab_warning = '[%et]'
-		endif
-	endif
-	return b:statusline_tab_warning
+	let name = synIDattr(synID(line('.'),col('.'), 1), 'name')
+	if name == '' | return ''  | else | return '[' . name . ']' | endif
 endfunction
 
 " return a warning for "long lines" where "long" is either textwidth value if it
@@ -176,7 +142,7 @@ function s:LongLines()
 	return long_line_lens
 endfunction
 
-function s:Median(nums)             " find the median of given array of numbers
+function s:Median(nums)  " find the median of given array of numbers
 	let nums = sort(a:nums)
 	let l = len(nums)
 	if l % 2 == 1
@@ -197,9 +163,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
 set statusline+=%*
 set statusline+=%h%y%r%m
-set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
-set statusline+=%*
 set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%{StatuslineLongLineWarning()}
 set statusline+=%#warningmsg#
@@ -213,8 +176,6 @@ set statusline+=%l/%L
 set statusline+=\ %P
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
-
-
 augroup PreWriteEdits
 autocmd BufWritePre * call PrepareBeforeWrite()
 augroup END
