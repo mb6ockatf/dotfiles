@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-
 pgrep -x sxhkd > /dev/null || sxhkd &
 bspc monitor -d 0001 0010 0011 0100
-bspc config border_width         0
-bspc config window_gap           0
-bspc config split_ratio          0.52
-bspc config borderless_monocle   false
-bspc config gapless_monocle      false
-bspc config single_monocle       false
-bspc config paddingless_monocle	 true
+bspc config border_width 0
+bspc config window_gap 0
+bspc config split_ratio 0.52
+bspc config borderless_monocle false
+bspc config gapless_monocle false
+bspc config single_monocle false
+bspc config paddingless_monocle	true
 bspc config pointer_modifier mod4
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
