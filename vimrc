@@ -59,7 +59,6 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 filetype detect
 if &filetype == "python" || &filetype == "vim" || &filetype == "sh"
 	se tabstop=4
-	se expandtab
 	se shiftwidth=4
 elseif &filetype == "html" || &filetype == "css"
 	se tabstop=2
@@ -67,6 +66,14 @@ elseif &filetype == "html" || &filetype == "css"
 	se nolinebreak
 	se colorcolumn=140
 	se textwidth=140
+	se wrap
+elseif &filetype == "asm"
+	se tabstop=8
+	se shiftwidth=8
+	se expandtab
+	se colorcolumn=80
+	se textwidth=80
+	se nolinebreak
 	se wrap
 endif
 
