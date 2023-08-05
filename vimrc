@@ -43,7 +43,6 @@ Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
 Plug 'preservim/nerdtree'
-Plug 'dense-analysis/ale'
 call plug#end()
 " PlugUpdate
 " PlugInstall
@@ -71,6 +70,11 @@ elseif &filetype == "asm"
 	se tabstop=8
 	se shiftwidth=8
 	se expandtab
+	se colorcolumn=80
+	se textwidth=80
+	se nolinebreak
+	se wrap
+elseif &filetype == "go"
 	se colorcolumn=80
 	se textwidth=80
 	se nolinebreak

@@ -177,7 +177,7 @@ set_bash_prompt() {
 		fi
 	fi
 	if [ -n "$VIRTUAL_ENV" ]; then
-		PS1="${PS1}:${COLOR_VENV}$(basename \""$VIRTUAL_ENV"\")${DIVIDER}"
+		PS1="${PS1}:${COLOR_VENV}$(basename "$VIRTUAL_ENV")${DIVIDER}"
 	fi
 	PS1="${PS1}]"
 	PS1+="\n[${DIVIDER}"
