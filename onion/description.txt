@@ -1,0 +1,9 @@
+Mon 14 Aug 2023 12:28:28 AM MSK
+hi. i'm 16 y.o. nerd and i use arch.
+onion is my first dotfiles setup i ever created. in the beginning i did not
+know it won't be the only one, and all those files used to be at the top
+project's directory. but today, i decided that it is time to try and build
+something completely new.
+all files in this folder will be maintained, ofc.
+[however, not going to edit this file. let it be a letter to future. hello,
+me in 2033! how are you doing, man?]
