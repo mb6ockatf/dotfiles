@@ -5,7 +5,7 @@ super + Return
 
 # launcher
 super + d
-	~/.config/rofi/launchers/type-7/launcher.sh
+	~/.config/rofi/launchers/type-2/launcher.sh
 
 # reload sxhkd configuration files
 super + Escape
@@ -104,16 +104,8 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Brightness ans volume
-XF86MonBrightnessUp
-	light -A 10
-
-XF86MonBrightnessDown
-	light -U 10
-
 XF86AudioRaiseVolume
 	pactl set-sink-volume @DEFAULT_SINK@ +5%
-
 
 XF86AudioLowerVolume
 	pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -124,3 +116,11 @@ XF86AudioMute
 super + shift + s
 	gscreenshot -s -f /home/mb6ockatf/downloads/
 
+XF86MonBrightness{Up,Down}
+	brightnessctl s 100{+,-}
+
+XF86Audio{Raise,Lower}Volume
+	pulsemixer --change-volume {+,-}10
+
+XF86AudioMute
+	pulsemixer  --toggle-mute
