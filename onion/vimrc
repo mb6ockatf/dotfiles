@@ -79,6 +79,14 @@ elseif &filetype == "go"
 	se textwidth=80
 	se nolinebreak
 	se wrap
+elseif &filetype == "haskell"
+	se colorcolumn=75
+	se textwidth=75
+	se nolinebreak
+	se wrap
+	se tabstop=2
+	se shiftwidth=2
+	se expandtab
 endif
 
 function PrepareBeforeWrite()
