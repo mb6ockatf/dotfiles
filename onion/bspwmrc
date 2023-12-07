@@ -22,7 +22,7 @@ bspc config focus_follows_pointer true
 bspc config normal_border_color "#272e33"
 bspc config focused_border_color "#7fbbb3"
 bspc config active_border_color "#1a1b26"
-feh --bg-scale ~/Downloads/City36.jpg &
+feh --bg-scale ~/Pictures/wallpaper.jpg &
 picom -b --config ~/.config/picom/config.ini &
 bash ~/.config/polybar/launch.sh &
 xsetroot -cursor_name left_ptr &
