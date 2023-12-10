@@ -42,7 +42,9 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
 Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 " PlugUpdate
 " PlugInstall
@@ -172,27 +174,27 @@ function s:Median(nums)  " find the median of given array of numbers
 	endif
 endfunction
 
-
-set laststatus=2
-set statusline=%-03.f
-set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-set statusline+=%*
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%*
-set statusline+=%h%y%r%m
-set statusline+=%{StatuslineTrailingSpaceWarning()}
-set statusline+=%{StatuslineLongLineWarning()}
-set statusline+=%#warningmsg#
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
-set statusline+=%=
-set statusline+=%{StatuslineCurrentHighlight()}\ \
-set statusline+=%c,
-set statusline+=%l/%L
-set statusline+=\ %P
+se laststatus=2
+se statusline=%-03.f
+se statusline+=%#warningmsg#
+se statusline+=%{&ff!='unix'?'['.&ff.']':''}
+se statusline+=%*
+se statusline+=%#warningmsg#
+se statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+se statusline+=%*
+se statusline+=%h%y%r%m
+se statusline+=%{StatuslineTrailingSpaceWarning()}
+se statusline+=%{StatuslineLongLineWarning()}
+se statusline+=%#warningmsg#
+se statusline+=%#error#
+se statusline+=%{&paste?'[paste]':''}
+se statusline+=%*
+se statusline+=%{FugitiveStatusline()}
+se statusline+=%=
+se statusline+=%{StatuslineCurrentHighlight()}\ \
+se statusline+=%c,
+se statusline+=%l/%L
+se statusline+=\ %P
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
 augroup PreWriteEdits
