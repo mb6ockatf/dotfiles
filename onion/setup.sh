@@ -2,6 +2,7 @@
 declare -A dot_files
 dot_files[alacritty.yml]="$HOME/.alacritty.yml"
 dot_files[bashrc]="$HOME/.bashrc"
+dot_files[gdbinit]="$HOME/.gdbinit"
 dot_files[vscode_argv.json]="$HOME/.config/Code/User/settings.json"
 dot_files[vimrc]="$HOME/.vim/vimrc"
 dot_files[bspwmrc]="$HOME/.config/bspwm/bspwmrc"
