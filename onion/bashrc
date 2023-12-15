@@ -134,7 +134,7 @@ light() {
 }
 
 # create neat git commits with gum, interactive
-commit() {
+gum_commit() {
 	TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" \
 	"chore" "revert")
 	SCOPE=$(gum input --placeholder "scope")
