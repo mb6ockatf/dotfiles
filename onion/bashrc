@@ -204,6 +204,7 @@ alias pull='git pull'
 alias push='git push'
 alias add='git add'
 alias ls='ls --color=auto'
+alias gum:commit='gum_commit'
 [ -d "$HOME/.atom" ] && alias atom="~/.atom/atom &"
 shopt -s 'checkwinsize'
 shopt -s 'expand_aliases'

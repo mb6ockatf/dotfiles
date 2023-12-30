@@ -41,7 +41,7 @@ map <F9> :tabnew<CR>
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
-Plug 'sirver/ultisnips'
+" Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
