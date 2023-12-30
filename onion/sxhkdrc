@@ -1,7 +1,7 @@
 # wm independent hotkeys
 #
 super + Return
-	alacritty
+	kitty
 
 # launcher
 super + d
