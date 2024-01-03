@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 declare -A dot_files
+dot_files[xinitrc]="$HOME/.xinitrc"
 dot_files[alacritty.toml]="$HOME/.alacritty.toml"
 dot_files[kitty.conf]="$HOME/.config/kitty/kitty.conf"
 dot_files[gruvbox_dark.conf]="$HOME/.config/kitty/kitty-themes/themes/gruvbox_dark.conf"
