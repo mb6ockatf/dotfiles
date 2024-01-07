@@ -38,6 +38,7 @@ map <F3> :NERDTree<CR>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
+se tabpagemax=15
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'

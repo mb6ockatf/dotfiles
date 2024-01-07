@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 declare -A dot_files
+dot_files[tmux.conf]="$HOME/.tmux.conf"
 dot_files[xinitrc]="$HOME/.xinitrc"
 dot_files[alacritty.toml]="$HOME/.alacritty.toml"
 dot_files[kitty.conf]="$HOME/.config/kitty/kitty.conf"
