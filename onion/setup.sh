@@ -21,6 +21,8 @@ dot_folders[3]="$HOME/.config/bspwm"
 dot_folders[4]="$HOME/.config/sxhkd"
 dot_folders[5]="$HOME/.config/neofetch"
 dot_folders[6]="$HOME/.config/polybar"
+declare -A global_dot_files
+global_dot_files[pacman.conf]="/etc/pacman.conf"
 
 repeat_char() {
 	for ((i = 1; i < $2; i++)); do
@@ -64,6 +66,9 @@ collect_configuration() {
 	for file in "${!dot_files[@]}"; do
 		cp -vu $"${dot_files[$file]}" "$file"
 	done
+	for file in "${!global_dot_files[@]}"; do
+		cp -vu $"${global_dot_files[$file]}" "$file"
+	done
 }
 
 install_configuration() {
@@ -73,15 +78,19 @@ install_configuration() {
 	for file in "${!dot_files[@]}"; do
 		cp -vu "$file" "${dot_files[$file]}"
 	done
-
+	local current_directory=$(pwd)
 	cd ~/.config/kitty
 	ln -sf ./kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
+	cd "$current_directory"
+	for file in "${!global_dot_files[@]}"; do
+		sudo cp -vu "$file" "${global_dot_files[$file]}"
+	done
 }
 
 set_package_manager() {
 	local is_pacman=$(pacman --version)
-	if [ -n "$(pacman --version)" ]; then
-		package_manager_install="pacman -S"
+	if [ -n "$(yay --version)" ]; then
+		package_manager_install="yay -Syuu --noconfirm"
 	fi
 }
 
@@ -89,7 +98,7 @@ install_deps() {
 	if [[ -z "$package_manager_install" ]]; then
 		set_package_manager
 	fi
-	sudo pacman -S --needed "$1"
+	eval $package_manager_install "$1"
 }
 
 pprint() {
@@ -114,11 +123,11 @@ case $1 in
 	info | -s )
 		onion_info ;;
 	depends | --depends | -d )
-		$echoer "running system upgrade" && sudo pacman -Syuu
+		$echoer "running system upgrade" && install_deps
 		if [[ $echoer == $echo ]]; then
-			$echoer "installing gum" && pacman_install gum
+			$echoer "installing gum" && install_deps gum
 		fi
-		$echoer "installing pyenv" && pacman_install pyenv
+		$echoer "installing pyenv" && install_deps pyenv
 		;;
 	*)
 		$echoer "no mode value provided" && usage ;;

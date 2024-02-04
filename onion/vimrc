@@ -1,25 +1,11 @@
-se nocompatible
-se number
-se nobomb
-se wrap
-se wrapmargin=80
-se linebreak
-se textwidth=80
-se colorcolumn=80
-se backspace=2
-se autoindent
-se history=50
-se ruler
-se nopaste
-se showcmd
-se wildmenu
-se ttimeout
-se ttimeoutlen=100
-se display=truncate
-se cmdheight=1
-se mouse-=a
-se conceallevel=1
-se bg=dark
+se nocompatible number nobomb wrap wrapmargin=80 linebreak textwidth=80
+se colorcolumn=80 autoindent history=50 ruler scrolloff=3 nopaste showcmd
+se wildmenu notimeout nottimeout display=truncate mouse-=a bg=dark
+se conceallevel=1 hlsearch incsearch showmatch ignorecase smartcase
+se tabpagemax=15 backspace=indent,eol,start noexpandtab
+se langmap=ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,ЯZ
+se langmap+=ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs
+se langmap+=вd,аf,пg,рh,оj,лk,дl,яz,чx,сc,мv,иb,тn,ьm
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -38,7 +24,6 @@ map <F3> :NERDTree<CR>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
-se tabpagemax=15
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
@@ -60,36 +45,15 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 filetype detect
 if &filetype == "python" || &filetype == "vim" || &filetype == "sh"
-	se tabstop=4
-	se shiftwidth=4
+	se tabstop=4 shiftwidth=4
 elseif &filetype == "html" || &filetype == "css"
-	se tabstop=2
-	se shiftwidth=2
-	se nolinebreak
-	se colorcolumn=140
-	se textwidth=140
-	se wrap
+	se tabstop=2 shiftwidth=2 nolinebreak colorcolumn=140 textwidth=140
 elseif &filetype == "asm"
-	se tabstop=8
-	se shiftwidth=8
-	se expandtab
-	se colorcolumn=80
-	se textwidth=80
-	se nolinebreak
-	se wrap
+	se tabstop=8 shiftwidth=8 expandtab nolinebreak
 elseif &filetype == "go"
-	se colorcolumn=80
-	se textwidth=80
 	se nolinebreak
-	se wrap
 elseif &filetype == "haskell"
-	se colorcolumn=75
-	se textwidth=75
-	se nolinebreak
-	se wrap
-	se tabstop=2
-	se shiftwidth=2
-	se expandtab
+	se colorcolumn=75 textwidth=75 nolinebreak tabstop=2 shiftwidth=2 expandtab
 endif
 
 function PrepareBeforeWrite()
