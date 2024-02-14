@@ -14,6 +14,7 @@ dot_files[sxhkdrc]="$HOME/.config/sxhkd/sxhkdrc"
 dot_files[neofetch.conf]="$HOME/.config/neofetch/config.conf"
 dot_files[polybar/launch.sh]="$HOME/.config/polybar/launch.sh"
 dot_files[polybar/config.ini]="$HOME/.config/polybar/config.ini"
+dot_files[kakrc]="$HOME/.config/kak/kakrc"
 declare -a dot_folders
 dot_folders[1]="$HOME/.vim"
 dot_folders[2]="$HOME/.config/Code/User"
@@ -21,6 +22,7 @@ dot_folders[3]="$HOME/.config/bspwm"
 dot_folders[4]="$HOME/.config/sxhkd"
 dot_folders[5]="$HOME/.config/neofetch"
 dot_folders[6]="$HOME/.config/polybar"
+dot_folders[7]="$HOME/.config/kak/kakrc"
 declare -A global_dot_files
 global_dot_files[pacman.conf]="/etc/pacman.conf"
 
