@@ -12,3 +12,5 @@
 *.gmi linguist-detectable
 *.textile linguist-documentation=false
 *.textile linguist-detectable
+*.txt linguist-documentation=false
+*.txt linguist-detectable
