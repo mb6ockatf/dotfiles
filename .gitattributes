@@ -14,3 +14,9 @@
 *.textile linguist-detectable
 *.txt linguist-documentation=false
 *.txt linguist-detectable
+.gitignore linguist-documentation=false
+.gitignore linguist-detectable
+*.json linguist-documentation=false
+*.json linguist-detectable
+*.csv linguist-documentation=false
+*.csv linguist-detectable

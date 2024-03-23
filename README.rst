@@ -11,7 +11,7 @@ dotfiles
   `vscode <https://code.visualstudio.com/>`_
 * `bspwmrc <onion/bspwmrc>`_ for
   `bspwm display manager <https://github.com/baskerville/bspwm>`_
-* `sxhkdrc <onion/sxhkdrc>_` for
+* `sxhkdrc <onion/sxhkdrc>`_ for
   `sxhkd hotkey manager <https://github.com/baskerville/sxhkd>`_
 * `neofetch.conf <onion/neofetch.conf>`_ for
   `neofetch <https://github.com/dylanaraps/neofetch>`_
@@ -47,6 +47,7 @@ tracking new files
 ===============================================================================
 
 you may want to add more dotfiles into `setup.sh <onion/setup.sh>`_.
+
 1. add path of your new dotfile's folder into ``dot_folders`` array
 2. add your dotfile into ``dotfiles`` associative array. *Key* is a path, where
    inside project your dotfile will be stored, and *value* is a path where in
