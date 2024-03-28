@@ -32,3 +32,5 @@
 *.bib linguist-detectable
 *.fish linguist-documentation=false
 *.fish linguist-detectable
+*.toml linguist-documentation=false
+*.toml linguist-detectable
