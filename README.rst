@@ -2,7 +2,7 @@
 dotfiles
 ===============================================================================
 
-* `alacrutty.yml <onion/alacritty.yml>`_ for
+* `alacritty.yml <onion/alacritty.yml>`_ for
   `alacritty terminal emulator <http://githum.com/alacritty/alacritty>`_
 * `vimrc <onion/vimrc>`_ for `Vim text editor <https://vimhelp.org/>`_
 * `bashrc <onion/bashrc>`_ for `bash command interpreter
@@ -17,6 +17,8 @@ dotfiles
   `neofetch <https://github.com/dylanaraps/neofetch>`_
 * `polybar/* <onion/polybar/>`_ for
   `polybar <https://github.com/polybar/polybar>`_
+* `brainfuck.nanorc <onion/brainfuck.nanorc/>`_ for
+  `nano syntax highlight <https://github.com/scopatz/nanorc/>`_
 
 for rofi there is
 `@adi1090x's configuration setup <https://github.com/adi1090x/rofi>`_
