@@ -20,6 +20,10 @@ readonly LIGHTBLUEB="\033[1;36m"
 # params: $1 character, $2 number; output: $2 characters
 repeat_char() { for ((i = 1; i < $2; i++)); do echo -n "$1"; done }
 
+stats() {
+	history | awk '{print $2}' | awk 'BEGIN {FS="|"} {print $1}' | sort \
+		| uniq -c | sort -rn | head -30 | less
+}
 # format $2 message so it is $1 color
 # outputs colorful message; returns 2 if wrong color
 color::form_output() {
@@ -133,6 +137,10 @@ light() {
 	echo "$new" | sudo tee "$file"
 }
 
+viewlines () {
+	sed -n ''$1','$2'p' $3
+}
+
 # create neat git commits with gum, interactive
 gum_commit() {
 	TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" \
@@ -186,25 +194,75 @@ set_bash_prompt() {
 	PS1+="${COLOR_NONE} "
 }
 
+please(){
+	eval sudo $history[1]
+}
+
+mcd() {
+        [ -d $1 ] || mkdir $1
+        cd $1 && pwd
+}
+wttr() {
+	local city="$1"
+	local options="$2"
+	local header="Accept-Language: en"
+	if [[ "$options" -eq "" ]]; then
+		options="1FnQp"
+	fi
+	curl -H "$header " "wttr.in/$city?$options"
+}
+
+alias parrot='curl parrot.live'
+alias cowsay='cowsay -d -W 80'
+alias moo='fortune | cowsay'
+alias full_update='yay -Syuu --noconfirm'
+alias update='yay -Syuu '
 alias cp='cp -i'
 alias df='df -h'
-alias free='free -m'
+alias free='free -h'
 alias np='nano -w PKGBUILD'
 alias more=less
 alias ls='ls --color=auto'
+alias rm='rm -ivI --preserve-root'
+alias ln='ln -i'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
 alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 alias py='python3'
 alias pip='python3 -m pip'
 alias vi='vim'
+alias nano=vim
+alias edit=vim
+alias emacs=vim
 alias google-chrome='/usr/bin/google-chrome-stable %U'
 alias status='git status'
 alias pull='git pull'
 alias push='git push'
 alias add='git add'
-alias ls='ls --color=auto'
-alias gum:commit='gum_commit'
+alias commit='gum_commit'
+alias sha1='openssl sha1'
+alias mkdir='mkdir -pv'
+alias mount='mount | column -t'
+alias h='history'
+alias j='jobs -l'
+alias ping='ping -c 5'
+alias fastping='ping -c 100 -i 0.2'
+alias ping8="ping 8.8.8.8"
+alias meminfo='free -l'
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias cpuinfo='lscpu'
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+alias wget='wget -c'
+alias tmux_='tmux -2u a || tmux -2u'
+alias :wq="exit"
+alias :x="exit"
+alias ZZ="exit"
 [ -d "$HOME/.atom" ] && alias atom="~/.atom/atom &"
 shopt -s 'checkwinsize'
 shopt -s 'expand_aliases'
@@ -212,7 +270,20 @@ shopt -s histappend
 export QT_SELECT=4
 export PYENV_ROOT="$HOME/.pyenv"
 export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE="ls:exit:pwd:clear:mount:umount:tmux:add:status:pull:push:"
+export HISTFILESIZE=2000
 export PROMPT_COMMAND=set_bash_prompt
 export BROWSER=/usr/bin/chromium
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+tmux_; clear
+moo
+wttr
+my_ip=`curl -s ifconfig.co`
+my_city=`curl -s ifconfig.co/city`
+echo -n "$my_city: $my_ip"
+# rate.sx
+# parrotsay
+# rickroll: https://github.com/keroserene/rickrollrc
+# curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash
+# curl -s -L https://bit.ly/3zvELNz | bash
