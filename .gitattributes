@@ -20,3 +20,15 @@
 *.json linguist-detectable
 *.csv linguist-documentation=false
 *.csv linguist-detectable
+*.yaml linguist-documentation=false
+*.yaml linguist-detectable
+*.yml linguist-documentation=false
+*.yml linguist-detectable
+*.conf linguist-documentation=false
+*.conf linguist-detectable
+*.eps linguist-documentation=false
+*.eps linguist-detectable
+*.bib linguist-documentation=false
+*.bib linguist-detectable
+*.fish linguist-documentation=false
+*.fish linguist-detectable
