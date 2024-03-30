@@ -194,13 +194,9 @@ set_bash_prompt() {
 	PS1+="${COLOR_NONE} "
 }
 
-please(){
-	eval sudo $history[1]
-}
-
 mcd() {
-        [ -d $1 ] || mkdir $1
-        cd $1 && pwd
+        [ -d "$1" ] || mkdir "$1"
+        cd "$1" && pwd
 }
 wttr() {
 	local city="$1"
@@ -212,6 +208,7 @@ wttr() {
 	curl -H "$header " "wttr.in/$city?$options"
 }
 
+alias shellcheck='shellcheck -C'
 alias parrot='curl parrot.live'
 alias cowsay='cowsay -d -W 80'
 alias moo='fortune | cowsay'
@@ -234,7 +231,6 @@ alias fgrep='fgrep --colour=auto'
 alias py='python3'
 alias pip='python3 -m pip'
 alias vi='vim'
-alias nano=vim
 alias edit=vim
 alias emacs=vim
 alias google-chrome='/usr/bin/google-chrome-stable %U'
@@ -279,8 +275,8 @@ eval "$(pyenv init -)"
 tmux_; clear
 moo
 wttr
-my_ip=`curl -s ifconfig.co`
-my_city=`curl -s ifconfig.co/city`
+my_ip=$(curl -s ifconfig.co)
+my_city=$(curl -s ifconfig.co/city)
 echo -n "$my_city: $my_ip"
 # rate.sx
 # parrotsay
