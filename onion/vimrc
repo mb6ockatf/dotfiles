@@ -24,6 +24,7 @@ map <F3> :NERDTree<CR>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
+map Q gq
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
@@ -31,6 +32,8 @@ Plug 'lervag/vimtex'
 Plug 'honza/vim-snippets'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'machekann/vim-highlightedyank'
 call plug#end()
 " PlugUpdate
 " PlugInstall
