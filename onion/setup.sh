@@ -26,6 +26,7 @@ dot_folders[6]="$HOME/.config/polybar"
 dot_folders[7]="$HOME/.config/kak/kakrc"
 dot_folders[8]="$HOME/.nano"
 declare -A global_dot_files
+global_dot_files[mylight.service]="/etc/systemd/system/mylight.service"
 global_dot_files[pacman.conf]="/etc/pacman.conf"
 
 repeat_char() {
