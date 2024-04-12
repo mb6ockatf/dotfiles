@@ -215,6 +215,8 @@ wttr() {
 	curl -H "$header " "wttr.in/$city?$options"
 }
 
+alias cal="cal -m"
+alias todo="todo.sh -@ -+ -c -t -v"
 alias shellcheck='shellcheck -C'
 alias parrot='curl parrot.live'
 alias cowsay='cowsay -d -W 80'
@@ -226,6 +228,7 @@ alias df='df -h'
 alias free='free -h'
 alias np='nano -w PKGBUILD'
 alias more=less
+alias less="less -R"
 alias ls='ls --color=auto'
 alias rm='rm -ivI --preserve-root'
 alias ln='ln -i'
@@ -262,7 +265,6 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias cpuinfo='lscpu'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias wget='wget -c'
-alias tmux_='tmux -2u a || tmux -2u'
 alias :wq="exit"
 alias :x="exit"
 alias ZZ="exit"
@@ -273,18 +275,31 @@ shopt -s histappend
 export QT_SELECT=4
 export PYENV_ROOT="$HOME/.pyenv"
 export HISTCONTROL=ignoreboth:erasedups
-export HISTIGNORE="ls:exit:pwd:clear:mount:umount:tmux:add:status:pull:push:uname:h:push:pull:ZZ:ping:ping8:update"
 export HISTFILESIZE=2000
 export PROMPT_COMMAND=set_bash_prompt
 export BROWSER=/usr/bin/chromium
+export EDITOR=vim
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # yellow on blue
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
+
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-tmux_
-clear
 wget -q --spider http://google.com
 if [ $? -eq 0 ]; then
 	moo
-	wttr
+	wttr "saint-petersburg"
 	my_ip=$(curl -s ifconfig.co)
 	my_city=$(curl -s ifconfig.co/city)
 	echo -n "$my_city: $my_ip"
