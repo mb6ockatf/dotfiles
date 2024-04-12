@@ -117,7 +117,7 @@ super + shift + s
 	gscreenshot -s -f /home/mb6ockatf/downloads/
 
 XF86MonBrightness{Up,Down}
-	brightnessctl s 100{+,-}
+	brightnessctl s 50{+,-}
 
 XF86Audio{Raise,Lower}Volume
 	pulsemixer --change-volume {+,-}10
