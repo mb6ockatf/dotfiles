@@ -1,0 +1,4 @@
+    LABEL                STRINGREF      MODEL
+745 Creature             46656          c_creature
+746 "Some Creature"      ****           c_somecreature
+747 Some_OtherCreature   46657          c_othercreature
