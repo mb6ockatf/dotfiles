@@ -296,16 +296,7 @@ export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
 
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-wget -q --spider http://google.com
-if [ $? -eq 0 ]; then
-	moo
-	wttr "saint-petersburg"
-	my_ip=$(curl -s ifconfig.co)
-	my_city=$(curl -s ifconfig.co/city)
-	echo -n "$my_city: $my_ip"
-else
-	echo "offline"
-fi
+moo
 # rate.sx
 # parrotsay
 # rickroll: https://github.com/keroserene/rickrollrc
