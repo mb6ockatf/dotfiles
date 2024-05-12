@@ -214,13 +214,16 @@ wttr() {
 	fi
 	curl -H "$header " "wttr.in/$city?$options"
 }
+clock() {
+	watch -xtc echo "$(date '+%D %T' | toilet -f term -F border --gay)"
+}
 
-alias cal="cal -m"
+alias cal="cal | pv -qL 10"
 alias todo="todo.sh -@ -+ -c -t -v"
 alias shellcheck='shellcheck -C'
 alias parrot='curl parrot.live'
 alias cowsay='cowsay -d -W 80'
-alias moo='fortune | cowsay'
+alias moo='fortune | cowsay | pv -qL 30'
 alias full_update='yay -Syuu --noconfirm'
 alias update='yay -Syuu '
 alias cp='cp -i'
@@ -228,16 +231,31 @@ alias df='df -h'
 alias free='free -h'
 alias np='nano -w PKGBUILD'
 alias more=less
-alias less="less -R"
+alias less="less --use-color"
 alias ls='ls --color=auto'
 alias rm='rm -ivI --preserve-root'
 alias ln='ln -i'
+alias scp='echo "scp is deprecated, use rsync"'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias grep='grep --colour=auto'
-alias egrep='egrep --colour=auto'
-alias fgrep='fgrep --colour=auto'
+alias egrep='grep -E --colour=auto'
+alias fgrep='grep -F --colour=auto'
+alias dig='echo "use drill"'
+alias netstat='echo "netstat: idk deprecated or not, but use ss"'
+alias ifconfig='echo "ifconfig is deprecated with net-tools pkg. use ip a"'
+alias arp='echo "arp is deprecated with net-tools pkg. use ip n"'
+alias nslookup='echo "nslookup is deprecated. use drill or host"'
+alias iptunnel='echo "iptunnel is deprecated with net-tools pkg. use ip t"'
+alias ipmaddr='echo "ipmaddr is deprecated with net-tools pkg. use ip maddr"'
+alias nameif='echo "nameif is deprecated with net-tools pkg. use ip l"'
+alias route='echo "route is deprecated with net-tools pkg. use ip r"'
+alias iwconfig='echo "iwconfig not deprecated yet, but buggy. use iw"'
+alias poweroff='systemctl poweroff'
+alias halt='systemctl halt'
+alias reboot='systemctl reboot'
+alias clear='sl -adF; clear'
 alias py='python3'
 alias pip='python3 -m pip'
 alias vi='vim'
@@ -257,6 +275,7 @@ alias merge='git merge'
 alias restore='git restore'
 alias commit='gum_commit'
 alias sha1='openssl sha1'
+alias echoi='rev'
 alias mkdir='mkdir -pv'
 alias mount='mount | column -t'
 alias h='cat .bash_history | sort | uniq -c | sort -nr'
