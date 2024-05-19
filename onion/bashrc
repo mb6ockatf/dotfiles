@@ -291,9 +291,11 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias cpuinfo='lscpu'
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias wget='wget -c'
+alias clip='xclip -sel clip'
 alias :wq="exit"
 alias :x="exit"
 alias ZZ="exit"
+alias pacman='yay'
 [ -d "$HOME/.atom" ] && alias atom="~/.atom/atom &"
 shopt -s 'checkwinsize'
 shopt -s 'expand_aliases'
