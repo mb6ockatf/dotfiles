@@ -1,3 +1,4 @@
+#function clear {sl -adF; /usr/bin/clear}
 function login_bar {
 	clear
 	$text="POWERSHELL SUCKS; USE BASH OR SOME OTHER NORMAL SHELL"
@@ -10,7 +11,7 @@ login_bar
 function todo {todo.sh -@ -+ -c -t -v}
 function shellcheck {shellcheck -C}
 function parrot {curl parrot.live}
-# function cowsay {cowsay -d -W 80}
+# function cowsay {/usr/bin/cowsay -d -W 80}
 function moo {fortune | cowsay | pv -qL 30}
 function full_update {yay -Syuu --noconfirm}
 function update {yay -Syuu }
@@ -18,7 +19,7 @@ function update {yay -Syuu }
 # function df {df -h}
 # function free {free -h}
 function np {nano -w PKGBUILD}
-# function less {less --use-color}
+# function less {/usr/bin/less --use-color}
 New-Alias more less
 # function ls {ls --color=auto}
 # function rm {rm -ivI --preserve-root}
@@ -43,7 +44,6 @@ function iwconfig {echo "iwconfig not deprecated yet, but buggy. use iw"}
 function poweroff {systemctl poweroff}
 function halt {systemctl halt}
 function reboot {systemctl reboot}
-# function clear {sl -adF; clear}
 New-Alias py python3
 function pip {python3 -m pip}
 New-Alias vi vim
@@ -64,8 +64,8 @@ function restore {git restore}
 function commit {gum_commit}
 function sha1 {openssl sha1}
 New-Alias echoi rev
-# function mkdir {mkdir -pv}
-# function mount {mount | column -t}
+# function mkdir {/usr/bin/mkdir -pv}
+#function mount {/usr/bin/mount | column -t}
 function h {cat .bash_history | sort | uniq -c | sort -nr}
 function j {jobs -l}
 # function ping {ping -c 5}
@@ -78,7 +78,7 @@ function pscpu {ps auxf | sort -nr -k 3}
 function pscpu10 {ps auxf | sort -nr -k 3 | head -10}
 New-Alias cpuinfo lscpu
 function gpumeminfo {grep -i --color memory /var/log/Xorg.0.log}
-# function wget {wget -c}
+#function wget {/usr/bin/wget -c}
 function clip {xclip -sel clip}
 function :wq {exit}
 function :x {exit}
