@@ -319,11 +319,11 @@ ifconfig_help() {
 ls_help() {
 cat << E
 ls -Al  # show hidden files
-ls -lXB  # sort by extension
+ls -lX --ignore-backups  # sort by extension (ls -lXB)
 ls -lSr  # sort by size
 ls -lcr  # sort by change time
 ls -lur  # sort by access time
-ls -lR  # recursive ls
+ls -l --recursive  # recursive (ls -lR)
 ls -ltr  # sort by date
 ls -l | more'  # pipe through 'more'
 ls -xA  # wide listing format
@@ -340,10 +340,15 @@ E
 }
 
 chmod_help() {
-cat << E
+cat << End
 chmod a+x chmod -R 000 chmod -R 644 chmod -R 666 chmod -R 755 chmod -R 777
-E
+End
 }
+
+function moo() {
+	fortune | cowsay | pv -qL 30 "$text"
+}
+
 # alias mktar='tar -cvf'
 # alias mkbz2='tar -cvjf'
 # alias mkgz='tar -cvzf'
@@ -359,7 +364,7 @@ readonly -f clock ftext cpg mvg up pwdtail distribution ver apachelog
 readonly -f apacheconfig phpconfig mysqlconfig trim folderssort ifconfig_help
 readonly -f color::colorful color::color_table color::form_output rot13 bashrc
 readonly -f ls_help ping_help chmod_help
-alias less="less --use-color" more=less ls='ls -aFh --color=auto'
+alias less="less --use-color" more=less ls='ls -Fh --color=auto'
 alias grep='grep --colour=auto' egrep='grep -E' fgrep='grep -F'
 alias cal="cal | pv -qL 10" todo="todo.sh -@ -+ -c -t -v"
 alias shellcheck='shellcheck -C'
@@ -386,6 +391,7 @@ alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
 alias wget='wget -c'
 alias clip='xclip -sel clip'
 alias pwrd='cat /etc/passwd | column -t -s ":"'
+alias bc='bc -l'
 alias h='cat .bash_history | sort | uniq -c | sort -nr'
 alias j='jobs -l'
 alias f="find . | grep "
@@ -406,6 +412,7 @@ export LESS_TERMCAP_ZO=$(tput ssupm) LESS_TERMCAP_ZW=$(tput rsupm)
 export GROFF_NO_SGR=1  # For Konsole and Gnome-terminal
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+bind -f  ~/.inputrc
 if [[ "$(whoami)" != "root" && "$reload" != "true" ]]; then moo; fi
 # rate.sx
 # parrotsay
