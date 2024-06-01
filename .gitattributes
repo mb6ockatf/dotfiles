@@ -34,3 +34,7 @@
 *.fish linguist-detectable
 *.toml linguist-documentation=false
 *.toml linguist-detectable
+*.service linguist-documentation=false
+*.service linguist-detectable
+*.neon linguist-documentation=false
+*.neon linguist-detectable
