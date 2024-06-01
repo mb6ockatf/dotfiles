@@ -345,7 +345,7 @@ chmod a+x chmod -R 000 chmod -R 644 chmod -R 666 chmod -R 755 chmod -R 777
 End
 }
 
-function moo() {
+moo() {
 	fortune | cowsay | pv -qL 30 "$text"
 }
 
