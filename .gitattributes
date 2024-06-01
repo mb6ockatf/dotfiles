@@ -38,3 +38,5 @@
 *.service linguist-detectable
 *.neon linguist-documentation=false
 *.neon linguist-detectable
+*.fish linguist-documentation=false
+*.fish linguist-detectable
