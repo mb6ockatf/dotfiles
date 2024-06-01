@@ -19,6 +19,7 @@ dot_files[brainfuck.nanorc]="$HOME/.nano/brainfuck.nanorc"
 dot_files[profile.ps1]="$HOME/.config/powershell/profile.ps1"
 dot_files[inputrc]="$HOME/.inputrc"
 dot_files[config.fish]="$HOME/.config/fish/config.fish"
+dot_files[zshrc]="$HOME/.zshrc"
 declare -a dot_folders
 dot_folders[1]="$HOME/.vim"
 dot_folders[2]="$HOME/.config/Code/User"
