@@ -7,14 +7,48 @@ function login_bar {
 login_bar
 
 # function cal {cal | pv -qL 10}
+# set-alias cat        get-content
+new-alias clear      clear-host
+new-alias cp         copy-item
+new-alias kill       stop-process
+new-alias lp         out-printer
+new-alias ls         get-childitem
+new-alias mount      new-mshdrive
+new-alias mv         move-item
+new-alias ps         get-process
+new-alias rm         remove-item
+new-alias rmdir      remove-item
+
+function help {
+    get-help $args[0] | out-host -paging
+}
+
+function man {
+    get-help $args[0] | out-host -paging
+}
+
+function mkdir {
+    new-item -type directory -path $args
+}
+
+function prompt {
+    "PS " + $(get-location) + "> "
+}
+
+& {
+    for ($i = 0; $i -lt 26; $i++)
+    {
+        $funcname = ([System.Char]($i+65)) + ':'
+        $str = "function global:$funcname { set-location $funcname } "
+        invoke-expression $str
+    }
+}
 
 function todo {todo.sh -@ -+ -c -t -v}
 function shellcheck {shellcheck -C}
 function parrot {curl parrot.live}
 # function cowsay {/usr/bin/cowsay -d -W 80}
 function moo {fortune | cowsay | pv -qL 30}
-function full_update {yay -Syuu --noconfirm}
-function update {yay -Syuu }
 # function cp {cp -i}
 # function df {df -h}
 # function free {free -h}
@@ -44,26 +78,10 @@ function iwconfig {echo "iwconfig not deprecated yet, but buggy. use iw"}
 function poweroff {systemctl poweroff}
 function halt {systemctl halt}
 function reboot {systemctl reboot}
-New-Alias py python3
 function pip {python3 -m pip}
-New-Alias vi vim
-New-Alias edit vim
-New-Alias emacs vim
 function google-chrome {/usr/bin/google-chrome-stable %U}
-function status {git status}
-function pull {git pull}
-function push {git push}
-function add {git add}
-function rebase {git rebase}
-function clone {git clone}
-function branch {git branch}
-function log {git log}
-function tag {git tag}
-function merge {git merge}
-function restore {git restore}
 function commit {gum_commit}
 function sha1 {openssl sha1}
-New-Alias echoi rev
 # function mkdir {/usr/bin/mkdir -pv}
 #function mount {/usr/bin/mount | column -t}
 function h {cat .bash_history | sort | uniq -c | sort -nr}
@@ -79,8 +97,3 @@ function pscpu10 {ps auxf | sort -nr -k 3 | head -10}
 New-Alias cpuinfo lscpu
 function gpumeminfo {grep -i --color memory /var/log/Xorg.0.log}
 #function wget {/usr/bin/wget -c}
-function clip {xclip -sel clip}
-function :wq {exit}
-function :x {exit}
-function ZZ {exit}
-New-Alias pacman yay
