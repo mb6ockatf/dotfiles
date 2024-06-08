@@ -116,6 +116,8 @@
 *.eml linguist-detectable
 *.mbox linguist-documentation=false
 *.mbox linguist-detectable
+*.pub linguist-documentation=false
+*.pub linguist-detectable
 
 MD5SUMS linguist-documentation=false
 MD5SUMS linguist-detectable
