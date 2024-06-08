@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale '/home/mb6ockatf/Downloads/City36.jpg' 
+feh --no-fehbg --bg-center '/home/mb6ockatf/Downloads/City36.jpg'
