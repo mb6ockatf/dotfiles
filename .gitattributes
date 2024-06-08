@@ -36,8 +36,6 @@
 *.service linguist-detectable
 *.neon linguist-documentation=false
 *.neon linguist-detectable
-*.fish linguist-documentation=false
-*.fish linguist-detectable
 *.org linguist-documentation=false
 *.org linguist-detectable
 *.2da linguist-documentation=false
@@ -143,5 +141,9 @@ browserslist linguist-documentation=false
 browserslist linguist-detectable
 .gitignore linguist-documentation=false
 .gitignore linguist-detectable
+gitignore linguist-documentation=false
+gitignore linguist-detectable
 .gitconfig linguist-documentation=false
 .gitconfig linguist-detectable
+gitconfig linguist-documentation=false
+gitconfig linguist-detectable
