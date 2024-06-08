@@ -57,13 +57,13 @@ function ex
 end
 
 function commit
-	set --l TYPE $(gum choose "fix" "feat" "docs" "style" "refactor" "test" \
+	set -l TYPE $(gum choose "fix" "feat" "docs" "style" "refactor" "test" \
 	"chore" "revert")
-	set --l SCOPE $(gum input --placeholder "scope")
+	set -l SCOPE $(gum input --placeholder "scope")
 	test -n "$SCOPE" && set SCOPE "($SCOPE)"
-	set --l SUMMARY $(gum input --value "$TYPE$SCOPE: " --placeholder \
+	set -l SUMMARY $(gum input --value "$TYPE$SCOPE: " --placeholder \
 "Summary of this change")
-	set --l DESCRIPTION $(gum write --placeholder \
+	set -l DESCRIPTION $(gum write --placeholder \
 "Details of this change (CTRL+D to finish)")
 	gum confirm "Commit changes?" && \
 	git commit -m "$SUMMARY" -m "$DESCRIPTION"
