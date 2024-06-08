@@ -22,6 +22,7 @@ dot_files[config.fish]="$HOME/.config/fish/config.fish"
 dot_files[zshrc]="$HOME/.zshrc"
 dot_files[yashrc]="$HOME/.yashrc"
 dot_files[kshrc]="$HOME/.kshrc"
+dot_files[gitconfig]="$HOME/.gitconfig"
 declare -a dot_folders
 dot_folders[1]="$HOME/.vim"
 dot_folders[2]="$HOME/.config/Code/User"
