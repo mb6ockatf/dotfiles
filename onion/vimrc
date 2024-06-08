@@ -47,9 +47,7 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 filetype detect
-if &filetype == "python" || &filetype == "vim" || &filetype == "sh"
-	se tabstop=4 shiftwidth=4
-elseif &filetype == "html" || &filetype == "css"
+if &filetype == "html" || &filetype == "css"
 	se tabstop=2 shiftwidth=2 nolinebreak colorcolumn=140 textwidth=140
 elseif &filetype == "asm"
 	se tabstop=8 shiftwidth=8 expandtab nolinebreak
