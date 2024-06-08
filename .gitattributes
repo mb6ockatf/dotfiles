@@ -118,6 +118,8 @@
 *.mbox linguist-detectable
 *.pub linguist-documentation=false
 *.pub linguist-detectable
+*.mtml linguist-documentation=false
+*.mtml linguist-detectable
 
 MD5SUMS linguist-documentation=false
 MD5SUMS linguist-detectable
