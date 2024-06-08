@@ -37,12 +37,6 @@ declare -A global_dot_files
 global_dot_files[mylight.service]="/etc/systemd/system/mylight.service"
 global_dot_files[pacman.conf]="/etc/pacman.conf"
 
-repeat_char() {
-	for ((i = 1; i < $2; i++)); do
-		echo -n "$1"
-	done
-}
-
 usage() {
 	local name="${BASH_SOURCE[-1]}"
 	cat << end_of_message
@@ -62,14 +56,10 @@ USAGE
 	story of this setup
 - depends
 	install build dependences
-$(repeat_char - 80)
+$(printf '=%.0s' {1..80})
 mb6ockatf, Sat 01 Jul 2023 01:19:20 PM MSK
 last updated: Mon 14 Aug 2023 12:38:59 AM MSK
 end_of_message
-}
-
-onion_info() {
-	echo "$(<description.txt)"
 }
 
 collect_configuration() {
@@ -134,7 +124,7 @@ case $1 in
 	help | --help | -h )
 		usage ;;
 	info | -s )
-		onion_info ;;
+		cat description.txt;;
 	depends | --depends | -d )
 		$echoer "running system upgrade" && install_deps
 		if [[ $echoer == $echo ]]; then
