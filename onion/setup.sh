@@ -23,6 +23,7 @@ dot_files[zshrc]="$HOME/.zshrc"
 dot_files[yashrc]="$HOME/.yashrc"
 dot_files[kshrc]="$HOME/.kshrc"
 dot_files[gitconfig]="$HOME/.gitconfig"
+dot_files[mb6ockatf.gpg]="$HOME/.mb6ockatf.gpg"
 declare -a dot_folders
 dot_folders[1]="$HOME/.vim"
 dot_folders[2]="$HOME/.config/Code/User"

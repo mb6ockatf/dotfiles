@@ -1,39 +1,26 @@
 #!/usr/bin/env bash
+shopt -s checkwinsize expand_aliases histappend checkhash
+set -o posix
 iatest=$(expr index "$-" i)
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-if [ -f /usr/share/bash-completion/bash_completion ]; then
+[[ -f /etc/bashrc ]] && . /etc/bashrc
+[[ -f /etc/bash_completion ]] && . /etc/bash_completion
+[[ -f /usr/share/bash-completion/bash_completion ]] && \
 	. /usr/share/bash-completion/bash_completion
-elif [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
-fi
-readonly END="\033[0m"
-readonly BLACK="\033[0;30m"
-readonly BLACKB="\033[1;30m"
-readonly WHITE="\033[0;37m"
-readonly WHITEB="\033[1;37m"
-readonly RED="\033[0;31m"
-readonly REDB="\033[1;31m"
-readonly GREEN="\033[0;32m"
-readonly GREENB="\033[1;32m"
-readonly YELLOW="\033[0;33m"
-readonly YELLOWB="\033[1;33m"
-readonly BLUE="\033[0;34m"
-readonly BLUEB="\033[1;34m"
-readonly PURPLE="\033[0;35m"
-readonly PURPLEB="\033[1;35m"
-readonly LIGHTBLUE="\033[0;36m"
-readonly LIGHTBLUEB="\033[1;36m"
+readonly END="\033[0m" BLACK="\033[0;30m" BLACKB="\033[1;30m" \
+	WHITE="\033[0;37m" WHITEB="\033[1;37m" RED="\033[0;31m" REDB="\033[1;31m" \
+	GREEN="\033[0;32m" GREENB="\033[1;32m" YELLOW="\033[0;33m" \
+	YELLOWB="\033[1;33m" BLUE="\033[0;34m" BLUEB="\033[1;34m" \
+	PURPLE="\033[0;35m" PURPLEB="\033[1;35m" LIGHTBLUE="\033[0;36m" \
+	LIGHTBLUEB="\033[1;36m"
 
 stats() {
 	history | awk '{print $2}' | awk 'BEGIN {FS="|"} {print $1}' | sort \
 		| uniq -c | sort -rn | head -30 | less
 }
 
-color::form_output() {
+color_form_output() {
 	if [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]] || [[ -z "$1" ]]; then
-		name="color::form_output"
+		name="color_form_output"
 		cat << end_of_message
 apply color to any text
 USAGE
@@ -46,8 +33,7 @@ by @mb6ockatf, Sat 01 Jul 2023 01:34:03 PM MSK
 end_of_message
 		return 0
 	fi
-	local color="$1"
-	local message="$2"
+	local color="$1" message="$2"
 	case "$color" in
 		black) color="${BLACK}" ;;
 		blackb) color="${BLACKB}" ;;
@@ -70,7 +56,7 @@ end_of_message
 	echo -e "${color}${message}${END}"
 }
 
-color::color_table() {
+color_color_table() {
 	local T='gYw'
 	echo -e "\n                 40m     41m     42m     43m\
 	44m     45m     46m     47m";
@@ -87,7 +73,7 @@ color::color_table() {
   echo
 }
 
-color::colorful() {
+color_colorful() {
 	for x in {0..8}; do
 		for fg in {30..37}; do
 			for bg in {40..47}; do
@@ -100,7 +86,7 @@ color::colorful() {
 }
 
 ex() {
-	if [ -f "$1" ]; then
+	if [[ -f "$1" ]]; then
 		case $1 in
 			*.tar.bz2) tar xjf "$1";;
 			*.tar.gz) tar xzf "$1";;
@@ -116,24 +102,20 @@ ex() {
 			*) echo "'$1' cannot be extracted via ex()" ;;
 		esac
 	else
-		echo "'$1' is not a valid file"
-		return 22
+		echo "'$1' is not a valid file" && return 22
 	fi
 }
 
 light() {
 	local file="/sys/class/backlight/intel_backlight/brightness"
-	if [[ ! -f $file ]]; then
-		echo "intel_backlight settings are not available"
+	[[ ! -f $file ]] && echo "intel_backlight settings are not available" && \
 		return 2
-	fi
-	local current=$(cat "$file")
-	local new="$current"
-	if [ "$1" = "-dec" ]; then
+	local current=$(cat "$file") new="$current"
+	if [[ "$1" = "-dec" ]]; then
 		new=$(( current - $2 ))
-	elif [ "$1" = "-inc" ]; then
+	elif [[ "$1" = "-inc" ]]; then
 		new=$(( current + $2 ))
-	elif [ "$1" = "night" ]; then
+	elif [[ "$1" = "night" ]]; then
 		new=1
 	fi
 	[[ "$new" -ge 0 ]] || exit
@@ -142,37 +124,26 @@ light() {
 
 commit() {
 	local TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" \
-	"chore" "revert")
-	local SCOPE=$(gum input --placeholder "scope")
+	"chore" "revert") SCOPE=$(gum input --placeholder "scope")
 	test -n "$SCOPE" && SCOPE="($SCOPE)"
 	local SUMMARY=$(gum input --value "$TYPE$SCOPE: " --placeholder \
-"Summary of this change")
-	local DESCRIPTION=$(gum write --placeholder \
+"Summary of this change") DESCRIPTION=$(gum write --placeholder \
 "Details of this change (CTRL+D to finish)")
 	gum confirm "Commit changes?" && \
-	git commit -m "$SUMMARY" -m "$DESCRIPTION"
+		git commit -m "$SUMMARY" -m "$DESCRIPTION"
 }
 
 set_bash_prompt() {
-	local LAST_RESULT=$?
-	local DIVIDER="\[\e[30;1m\]"
-	local COLOR_CMDCOUNT="\[\e[32;1m\]"  # green bold
-	local COLOR_USERNAME="\[\e[37;0m\]"  # white
-	local COLOR_USERHOSTAT="\[\e[36;1m\]"  # lightblueb
-	local COLOR_HOSTNAME="\[\e[35;1m\]"  # purple bold
-	local COLOR_GITBRANCH="\[\e[33;0m\]"  # yellow
-	local COLOR_VENV="\[\e[33;1m\]"  # yellow bold
-	local COLOR_PATH_OK="\[\e[32;1m\]"  # green bold
-	local COLOR_PATH_ERR="\[\e[31;1m\]"  # red bold
-	local COLOR_NONE="\[\e[0m\]"  # end
-	local PATH_COLOR GIT_IS_AVAILABLE GIT_BRANCH git_answer
-	if [ $LAST_RESULT -eq 0 ]; then
-		PATH_COLOR="$COLOR_PATH_OK"
-	else
-		PATH_COLOR="$COLOR_PATH_ERR"
-	fi
-	PS1="\n${DIVIDER}"
-	PS1="${PS1}[${PATH_COLOR}\w${DIVIDER}"
+	local LAST_RESULT="$?"  DIVIDER="\[\e[30;1m\]" \
+		COLOR_CMDCOUNT="\[\e[32;1m\]" COLOR_USERNAME="\[\e[37;0m\]"  \
+		COLOR_USERHOSTAT="\[\e[36;1m\]" COLOR_HOSTNAME="\[\e[35;1m\]"  \
+		COLOR_GITBRANCH="\[\e[33;0m\]" COLOR_VENV="\[\e[33;1m\]" \
+		COLOR_PATH_OK="\[\e[32;1m\]" COLOR_PATH_ERR="\[\e[31;1m\]"  \
+		COLOR_NONE="\[\e[0m\]" PATH_COLOR GIT_IS_AVAILABLE GIT_BRANCH \
+		git_answer
+	[ $LAST_RESULT -eq 0 ] && PATH_COLOR="$COLOR_PATH_OK" \
+		|| PATH_COLOR="$COLOR_PATH_ERR"
+	PS1="\n${DIVIDER}[${PATH_COLOR}\w${DIVIDER}"
 	PS1="${PS1}:${COLOR_CMDCOUNT}\#${DIVIDER}"
 	GIT_IS_AVAILABLE=$(git --version 2>&1 >/dev/null ; echo $?)
 	if [ "$GIT_IS_AVAILABLE" -eq 0 ]; then
@@ -182,9 +153,8 @@ set_bash_prompt() {
 			PS1="${PS1}:${COLOR_GITBRANCH}${GIT_BRANCH}${DIVIDER}"
 		fi
 	fi
-	if [ -n "$VIRTUAL_ENV" ]; then
+	[[ -n "$VIRTUAL_ENV" ]] && \
 		PS1="${PS1}:${COLOR_VENV}$(basename "$VIRTUAL_ENV")${DIVIDER}"
-	fi
 	PS1="${PS1}][${DIVIDER}${COLOR_USERNAME}\u${COLOR_USERHOSTAT}"
 	PS1+="@${COLOR_HOSTNAME}\h${DIVIDER}]${COLOR_NONE} "
 }
@@ -195,9 +165,7 @@ mcd() {
 }
 
 wttr() {
-	local city="$1"
-	local options="$2"
-	local header="Accept-Language: en"
+	local city="$1" options="$2" header="Accept-Language: en"
 	[[ "$options" -eq "" ]] && options="1FnQp"
 	curl -H "$header " "wttr.in/$city?$options"
 }
@@ -244,19 +212,12 @@ cpg() {
 	fi
 }
 
-repc() {
-	for ((i = 1; i < $2; i++)); do
-		echo -n "$1"
-	done
-}
-
 pwdtail() {
 	pwd | awk -F/ '{nlast = NF -1;print $nlast"/"$NF}'
 }
 
 up() {
-	local d=""
-	local limit=$1
+	local d="" limit=$1
 	for ((i=1 ; i <= limit ; i++)); do
 		d=$d/..
 	done
@@ -312,8 +273,7 @@ ver() {
 		if [[ -s /etc/issue ]]; then
 			cat /etc/issue
 		else
-			echo "Error: Unknown distribution"
-			exit 1
+			echo "Error: Unknown distribution" && exit 1
 		fi
 	fi
 }
@@ -334,8 +294,8 @@ apacheconfig() {
 	elif [[ -f /etc/apache2/apache2.conf ]]; then
 		sedit /etc/apache2/apache2.conf
 	else
-		echo "Error: Apache config file could not be found."
-		echo "Searching for possible locations:"
+		echo "Error: Apache config file could not be found. \
+			Searching for possible locations:"
 		sudo updatedb && locate httpd.conf && locate apache2.conf
 	fi
 }
@@ -352,8 +312,8 @@ phpconfig() {
 	elif [[ -f /etc/php5/apache2/php.ini ]]; then
 		sedit /etc/php5/apache2/php.ini
 	else
-		echo "Error: php.ini file could not be found."
-		echo "Searching for possible locations:"
+		echo "Error: php.ini file could not be found.\
+			Searching for possible locations:"
 		sudo updatedb && locate php.ini
 	fi
 }
@@ -372,8 +332,8 @@ mysqlconfig() {
 	elif [[ -f ~/.my.cnf ]]; then
 		sedit ~/.my.cnf
 	else
-		echo "Error: my.cnf file could not be found."
-		echo "Searching for possible locations:"
+		echo "Error: my.cnf file could not be found.\
+			Searching for possible locations:"
 		sudo updatedb && locate my.cnf
 	fi
 }
@@ -397,10 +357,9 @@ folderssort() {
 	find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn
 }
 
-ifconfig_help() {
-	local message="ifconfig is deprecated with net-tools pkg. use "
-	message+="$(color::form_output red 'ip a')"
-	echo "$message"
+ifconfig() {
+	local colored="$(color_form_output red 'ip a')"
+	echo "ifconfig is deprecated with net-tools pkg. use $colored"
 }
 
 ls_help() {
@@ -432,10 +391,6 @@ chmod a+x chmod -R 000 chmod -R 644 chmod -R 666 chmod -R 755 chmod -R 777
 End
 }
 
-moo() {
-	fortune | cowsay | pv -qL 30 "$text"
-}
-
 # alias mktar='tar -cvf'
 # alias mkbz2='tar -cvjf'
 # alias mkgz='tar -cvzf'
@@ -446,116 +401,63 @@ moo() {
 # alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 # alias pscpu='ps auxf | sort -nr -k 3'
 # alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
-readonly -f light
-readonly -f viewlines
-readonly -f ex
-readonly -f stats
-readonly -f repc
-readonly -f commit
-readonly -f set_bash_prompt
-readonly -f mcd
-readonly -f wttr
-readonly -f clock
-readonly -f ftext
-readonly -f cpg
-readonly -f mvg
-readonly -f up
-readonly -f pwdtail
-readonly -f distribution
-readonly -f ver
-readonly -f apachelog
-readonly -f apacheconfig
-readonly -f phpconfig
-readonly -f mysqlconfig
-readonly -f trim
-readonly -f folderssort
-readonly -f ifconfig_help
-readonly -f color::colorful
-readonly -f color::color_table
-readonly -f color::form_output
-readonly -f rot13
-readonly -f bashrc
-readonly -f ls_help
-readonly -f ping_help
-readonly -f chmod_help
-alias less="less --use-color"
-alias more=less
-alias ls='ls -Fh --color=auto'
-alias grep='grep --colour=auto'
-alias egrep='grep -E'
-alias fgrep='grep -F'
-alias cal="cal | pv -qL 10"
-alias todo="todo.sh -@ -+ -c -t -v"
-alias shellcheck='shellcheck -C'
-alias cowsay='cowsay -d -W 80'
-alias moo='fortune | cowsay | pv -qL 30'
-alias df='df -h'
-alias free='free -h'
-alias ln='ln -i'
-alias cp='cp -i'
+readonly -f light viewlines ex stats commit set_bash_prompt mcd wttr clock \
+	ftext cpg mvg up pwdtail distribution ver apachelog apacheconfig \
+	phpconfig mysqlconfig trim folderssort ifconfig color_colorful \
+	color_color_table color_form_output rot13 bashrc ls_help ping_help \
+	chmod_help
+alias less="less --use-color" ls='ls -Fh --color=auto' more=less \
+	cpuinfo='lscpu' grep='grep --colour=auto' egrep='grep -E' fgrep='grep -F' \
+	cal="cal | pv -qL 10" ln='ln -i' cp='cp -i' df='df -h' \
+	chown='chown --preserve-root' chmod='chmod --preserve-root' \
+	chgrp='chgrp --preserve-root' rm='rm -ivI --preserve-root' \
+	scp="echo 'use $(color_form_output red rsync)'" \
+	netstat='ss -v' iwconfig='iw --version' dig='drill -v' \
+	arp='echo "arp -> ip n"' nslookup='echo "nslookup -> drill or host"' \
+	iptunnel='echo "iptunnel -> ip t"' ipmaddr='echo "ipmaddr -> ip maddr"' \
+	nameif='echo "nameif -> ip l"' route='echo "route -> ip r"' \
+	mkdir='mkdir -pv' mount='mount | column -t' wget='wget -c' bc='bc -l'
 # alias np='nano -w PKGBUILD'
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
-alias rm='rm -ivI --preserve-root'
-alias ifconfig=ifconfig_help
-alias netstat='ss -v'
-alias iwconfig='iw --version'
-alias scp="echo 'use $(color::form_output red rsync)'"
-alias dig='drill -v'
-alias arp='echo "arp -> ip n"'
-alias nslookup='echo "nslookup -> drill or host"'
-alias iptunnel='echo "iptunnel -> ip t"'
-alias ipmaddr='echo "ipmaddr -> ip maddr"'
-alias nameif='echo "nameif -> ip l"'
-alias route='echo "route -> ip r"'
-alias poweroff='systemctl poweroff'
-alias halt='systemctl halt'
-alias reboot='systemctl reboot'
-alias clear='sl -adF; clear'
-alias google-chrome='/usr/bin/google-chrome-stable %U'
-alias mkdir='mkdir -pv'
-alias meminfo='free -l'
-alias mount='mount | column -t'
-alias diskspace="du -S | sort -n -r |more"
-alias folders='du -h --max-depth=1'
-alias tree='tree -CAhF --dirsfirst'
-alias treed='tree -CAFd'
-alias mountedinfo='df -hT'
-alias cpuinfo='lscpu'
-alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
-alias wget='wget -c'
-alias bc='bc -l'
 
-alias pwrd='cat /etc/passwd | column -t -s ":"'
-alias clip='xclip -sel clip'
-alias h='cat .bash_history | sort | uniq -c | sort -nr'
-alias j='jobs -l'
-alias f="find . | grep "
-[ -d "$HOME/.atom" ] && alias atom="~/.atom/atom &"
-shopt -s checkwinsize expand_aliases histappend
-export CLICOLOR=1
-export QT_SELECT=4
-export PYENV_ROOT="$HOME/.pyenv"
-export HISTFILESIZE=2000
-export HISTCONTROL=ignoreboth:erasedups
-export PROMPT_COMMAND=set_bash_prompt
-export BROWSER=/usr/bin/chromium
-export EDITOR=vim
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)  # green
-export LESS_TERMCAP_md=$(tput bold; tput setaf 6)  # cyan
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
-export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4)  # yellowonblue
-export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7)  # white
-export LESS_TERMCAP_mr=$(tput rev)
-export LESS_TERMCAP_mh=$(tput dim)
-export LESS_TERMCAP_ZN=$(tput ssubm)
-export LESS_TERMCAP_ZV=$(tput rsubm)
-export LESS_TERMCAP_ZO=$(tput ssupm)
-export LESS_TERMCAP_ZW=$(tput rsupm)
-export GROFF_NO_SGR=1  # For Konsole and Gnome-terminal
+command -v wget &> /dev/null && alias wget='wget -c'
+command -v bc &> /dev/null && alias bc='bc -l'
+command -v todo.sh &> /dev/null && alias todo='todo.sh -@ -+ -c -t -v'
+command -v shellcheck &> /dev/null && alias shellcheck='shellcheck -C'
+command -v cowsay &> /dev/null && alias cowsay='cowsay -d -W 80'
+command -v cowsay &> /dev/null && command -v fortune &> /dev/null && \
+	command -v pv &> /dev/null && alias moo='fortune | cowsay | pv -qL 30'
+command -v free &> /dev/null && alias free='free -h'
+command -v systemctl &> /dev/null && alias poweroff='systemctl poweroff' \
+	halt='systemctl halt' reboot='systemctl reboot'
+command -v sl &> /dev/null && alias clear='sl -adF; clear'
+
+alias diskspace="du -S | sort -n -r | more" mountedinfo='df -hT' \
+	folders='du -h --max-depth=1' f="find . | grep " j='jobs -l' \
+	gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+command -v free &> /dev/null && alias meminfo='free -l'
+command -v tree &> /dev/null && alias tree='tree -CAhF --dirsfirst' \
+	treed='tree -CAFd'
+[[ -f /var/log/Xorg.0.log ]] && alias \
+	gpumeminfo='grep -i memory /var/log/Xorg.0.log'
+[[ -f /usr/bin/google-chrome-stable ]] && alias \
+	google-chrome='/usr/bin/google-chrome-stable %U'
+[[ -f .bash_history ]] && alias \
+	h='cat .bash_history | sort | uniq -c | sort -nr'
+[[ -f /etc/passwd ]] && alias pwrd='cat /etc/passwd | column -t -s ":"'
+[[ -d "$HOME/.atom" ]] && alias atom='~/.atom/atom &'
+export POSIXLY_CORRECT=true CLICOLOR=1 QT_SELECT=4 PYENV_ROOT="$HOME/.pyenv" \
+	HISTFILESIZE=2000 HISTCONTROL=ignoreboth:erasedups \
+	PROMPT_COMMAND=set_bash_prompt BROWSER=/usr/bin/chromium EDITOR=vim \
+	LESS_TERMCAP_mb=$(tput bold; tput setaf 2) \
+	LESS_TERMCAP_md=$(tput bold; tput setaf 6) \
+	LESS_TERMCAP_me=$(tput sgr0)  LESS_TERMCAP_ue=$(tput rmul; tput sgr0) \
+	LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) \
+	LESS_TERMCAP_se=$(tput rmso; tput sgr0)  \
+	LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) \
+	LESS_TERMCAP_mr=$(tput rev) LESS_TERMCAP_mh=$(tput dim)  \
+	LESS_TERMCAP_ZN=$(tput ssubm) LESS_TERMCAP_ZV=$(tput rsubm)  \
+	LESS_TERMCAP_ZO=$(tput ssupm) LESS_TERMCAP_ZW=$(tput rsupm)  \
+	GROFF_NO_SGR=1  # For Konsole and Gnome-terminal
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 bind -f  ~/.inputrc
