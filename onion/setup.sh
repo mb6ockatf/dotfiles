@@ -41,7 +41,7 @@ dot_folders[7]="$HOME/.config/kak/kakrc"
 dot_folders[8]="$HOME/.nano"
 dot_folders[9]="$HOME/.config/powershell"
 dot_folders[10]="$HOME/.config/fish"
-dot_folders[11]="$HOME/.symbols/main.mtml"
+dot_folders[11]="$HOME/.symbols"
 declare -A global_dot_files
 global_dot_files[mylight.service]="/etc/systemd/system/mylight.service"
 global_dot_files[pacman.conf]="/etc/pacman.conf"
