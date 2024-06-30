@@ -1,43 +1,54 @@
-se nocompatible number nobomb wrap wrapmargin=80 linebreak textwidth=80
-se colorcolumn=80 autoindent history=50 ruler scrolloff=3 nopaste showcmd
-se wildmenu notimeout nottimeout display=truncate mouse-=a bg=dark
-se conceallevel=1 hlsearch incsearch showmatch ignorecase smartcase
-se tabpagemax=15 backspace=indent,eol,start noexpandtab
-se langmap=ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,ЯZ
-se langmap+=ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs
-se langmap+=вd,аf,пg,рh,оj,лk,дl,яz,чx,сc,мv,иb,тn,ьm
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-vnoremap <Up> <Nop>
-vnoremap <Down> <Nop>
-vnoremap <Left> <Nop>
-vnoremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+se nocp nu nobomb wrap wm=80 lbr tw=80 cc=80 ai hi=50 ru so=3 nopaste sc wmnu
+se noto nottimeout dy=truncate mouse-=a bg=dark cole=1 hls is showmatch ic scs
+se tpm=15 bs=indent,eol,start noet shell=sh enc=UTF-8 scl=auto
+se lmap=ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,ЯZ
+se lmap+=ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs
+se lmap+=вd,аf,пg,рh,оj,лk,дl,яz,чx,сc,мv,иb,тn,ьm
+no <Up> <Nop>
+no <Down> <Nop>
+no <Left> <Nop>
+no <Right> <Nop>
+vn <Up> <Nop>
+vn <Down> <Nop>
+vn <Left> <Nop>
+vn <Right> <Nop>
+ino <Up> <Nop>
+ino <Down> <Nop>
+ino <Left> <Nop>
+ino <Right> <Nop>
 map <F1> :w<CR>
 map <F2> :wq<CR>
-map <F3> :NERDTree<CR>
+map <F4> :NERDTree<CR><C-W>
+nmap <F5> :TagbarToggle<CR>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 map <F9> :tabnew<CR>
 map Q gq
-call plug#begin()
+cal plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
-" Plug 'sirver/ultisnips'
+Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'preservim/nerdtree'
+" Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'machekann/vim-highlightedyank'
-call plug#end()
+Plug 'preservim/tagbar'
+Plug 'jiangmiao/auto-pairs'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'PhilRunninger/nerdtree-visual-selection'
+Plug 'ryanoasis/vim-devicons'
+
+cal plug#end()
 " PlugUpdate
 " PlugInstall
 colo gruvbox
+let g:NERDTreeFileLines = 1
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " a heavy feature too. default: normal
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 let g:gruvbox_contrast_dark = 'hard'
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
@@ -48,58 +59,58 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 filetype detect
 if &filetype == "html" || &filetype == "css"
-	se tabstop=2 shiftwidth=2 nolinebreak colorcolumn=140 textwidth=140
-elseif &filetype == "asm"
-	se tabstop=8 shiftwidth=8 expandtab nolinebreak
-elseif &filetype == "go"
-	se nolinebreak
-elseif &filetype == "haskell"
-	se colorcolumn=75 textwidth=75 nolinebreak tabstop=2 shiftwidth=2 expandtab
-endif
+	se ts=2 sw=2 nolbr cc=140 tw=140
+elsei &filetype == "asm"
+	se ts=8 sw=8 et nolbr
+elsei &filetype == "go"
+	se nolbr
+elsei &filetype == "haskell"
+	se cc=75 tw=75 nolbr ts=2 sw=2 et
+en
 
-function PrepareBeforeWrite()
+fu PrepareBeforeWrite()
 	if &filetype == "python"
 		%s/^	/    /e
-	endif
+	en
 	%s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
 	se fenc=utf-8
-endfunction
+endf
 
 
-" return '[\s]' if trailing whitespace is detected || return ''
-function StatuslineTrailingSpaceWarning()
+" retu '[\s]' if trailing whitespace is detected || retu ''
+fu StatuslineTrailingSpaceWarning()
 	if !exists("b:statusline_trailing_space_warning")
 		if !&modifiable
 			let b:statusline_trailing_space_warning = ''
-			return b:statusline_trailing_space_warning
-		endif
+			retu b:statusline_trailing_space_warning
+		en
 		if search('\s\+$', 'nw') != 0
 			let b:statusline_trailing_space_warning = '[\s]'
 		else
 			let b:statusline_trailing_space_warning = ''
-		endif
-	endif
-	return b:statusline_trailing_space_warning
-endfunction
+		en
+	en
+	retu b:statusline_trailing_space_warning
+endf
 
-" return syntax highlight group under cursor || return ''
-function StatuslineCurrentHighlight()
+" retu syntax highlight group under cursor || retu ''
+fu StatuslineCurrentHighlight()
 	let name = synIDattr(synID(line('.'),col('.'), 1), 'name')
-	if name == '' | return ''  | else | return '[' . name . ']' | endif
-endfunction
+	if name == '' | retu ''  | else | retu '[' . name . ']' | en
+endf
 
-" return a warning for "long lines" where "long" is either textwidth value if it
+" retu a warning for "long lines" where "long" is either textwidth value if it
 " was set, otherwise 80
-" return '' if no long lines
-" return '[#x,my,$z]' if long lines are found, were x is number of long
+" retu '' if no long lines
+" retu '[#x,my,$z]' if long lines are found, were x is number of long
 " lines, y is median length of long lines and z is length of longest line
-function StatuslineLongLineWarning()
+fu StatuslineLongLineWarning()
 	if !exists("b:statusline_long_line_warning")
 		if !&modifiable
 			let b:statusline_long_line_warning = ''
-			return b:statusline_long_line_warning
-		endif
+			retu b:statusline_long_line_warning
+		en
 		let long_line_lens = s:LongLines()
 		if len(long_line_lens) > 0
 			let b:statusline_long_line_warning = "[" .
@@ -108,13 +119,13 @@ function StatuslineLongLineWarning()
 					\ '$' . max(long_line_lens) . "]"
 		else
 			let b:statusline_long_line_warning = ""
-		endif
-	endif
-	return b:statusline_long_line_warning
-endfunction
+		en
+	en
+	retu b:statusline_long_line_warning
+endf
 
-" return list containing lengths of long lines in this buffer
-function s:LongLines()
+" retu list containing lengths of long lines in this buffer
+fu s:LongLines()
 	let threshold = (&tw ? &tw : 80)
 	let spaces = repeat(" ", &ts)
 	let long_line_lens = []
@@ -122,48 +133,55 @@ function s:LongLines()
 	while i <= line("$")
 		let len = strlen(substitute(getline(i), '\t', spaces, 'g'))
 		if len > threshold
-			call add(long_line_lens, len)
-		endif
+			cal add(long_line_lens, len)
+		en
 		let i += 1
-	endwhile
-	return long_line_lens
-endfunction
+	endw
+	retu long_line_lens
+endf
 
-function s:Median(nums)  " find the median of given array of numbers
+fu s:Median(nums)  " find the median of given array of numbers
 	let nums = sort(a:nums)
 	let l = len(nums)
 	if l % 2 == 1
 		let i = (l - 1) / 2
-		return nums[i]
+		retu nums[i]
 	else
-		return nums[l / 2] + nums[(l / 2) - 1] / 2
-	endif
-endfunction
+		retu nums[l / 2] + nums[(l / 2) - 1] / 2
+	en
+endf
 
-se laststatus=2
-se statusline=%-03.f
-se statusline+=%#warningmsg#
-se statusline+=%{&ff!='unix'?'['.&ff.']':''}
-se statusline+=%*
-se statusline+=%#warningmsg#
-se statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-se statusline+=%*
-se statusline+=%h%y%r%m
-se statusline+=%{StatuslineTrailingSpaceWarning()}
-se statusline+=%{StatuslineLongLineWarning()}
-se statusline+=%#warningmsg#
-se statusline+=%#error#
-se statusline+=%{&paste?'[paste]':''}
-se statusline+=%*
-se statusline+=%{FugitiveStatusline()}
-se statusline+=%=
-se statusline+=%{StatuslineCurrentHighlight()}\ \
-se statusline+=%c,
-se statusline+=%l/%L
-se statusline+=\ %P
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warning
-augroup PreWriteEdits
-autocmd BufWritePre * call PrepareBeforeWrite()
-augroup END
+se ls=2
+se stl=%-03.f
+se stl+=%#warningmsg#
+se stl+=%{&ff!='unix'?'['.&ff.']':''}
+se stl+=%*
+se stl+=%#warningmsg#
+se stl+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+se stl+=%*
+se stl+=%h%y%r%m
+se stl+=%{StatuslineTrailingSpaceWarning()}
+se stl+=%{StatuslineLongLineWarning()}
+se stl+=%#warningmsg#
+se stl+=%#error#
+se stl+=%{&paste?'[paste]':''}
+se stl+=%*
+se stl+=%{FugitiveStatusline()}
+se stl+=%=
+se stl+=%{StatuslineCurrentHighlight()}\ \
+se stl+=%c,
+se stl+=%l/%L
+se stl+=\ %P
+au cursorhold,bufwritepost * unl! b:statusline_trailing_space_warning
+au cursorhold,bufwritepost * unl! b:statusline_long_line_warningS
+" Start NERDTree. If a file is specified, move the cursor to its window.
+au StdinReadPre * let s:std_in=1
+au VimEnter * NERDTree | if argc() > 1 || exists("s:std_in") | winc p | endi
+au VimEnter * GitGutterEnable
+" Open the existing NERDTree on each new tab.
+au BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endi
+au BufWritePost * GitGutter
+aug PreWriteEdits
+au BufWritePre * cal PrepareBeforeWrite()
+aug END
 syntax on
