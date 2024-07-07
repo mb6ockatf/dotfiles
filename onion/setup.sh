@@ -47,6 +47,7 @@ dot_folders[11]="$HOME/.symbols"
 declare -A global_dot_files
 global_dot_files[mylight.service]="/etc/systemd/system/mylight.service"
 global_dot_files[pacman.conf]="/etc/pacman.conf"
+global_dot_files[hosts]="/etc/hosts"
 global_dot_files[tyler_durden.list]="/usr/share/fortune/tyler_durden.list"
 global_dot_files[tyler_durden.list.dat]="/usr/share/fortune/tyler_durden.list.dat"
 global_dot_files[nftables.conf]="/etc/nftables.conf"

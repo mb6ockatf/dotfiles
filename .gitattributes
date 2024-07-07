@@ -151,3 +151,5 @@ gitignore linguist-detectable
 .gitconfig linguist-detectable
 gitconfig linguist-documentation=false
 gitconfig linguist-detectable
+hosts linguist-documentation=false
+hosts linguist-detectable
