@@ -6,4 +6,4 @@ echo "ctrl-c to cancel"
 read -r
 address="https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/hosts/ultimate.txt"
 sudo curl "$address" -o /etc/hosts
-
+cat hosts >> /etc/hosts

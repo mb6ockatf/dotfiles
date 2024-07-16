@@ -120,6 +120,9 @@
 *.pub linguist-detectable
 *.mtml linguist-documentation=false
 *.mtml linguist-detectable
+*.xml linguist-documentation=false
+*.xml linguist-detectable
+
 
 MD5SUMS linguist-documentation=false
 MD5SUMS linguist-detectable
