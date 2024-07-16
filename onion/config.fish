@@ -138,6 +138,7 @@ if status is-interactive
 	alias j='jobs -l'
 	alias f="find . | grep "
 	[ -d "$HOME/.atom" ] && alias atom="~/.atom/atom &"
+	alias exit="echo noexit"
 	export PROMPT_COMMAND set_bash_prompt
     # Commands to run in interactive sessions can go here
 end
