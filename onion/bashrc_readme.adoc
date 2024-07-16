@@ -1,5 +1,0 @@
-= bashrc: functions
-
-* stats -- history statistics
-* repeat_char $character $times
-* color::form
