@@ -97,41 +97,33 @@ install_configuration() {
 	for file in "${!dot_files[@]}"; do
 		cp -vu "$file" "${dot_files[$file]}"
 	done
-	local current_directory=$(pwd)
-	cd ~/.config/kitty
+	declare current_directory
+	current_directory=$(pwd)
+	cd ~/.config/kitty || exit
 	ln -sf ./kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
-	cd "$current_directory"
+	cd "$current_directory" || exit
 	for file in "${!global_dot_files[@]}"; do
 		sudo cp -vu "$file" "${global_dot_files[$file]}"
 	done
 }
 
 set_package_manager() {
-	local is_pacman=$(pacman --version)
-	if [ -n "$(yay --version)" ]; then
+	# is_pacman=$(pacman --version)
+	[ -n "$(yay --version)" ] && \
 		package_manager_install="yay -Syuu --noconfirm"
-	fi
 }
 
 install_deps() {
-	if [[ -z "$package_manager_install" ]]; then
-		set_package_manager
-	fi
-	eval $package_manager_install "$1"
+	[[ -z "$package_manager_install" ]] && set_package_manager
+	eval "$package_manager_install" "$1"
 }
 
 pprint() {
-	local message
+	declare message
 	message=$(gum style --border normal --border-foreground 3 "$1")
 	echo "$message"
 }
 echo "${BASH_SOURCE[*]}"
-echoer="$(gum -v)"
-if [ -z "${echoer}" ]; then
-	echoer=echo
-else
-	echoer=pprint
-fi
 case $1 in
 	pack | --pack | -p )
 		collect_configuration ;;
@@ -142,13 +134,15 @@ case $1 in
 	info | -s )
 		cat description.txt;;
 	depends | --depends | -d )
-		$echoer "running system upgrade" && install_deps
-		if [[ $echoer == $echo ]]; then
-			$echoer "installing gum" && install_deps gum
+		if command -v gum -v &> /dev/null; then
+			pprint "running system upgrade" && install_deps
+		else
+			echo "running system upgrade" && install_deps
+			echo "installing gum" && install_deps gum
 		fi
-		$echoer "installing pyenv" && install_deps pyenv
+		pprint "installing pyenv" && install_deps pyenv
 		;;
 	*)
-		$echoer "no mode value provided" && usage ;;
+		pprint "no mode value provided" && usage ;;
 esac
 exit
