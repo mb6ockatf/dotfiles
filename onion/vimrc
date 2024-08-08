@@ -52,6 +52,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'ryanoasis/vim-devicons'
+Plug 'timcharper/textile.vim'
 cal plug#end()
 " PlugUpdate
 " PlugInstall
