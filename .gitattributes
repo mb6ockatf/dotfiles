@@ -120,9 +120,6 @@
 *.pub linguist-detectable
 *.mtml linguist-documentation=false
 *.mtml linguist-detectable
-*.xml linguist-documentation=false
-*.xml linguist-detectable
-
 
 MD5SUMS linguist-documentation=false
 MD5SUMS linguist-detectable
@@ -156,3 +153,7 @@ gitconfig linguist-documentation=false
 gitconfig linguist-detectable
 hosts linguist-documentation=false
 hosts linguist-detectable
+PKGBUILD linguist-documentation=false
+PKGBUILD linguist-detectable
+COPYING linguist-documentation=false
+COPYING linguist-detectable
