@@ -1,0 +1,1211 @@
+commit 51f55c204fd7c4fbeecf0a14b70d819ca2216b45
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Aug 10 16:10:51 2024 +0300
+
+    chore(CONTRIBUTING): added
+
+commit ad13dce865aff9b7caf4f7fec4fe02cecda88e58
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Aug 9 20:37:42 2024 +0300
+
+    chore(COPYING): AGPL license
+
+commit a45d9a0c19195c5ba7de4d5fa9385be464f90e83
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Aug 8 12:04:45 2024 +0300
+
+    feat(vimrc): textile plugin
+
+commit 3603c5a99dea1ab229d73c5887001984190b0844
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Aug 8 12:04:27 2024 +0300
+
+    feat(sxhkdrc): bind calc btn
+
+commit 281640d190a406a2a0bc2c9acce143aba54786f6
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Aug 8 12:03:55 2024 +0300
+
+    chore(pacman.conf): ignore pkgs
+
+commit 97a9d03dcc4b31e65a76a22688ae5430fe9b9d01
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Aug 8 12:03:16 2024 +0300
+
+    feat(bashrc): add PATH element
+
+commit 1b32ec210485c9d67b632ae2e25fa884f0859101
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed Aug 7 14:20:24 2024 +0300
+
+    feat(hosts): updated
+
+commit 3a8c7da4575d4bb8d6c9437d3c7a4d59d5a82f9a
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Aug 2 21:15:05 2024 +0300
+
+    feat(setup.sh): pass shellcheck test
+
+commit bf8eb5955c2927b6b9a851767f385a128bde25c3
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Aug 2 21:01:15 2024 +0300
+
+    chore(bashrc): pass shellcheck test
+
+commit 0cfdf26b969ccf521795405e9edbae58c69cea6a
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Aug 2 21:00:47 2024 +0300
+
+    feat(hosts): add more websites
+
+commit dc213e3c2a836d5bb9a681380e07bc8f601bbb91
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jul 28 16:00:56 2024 +0300
+
+    chore(hosts): + malicious websites
+
+commit f4dfbf0f26a7e6a847461225e94d44431792b904
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed Jul 24 14:24:06 2024 +0300
+
+    feat(configs): minor changes
+
+commit 6345116bc05cab6a28e39a8be5a1113227879c5b
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue Jul 16 18:32:34 2024 +0300
+
+    revert: move stuff to gists
+
+commit 4ed7eca12da44827239648908ea3c6105d2637fc
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue Jul 16 18:16:13 2024 +0300
+
+    chore(symbols.mtml): moved to gists
+
+commit 1fc4db6374bf54043a4194024c0bb4aabca48e18
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue Jul 16 18:14:12 2024 +0300
+
+    feat(hosts): added
+
+commit bc85c61c560712f38b94aabd1c47ac974a4efb18
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue Jul 16 18:13:49 2024 +0300
+
+    feat(config.fish): alias
+
+commit ba56248c9d8eb5003646a1d3d0f9faf11846c357
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jul 7 17:07:47 2024 +0300
+
+    feat(cse): added
+
+commit 37cf6445105db49ed9068ba9140aca7561100fd4
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jul 7 16:55:03 2024 +0300
+
+    revert(hosts): large files > script
+
+commit a21f4f4cbdee29add788499adf4d9cb4937cafd2
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jul 7 16:32:56 2024 +0300
+
+    chore(hosts): split & move to dir
+
+commit 0d0e23860d7d7c10b43bb2a549c522ffb0b72b09
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jul 7 15:31:11 2024 +0300
+
+    feat(hosts): file added
+
+commit 205b1a019ab78da63ea313aa43c9ef0c568f2651
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed Jul 3 14:27:20 2024 +0300
+
+    feat(vimrc): variants
+    
+    pacman.conf: ignore more pkgs
+
+commit b65b395c325b01fac7ef2f42f2257fdf91cdce4d
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jun 30 17:33:30 2024 +0300
+
+    fix(fehbg): img pos
+
+commit 97b35507815e1ce7eabeebcb769202f647649df3
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jun 30 17:32:51 2024 +0300
+
+    feat(pacman.conf): ignore pkgs
+
+commit 9ba8844f4ab1dd727cffeb746efc18591c2a85dd
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jun 30 17:32:31 2024 +0300
+
+    feat(vimrc): added plugins
+
+commit 432bb11aebbeea4f6b27e726baf174670c853c8c
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jun 16 11:58:05 2024 +0300
+
+    fix(fehbg): wallpaper settings
+
+commit 1c612d6c60b6e67fb2c1490ae8feeee97a942353
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 15 22:55:30 2024 +0300
+
+    feat(symbols.mtml): styling & chars
+
+commit 1cb5435e212d68ae6b1a7ebfded7fb4f98d4534b
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 15 01:09:53 2024 +0300
+
+    chore(symbols): more
+    
+    also, changed path in fehbg (possibly destructing, deeds fixes on particular machines)
+
+commit 241f6f3f9a8304a1eb706b1ec74ad00975c1a4c3
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Jun 10 14:02:54 2024 +0300
+
+    chore(pacman.conf): ignore pkgs
+
+commit 5e6ae66a501117e94e1843ce234ec681765255d1
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jun 9 00:59:19 2024 +0300
+
+    feat(symbols.mtml): added
+
+commit 0c93344d654c7ffaa9e5a02c308648ee5f7348ba
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 19:16:24 2024 +0300
+
+    fix(fehbg): image orientation
+
+commit 3c30ae463fce7e421ac5dd65f7df2436a11d5d12
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 15:21:26 2024 +0300
+
+    feat: bunch of rc & config
+
+commit 3b00dbcd17183c0ff5abfbd52e8755293445b8b6
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:54:39 2024 +0300
+
+    feat(fortune): add tyler durden
+
+commit e1d0b6859bdd7ac1ddffd3d13ef05267672130a8
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:34:25 2024 +0300
+
+    feat(gpg pub sig): added
+
+commit 5310560187a0a9d1d9d0624ddc544fab49ec084b
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:32:55 2024 +0300
+
+    refactor(bashrc): minor
+
+commit 66460fdd98dd686742357c87e38bec670b088841
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:13:31 2024 +0300
+
+    style(gitattributes): rm duplicates
+
+commit 6a65945bd2f36f29f022b308521606149e42bcb9
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:09:52 2024 +0300
+
+    feat(gitconfig): added
+
+commit 5dbe9a66b4cff473e0dca63465f76ec3efe510fc
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:09:34 2024 +0300
+
+    fix(config.fish): minor typo
+
+commit fe559bdd34cf456e981caaabc8f64d44b320c9d4
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:08:41 2024 +0300
+
+    revert(vimrc): tabs -> spaces
+    
+    for sh, vim , python
+
+commit 17d7c09a1c1bcd299adc3b7a267db9b66d5e959b
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:05:47 2024 +0300
+
+    chore: update gitattributes
+
+commit 956945d60e220e874eddc30e57a79ca09844ca86
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 8 14:04:39 2024 +0300
+
+    fix(setup.sh): repeat_char func
+    
+    this function has been replaced with native printf funciton
+
+commit 1041d0856f1388b6036416f833256f16211c0c27
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue Jun 4 23:39:17 2024 +0300
+
+    fix(pacman.conf): downloads 250
+    
+    now up to 250 pkgs can be downloaded simultaneously
+
+commit 5b46062ed92ebaa570521882f907c7af14ac03c1
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue Jun 4 22:23:26 2024 +0300
+
+    feat(profile.ps1): aliases
+
+commit 1e694a790b4e99a0da2ec356098429ff22b05462
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 1 23:40:11 2024 +0300
+
+    feat(yash, ksh): rc files added
+
+commit 17c3c0785cc27f62b48872db9165a7216d00b3f2
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 1 23:09:33 2024 +0300
+
+    feat(zsh): added
+
+commit 8548cd606898c332f71e705280b2ed4582f50ad8
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 1 23:09:14 2024 +0300
+
+    feat(config.fish): add come funcs
+
+commit f69f7cb9637addd1e726d2f21f26fbef12028a8e
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 1 23:08:30 2024 +0300
+
+    fix(bashrc): remove deleted func
+
+commit 5cc18cab7869e4c31cb5497fe597fb95ee4a1639
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 1 19:23:53 2024 +0300
+
+    feat(config.fish): added
+
+commit c5ec4f3d8f25009f084ba1a607cbe5f65376aeff
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 1 19:23:14 2024 +0300
+
+    chore(bashrc): refactor moo
+
+commit 73dabe3e8d85030242bc394721bcd1c54c25acb8
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jun 1 13:44:36 2024 +0300
+
+    chore(.gitattributes): add .service
+
+commit 6decea78ad8d1e2d1a95977bf61cf0b04ed41d63
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu May 30 17:44:55 2024 +0300
+
+    feat(tmux): change to fish shell
+
+commit c3fa78c63825fa949331422abc49cbf22e652f69
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu May 30 17:23:57 2024 +0300
+
+    feat(inputrc): added
+
+commit 0edbce162041c9008f126cd153e82a9bacbd49f6
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu May 30 17:19:19 2024 +0300
+
+    feat(youtube_blocklist): added
+    
+    it is for blocktube chromium extension
+
+commit 5ba1b200f3c50bd815bfca0927611aa76471dbf1
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu May 30 17:18:16 2024 +0300
+
+    feat(bashrc): having fun: aliases
+
+commit 363681488577f0e548f2728c4faf60e1389ba170
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon May 27 13:08:59 2024 +0300
+
+    feat(bf nanorc): comment, *.b
+
+commit 5ef7520d546d92ebd958aa837bc6234bd2a296f2
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon May 27 13:08:09 2024 +0300
+
+    feat(pwsh): functions
+
+commit c0b800ef633ffc65351f065e23cfe547ab2ab707
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon May 27 13:07:16 2024 +0300
+
+    feat(pacman): ignore pkgs
+
+commit 0001dcb6684f2b468d69127aac34ea5101f9a362
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon May 27 13:06:31 2024 +0300
+
+    feat(bashrc): aliases & funcs
+
+commit a9eff59be1a572fe6b586481a6036f7fa6f725a8
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun May 19 14:11:17 2024 +0300
+
+    feat: aliases, profile.ps1
+
+commit 66e2ffed4164a689cfbdce9c2343735a631130ba
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun May 12 18:50:38 2024 +0300
+
+    feat(bashrc): aliases & stuff
+
+commit d584eed26b712ccd984634ac100591e67dbf3efa
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu May 9 15:19:44 2024 +0300
+
+    feat(bashrc): more git aliases
+
+commit 674420930fe4665d87c813bd9be8c9b4715b5a8a
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed May 1 16:03:14 2024 +0300
+
+    fix(bashrc): remove network actions
+
+commit b4fb790dab6bd051c6ca269c7015530691aa6707
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Apr 29 18:51:42 2024 +0300
+
+    feat(blocktube list): added
+
+commit 03f40b22e14b035b150c047151ad60ea5d78fc0a
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Apr 28 21:57:10 2024 +0300
+
+    feat(pkgs): ignore fish
+
+commit d13fc12ea1ca3defa30e6417a44d04c07d4dc751
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Apr 12 23:45:38 2024 +0300
+
+    feat: pkgs, sxhkd
+
+commit d06ea6497f4af9327718986c81a174ed1ad6f594
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Apr 12 23:44:57 2024 +0300
+
+    feat(mylight.service): fix brightness
+
+commit d3ca3b4f0c2040bc5029fd6f8154b96708392760
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Apr 12 23:44:27 2024 +0300
+
+    fix(bashrc): termux spawn
+
+commit 356debfdd606032f033044311fad8784e8f2c489
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed Apr 10 19:24:08 2024 +0300
+
+    feat: packages
+
+commit 9089d171f85f047900197a9390aadb612d324714
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Apr 1 21:37:12 2024 +0300
+
+    feat(vimrc & polybar): update
+
+commit f23a91ce0a6cd8f843022efa0eeeb78379bcee8b
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Apr 1 21:36:48 2024 +0300
+
+    feat(bashrc): check internet connection
+    
+    also, `packages.fish` file
+
+commit 00481fe35322d9f94c0319fa19fdb4ae59bc8aae
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Apr 1 21:33:19 2024 +0300
+
+    feat(pacman.conf): ignore texlive
+
+commit fffb9e489bffbd78783b529ef347f509604a5860
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Mar 30 13:00:27 2024 +0300
+
+    revert(bashrc): remove bugged func
+
+commit 5c50495a1f87c15a49061603980665ccf2e846b1
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Mar 28 22:24:52 2024 +0300
+
+    feat(nano): brainfuck highlight
+    
+    also, fix missprint (alacritty) in README.rst
+
+commit 0c7a9c1a4b04384ed5f5f1a55830da2f110d58cf
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Mar 28 21:53:30 2024 +0300
+
+    fix(kitty.conf): long input delay
+
+commit f2680373fbf1c9f43807795be8efe2a8ecdab815
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Mar 28 21:53:02 2024 +0300
+
+    feat(bashrc): startup screen
+
+commit 4a976cc4883a676b1d4608b23a4d420f5c699da8
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Mar 28 21:51:49 2024 +0300
+
+    feat: packages.fish
+
+commit 43cab56ec93ef16f856ba144d342c0f3c469301a
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed Mar 27 19:24:59 2024 +0300
+
+    feat(pacman.conf): ignore more pkgs
+
+commit a4c81eb6f3a05f14b47c1d4645b746aa7b17a4e2
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Mar 23 23:08:07 2024 +0300
+
+    feat(pacman.conf): excude some pkgs
+
+commit 83f11b2ce6f24f4d07b514e274cacfd33cc8a547
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Mar 23 11:45:43 2024 +0300
+
+    refactor(ublock files): txt -> adoc
+
+commit f8ddf0dd9d80dbf01de097dcf6b94c9dccbfcab7
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Mar 23 11:16:09 2024 +0300
+
+    chore(README.md): md -> rst
+
+commit 2b77d83d91f9be61123ee9f9583c96d91ac71260
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Mar 23 11:04:42 2024 +0300
+
+    onion: pacman.conf: not update some pkgs
+    
+    Prevent some pkgs from upgrading when `pacman -Syuu` in order to lessen disk space usage (new versions weight a lot).
+    NB: only top-level pkgs can be excluded like that, cause if exclided pkg is dependency for another pkg, than there'll be dependency hell when that another pkg will update & require new version of that excluded pkg... Be careful!
+
+commit 5d652765f45a6eb94e8c3bb0aac88c97cc163ec8
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Mar 21 18:42:17 2024 +0300
+
+    chore(ublock filter list)
+    
+    more filters added
+
+commit 286626be0cc41c123fd4cdc825f34d9f9f043f1e
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed Feb 14 22:25:45 2024 +0300
+
+    feat: kakrc
+
+commit 692e2d6d689fa16c4aca76ab31ef9f5ad84024f2
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Feb 4 09:53:27 2024 +0300
+
+    feat: adblock filter lists
+
+commit b35cbe39d82bd976ade22feb74804625bcd3d620
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Jan 7 14:04:39 2024 +0300
+
+    feat: tmux.conf
+
+commit 9e888c2600ab66e684ec4e7bd2fde4d51533e835
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Wed Jan 3 16:04:39 2024 +0300
+
+    feat(xinitrc): added
+
+commit 0a92f26b7c642608d752d301774b40a33d5a2123
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Dec 30 12:23:04 2023 +0300
+
+    feat(kitty): gruvbox_dark.conf
+    
+    README.md: links are finally fixed
+
+commit 3d1c5bcdeb328503906a97fe92d34904ff61b472
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Dec 30 12:12:49 2023 +0300
+
+    feat(kitty): added
+
+commit 85a3b9bea0732ce60baa576b13084a5e5fdf7fdc
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Dec 30 11:32:14 2023 +0300
+
+    chore(alacritty): migrate yaml -> toml
+
+commit 2a74aebdbd93d4efa08fc713a07e22e3800eb2e0
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Dec 23 18:17:57 2023 +0300
+
+    feat(alacritty.yml): disable history
+
+commit b38e98e26b01d0e577bac320284c32fee15d6fc5
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Dec 15 23:12:53 2023 +0300
+
+    fix: rename commit to gum_commit
+
+commit 4b0a36718e59ba602d6c4c78bb6f762c21a12b4d
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Dec 10 14:36:13 2023 +0300
+
+    feat: add gdbinit file
+
+commit 6bd7c6af695938221af5b7122a75cd0b9132ad84
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Dec 10 11:29:50 2023 +0300
+
+    feat(vimrc): snippets engine
+
+commit 482f31ad533f7d22278c6717ada026f9e3148575
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Dec 7 22:38:27 2023 +0300
+
+    fix(sxhkdrc): brightness buttons
+
+commit 1152258bae79e73f0fff50def10e17a455b6a5ce
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Dec 7 22:37:32 2023 +0300
+
+    fix(bspwmrc): wallpaper path
+
+commit 1ff35a373941f24f4d9ad8bb28f262f587db1edd
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Dec 7 22:37:14 2023 +0300
+
+    feat(vimrc): add haskell rules
+
+commit 6b41e3dab8ea1ec4215278db3276ee0db6669dc5
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Aug 19 00:55:04 2023 +0300
+
+    refactor: move to onion project
+
+commit bdbaffefbcb4a5ada117116ee962226a102c45cb
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Aug 14 00:04:54 2023 +0300
+
+    feat(sxhkd): add gscreenshot shortcut
+
+commit afefc2dac0b25a25f562f14b0d3e147d4320aca6
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Aug 5 11:02:06 2023 +0300
+
+    fix(bashrc): PS1 venv misprint
+
+commit 6dc791a17618307a804e8400e8bdddeee217cc73
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Aug 4 19:00:21 2023 +0300
+
+    feat(vimrc): asm stuff
+
+commit a9813cddab866ea28b3b80a7fda7b6d227e19b48
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jul 1 15:49:38 2023 +0300
+
+    feat(polybar): battery module
+
+commit 96d5cf2133b319bfe020667a9a2edc816891a4b7
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Jul 1 15:39:09 2023 +0300
+
+    feat(polybar): battery module
+
+commit d32f78fa73dd36ecf05b47c7bb92af4d1755b724
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Jul 1 15:32:18 2023 +0300
+
+    fix(polybar): fix nowifi message
+    
+    resolve #48
+
+commit 3ffd693228031a37ee5e439165e24855a56515fb
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Jul 1 14:17:42 2023 +0300
+
+    docs: update README.md
+
+commit e4003d05d4dadcd17cdafd26155b282e3c7b1ab6
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Jul 1 14:08:38 2023 +0300
+
+    refactor: many files, minor changes
+    
+    bashrc, bspwmrc, DEPLOY.sh, neofetch.conf, polybar/launch.sh
+
+commit 0764fb89d199656deb86dd66c9148c34a5568c30
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Jul 1 13:30:42 2023 +0300
+
+    fix(vimrc): startup bugs
+    
+    resolve #49
+
+commit 832aafb1ecf706f5a8096f1eb838d52b09db0da1
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat May 13 11:41:40 2023 +0300
+
+    chore(LICENSE): change to AGPL v3
+
+commit b8b58f33542fc067a3127a3be28448110bbc1d71
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri May 12 19:54:49 2023 +0300
+
+    feat(bashrc): add BROWSER variable
+
+commit b9654deeb84b6f2a2273f516dcc8aa1ef97f8524
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Tue May 9 19:06:26 2023 +0300
+
+    fix(vimrc): tab equal to 4 in *.sh files
+
+commit d8cfa123b43ced76d12e2876b0b38271b19bbda7
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Mon May 8 22:49:39 2023 +0300
+
+    refactor: docs, file refactor
+    
+    add bash function docstrings
+    remove useless file folding
+    move all bash stuff into bashrc (all those files were sourced from bashrc anyway)
+    same thing with bashrc
+
+commit fdf539dec3720a5997a190aaaf6e3ab9da5f8806
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Mon May 8 11:44:02 2023 +0300
+
+    fix(alacritty.yml): font
+    
+    also, the file is cleared-up a bit
+
+commit 49efb815a1166072ef293c4ad418e6edd12880ee
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu May 4 22:09:22 2023 +0300
+
+    refactor: bashrc styling
+
+commit 890f8f1353979506bc421fd538765ee14d75b160
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu May 4 22:02:21 2023 +0300
+
+    fix: polybar syntax error
+
+commit 5c66e6b10292a8db38a53137397407c6a9521f29
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue May 2 21:45:54 2023 +0300
+
+    fix(colorscheme issue): polybar
+
+commit ec0eeffded2a7dcb017e2b36e4e247c7ba66632a
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue May 2 20:58:06 2023 +0300
+
+    fix(vim): colorscheme problems
+
+commit bc97545e2d58b416bc8db33e45c7c354b9facbef
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Tue May 2 20:43:02 2023 +0300
+
+    updates (#44)
+    
+    * refactor(vscode): add language value
+    
+    * chore: special folder for alacritty
+    
+    * fix: add some functions
+    
+    * fix(DEPLOY.sh): syntax error
+    
+    * chore(vimrc): add wrapmargin 80
+    
+    * feat(aliases.sh): simple git aliases
+    
+    * feat(DEPLOY.sh): add "depends" option
+    
+    * feat(bash_files/aliases.sh): atom shortcut
+    
+    * feat(alacritty): change font to iosevka
+    
+    * fix: remove bash history duplicates
+
+commit 480fed616f6b4e0c13afa2a7fd6ce5db8637d83e
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Thu Apr 20 18:00:20 2023 +0300
+
+    v0.0.4 (#43)
+    
+    * refactor(vscode): add language value
+    
+    * chore: special folder for alacritty
+    
+    * fix: add some functions
+    
+    * fix(DEPLOY.sh): syntax error
+    
+    * chore(vimrc): add wrapmargin 80
+    
+    * feat(aliases.sh): simple git aliases
+    
+    * feat(DEPLOY.sh): add "depends" option
+    
+    * fix(vscode): rename config file
+    
+    * remove: NERDTree bugs, improve styling
+    
+    * refactor(bash_files)
+    
+    * chore: update README.md
+
+commit 97ae8b5428b5bf2e1ce713a48cfdbce9a98af336
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Apr 1 15:01:06 2023 +0300
+
+    test(vimrc): add ALE plugin (#41)
+
+commit ec77d1784adf716bc56c0e0d9ee41fc418f5343f
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 31 14:50:41 2023 +0300
+
+    feat: add & setup NERDTree, gum commit (#40)
+    
+    * add(vimrc): nerdtree plugin
+    
+    * feat(functions.sh): commit function
+    
+    * feat(vimrc): add NERDTree settings
+    
+    Set NERDTree to close automatically, and open with every vim start
+    
+    * chore(CHANGELOG.md): changes description
+
+commit bf0ccdfd879b02f21aa61b761758853c94cd8436
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Wed Mar 29 22:44:07 2023 +0300
+
+    several improvements (#37)
+    
+    Several improvements were made:
+    - `README.md` styling is updated
+    - *tar xz* are now correctly extracted
+    - customized statusline (`vimrc`)
+    - useful & good-looking bash prompt
+
+commit 27ae29303cf6e2d8119d84a841ac713af54c7b72
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Mar 23 23:58:10 2023 +0300
+
+    add: rofi line in README.md
+
+commit 5f0e832c27045a63b914d44105fee7f8d6d291cc
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Thu Mar 23 23:51:40 2023 +0300
+
+    change: alacritty font
+
+commit 4358163788ba9c9130ef967c168e3b4c99890c10
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Mar 19 17:03:45 2023 +0300
+
+    fix README.md markdown (#33)
+    
+    * fix: README.md markup
+    
+    Signed-off-by: mb6ockatf <mdddmmmm@yandex.ru>
+    
+    * fix: README.md markup
+    
+    Signed-off-by: mb6ockatf <mdddmmmm@yandex.ru>
+    
+    ---------
+    
+    Signed-off-by: mb6ockatf <mdddmmmm@yandex.ru>
+
+commit aa580800bc6037131241d35351cd5bdab90644bd
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Mar 19 16:52:58 2023 +0300
+
+    Feat/add polybar config (#31)
+    
+    * add: polybar configuration
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+    
+    * fix: remove unneeded
+    
+    * fix: delete unneeded files
+    
+    Signed-off-by: mb6ockatf <mdddmmmm@yandex.ru>
+    
+    ---------
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+    Signed-off-by: mb6ockatf <mdddmmmm@yandex.ru>
+
+commit a3dc97cdf724ecaf3e706d8557848c7d1b98aec3
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 17 23:55:30 2023 +0300
+
+    Add/neofetch (#27)
+    
+    * add: bspwm and sxhkd config files
+    
+    * feat: improve `bspwmrc` & `sxhkdrc`
+    
+    * add: neofetch config
+
+commit b591ac6891311bfc141bf4997cdaa1660c6d0de2
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 17 23:54:53 2023 +0300
+
+    Feat/bspwm n sxhkd (#26)
+    
+    * add: bspwm and sxhkd config files
+    
+    * feat: improve `bspwmrc` & `sxhkdrc`
+
+commit da3da093b4f71ac50125a29903966f337f5f98ef
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 17 23:54:19 2023 +0300
+
+    Fix/misprints (#25)
+    
+    * fix: misprint "././DEPLOY.sh" in usage function
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+    
+    * fix: `completion.sh` & `colors.sh` paths
+    
+    ---------
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+
+commit d578a9ddda134cef36bd41f1dfc1d0fa98628a16
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 17 23:51:23 2023 +0300
+
+    fix: alacritty bell appearance (#23)
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+
+commit 7d78e91ac30e78800526e6ffa6c5ba99ad96baea
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 17 23:50:46 2023 +0300
+
+    fix: html and css look better (#21)
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+
+commit 44d30940f9dd1ad13ab2a1aaecefdde06bf0cc6e
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 17 23:48:47 2023 +0300
+
+    fix: misprints in `DEPLOY.sh` (#22)
+    
+    * fix: misprint "././DEPLOY.sh" in usage function
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+    
+    * fix: `completion.sh` & `colors.sh` paths
+    
+    ---------
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+
+commit c47323f85e4db53152a97fd838cc70392cbb37e9
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Mar 11 10:53:33 2023 +0300
+
+    Fix/filenames (#20)
+    
+    * fix: file name errors in bashrc
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+    
+    * chores: update README.md
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+    
+    ---------
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+
+commit 0aeb9155d13ae7d06d6aea8a23f13f3fa172f371
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Mar 11 10:50:19 2023 +0300
+
+    Revert "fix: file name errors in bashrc"
+    
+    This reverts commit 98151815f55582895f3ae41c52ea96896615416e.
+
+commit 98151815f55582895f3ae41c52ea96896615416e
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Mar 11 10:45:32 2023 +0300
+
+    fix: file name errors in bashrc
+    
+    Signed-off-by: mb6ockatf <mb6ockatf@relay.firefox.com>
+
+commit 8ad9aae84a67f7e82580cad3945077745321dbc3
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 10 23:57:24 2023 +0300
+
+    chores: misprint in README.md
+
+commit 6da1ccfeff14abc23dc63bf6171238971b99f54b
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 10 23:51:23 2023 +0300
+
+    chores: README.md, LICENSE, CHANGELOG.md
+
+commit 9c4be505bb684220552cd9e8e674a6c8f925621a
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 10 23:12:51 2023 +0300
+
+    add: vimtex & ultisnips plugins (#15)
+
+commit a74e9f0a6a9901a183afc7117dd0ce70f05990db
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Mar 10 23:03:44 2023 +0300
+
+    fix: DEPLOY logic
+
+commit d398271d292c93818e0959e74955fed26621a5e6
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Feb 25 01:04:42 2023 +0300
+
+    fix: vimrc refactor; minor improvements
+    
+    - remove autocompletion in python files
+    - remove comments in vimrc
+
+commit 346536851935354e6654f9b20139c5941ad3e170
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Feb 24 00:00:24 2023 +0300
+
+    add: bash_files folder (#12)
+
+commit 5cd3deb62e0c8b13ea4bfc6f685674beb36dbcbf
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Thu Feb 23 20:15:17 2023 +0300
+
+    add: bash_aliases (#11)
+
+commit 9575ba6e4d7a0f7ced6c8348e0d8b5a415abfcf6
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Thu Feb 23 19:56:07 2023 +0300
+
+    Refactor (#10)
+    
+    * fix: typo
+    * remove comments
+
+commit 9676e445c1f306a9473234cca87c10114a1854c4
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Thu Feb 23 19:53:42 2023 +0300
+
+    add: bash_functions (#9)
+
+commit b7c1069eca5e56016c10763d17f129958c841d0e
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Wed Feb 22 23:46:10 2023 +0300
+
+    add: deploy script (#7)
+
+commit f28936a4e400e5caf29fa64a96124718efb15c88
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Wed Feb 22 22:58:59 2023 +0300
+
+    add: vscode config (#6)
+
+commit 5be32f57f71a06c1f20b66daac0682c7bb2a1443
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Wed Feb 22 22:38:53 2023 +0300
+
+    add: alacritty.yml (#5)
+
+commit 365a23dbef2087be1b1210a078f1f97270e18c89
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Wed Feb 22 22:36:24 2023 +0300
+
+    add: bashrc (#4)
+
+commit 2a2a631292fabe68734d6e186ae19eb026b766d5
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Mon Feb 6 18:51:54 2023 +0300
+
+    fix: typo (#3)
+
+commit 4481cb1ac1f6600ac027c1758811cf28df3b2de5
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Jan 29 15:59:33 2023 +0300
+
+    rewrite in vim9script
+
+commit fbe409d707b52c36ad9b8eff15081a3550471508
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sat Jan 21 15:21:21 2023 +0300
+
+    add gruvbox theme plugin
+
+commit 5351c185a1cacfa67d022b511d918dd67c3492eb
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Jan 1 23:20:49 2023 +0300
+
+    add: e flag in substitution command
+
+commit d18ead8269887b5519f012b6c509c749c80b6629
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Nov 20 13:20:21 2022 +0300
+
+    fix: endif
+
+commit c5ae756f5318578c8a34cf4366c338fe488fc0ad
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Nov 20 13:19:06 2022 +0300
+
+    correct indent in python files
+
+commit 87be87b0e3d8b8ee4c097f8ca62fa174abe62bb5
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Nov 20 01:07:21 2022 +0300
+
+    feat: substitute tabs with spaces (#1)
+
+commit ac88e18a59b8f7263da9714d4e9a0c46e48efeae
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Nov 18 22:46:17 2022 +0300
+
+    disable arrows & mouse
+
+commit 17bd96ce5f494ade7a0c3933545ce16c21d0dca9
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Nov 18 22:46:17 2022 +0300
+
+    add shabang
+
+commit 16f71a82644760ee6fd45e2a22994634977b8be8
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Nov 18 22:39:08 2022 +0300
+
+    add: vi commands list
+
+commit 8e91b8ffebfa83968d4a22b517d9a443614ffcad
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Nov 18 20:52:25 2022 +0300
+
+    feat: more settings
+
+commit 541f4c49d9e2683c39173d88276fd5c00cac04b2
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Nov 18 19:52:55 2022 +0300
+
+    edit: README.md
+
+commit 887dfec2d0b6dcf4e98addd721f797d2bdb0b36f
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Nov 18 19:48:57 2022 +0300
+
+    edit comments
+
+commit 451abec053a4e88d2fe20aaad5f4d8af7b7293d1
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Fri Nov 18 19:48:38 2022 +0300
+
+    add deploy script
+
+commit 931683449c2cba79efa190c494b7954c09565970
+Author: mb6ockatf <mb6ockatf@relay.firefox.com>
+Date:   Sun Aug 21 16:42:43 2022 +0300
+
+    mv .vimrc vimrc
+
+commit 1b6650806b6051ffb6a0c6d91431e6a3258a37a6
+Author: mdddmmmm <mdddmmmm@debian.mb6ockatf>
+Date:   Sun Aug 21 16:41:02 2022 +0300
+
+    mv .vimrc vimrc
+
+commit 41ebdad7ff42b94d76859833da11070b7eb6c41d
+Author: BigProject404 <bigproject404@yandex.ru>
+Date:   Sun Jul 24 14:20:48 2022 +0300
+
+    add comments for current .vimrc file
+
+commit 0fb93a8fb7f3ea6929b03e1d299499d76489228d
+Author: BigProject404 <bigproject404@yandex.ru>
+Date:   Sun Jul 24 14:17:53 2022 +0300
+
+    set file encoding to utf-8 before every write
+    
+    This will do in compatibility between Unix / Linux systems and Windows NT.
+    Also, small refactoring is done
+
+commit 385284122b76dfd81318b44cf20e7543ff7ab63e
+Author: BigProject404 <bigproject404@yandex.ru>
+Date:   Sat Jul 23 22:13:45 2022 +0300
+
+    add readme.md
+
+commit c558b8c14923aeec6f19bbb46c11d1b70aceb5e6
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Wed Jul 20 21:11:00 2022 +0300
+
+    ignore pyhton files
+
+commit 13c083463f00a2dbe7923ed325eea2c603fc0ad5
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Wed Jul 20 12:37:22 2022 +0300
+
+    fix ia
+
+commit 594d3128e0a341d961833fdf8cc2545b2e96b191
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Wed Jul 20 11:04:56 2022 +0300
+
+    colorscheme list corrected
+
+commit 4915ff2db618a19a902bdd1db2fa1a9c9e12f509
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Tue Jul 19 13:32:29 2022 +0300
+
+    worked it out with textwidth
+
+commit 1d6d63729d93a5a8cb363a6d33886c454b3e3a39
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Tue Jul 19 13:24:13 2022 +0300
+
+    Remove bad colo from list
+
+commit 4e4a206de7ebb9e16759e6d6669b3113dacfce69
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Tue Jul 19 13:20:57 2022 +0300
+
+    Normalize time substitution
+
+commit f858e431355b58e2b8ff0875d820a985cf751d27
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Tue Jul 19 13:11:35 2022 +0300
+
+    simplify code
+
+commit 2ce6e37174a8de880e2a887bec5bab238a54d4e1
+Author: mdddmmmm <mb6ockatf@relay.firefox.com>
+Date:   Mon Jul 18 18:52:06 2022 +0300
+
+    Initial commit
