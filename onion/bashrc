@@ -396,7 +396,7 @@ readonly -f light viewlines ex stats commit set_bash_prompt mcd wttr clock \
 	phpconfig mysqlconfig trim folderssort ifconfig color_colorful \
 	color_color_table color_form_output rot13 bashrc ls_help ping_help \
 	chmod_help
-alias less="less --use-color" ls='ls -Fh --color=auto' cpuinfo='lscpu' \
+alias less="less --use-color" ls='sleep 1; ls -Fh --color=auto' cpuinfo='lscpu' \
 	grep='grep --colour=auto' egrep='grep -E' fgrep='grep -F' \
 	cal="cal -m | pv -qL 10" ln='ln -i' cp='cp -i' df='df -h' \
 	chown='chown --preserve-root' chmod='chmod --preserve-root' \
@@ -407,8 +407,9 @@ alias less="less --use-color" ls='ls -Fh --color=auto' cpuinfo='lscpu' \
 	iptunnel='echo "iptunnel -> ip t"' \
 	ipmaddr='echo "ipmaddr -> ip maddr"' nameif='echo "nameif -> ip l"' \
 	route='echo "route -> ip r"' mkdir='mkdir -pv' \
-	mount='mount | column -t' wget='wget -c'
+	mount='mount | column -t' wget='wget -c' \
 # alias np='nano -w PKGBUILD'
+command -v sl &> /dev/null && alias clear='sl -adF; clear'
 command -v bc &> /dev/null && alias bc='bc -l'
 command -v less &> /dev/null && alias more='less'
 command -v wget &> /dev/null && alias wget='wget -c'
@@ -421,11 +422,10 @@ command -v cowsay &> /dev/null && command -v fortune &> /dev/null && \
 command -v free &> /dev/null && alias free='free -h'
 command -v systemctl &> /dev/null && alias poweroff='systemctl poweroff' \
 	halt='systemctl halt' reboot='systemctl reboot'
-command -v sl &> /dev/null && alias clear='sl -adF; clear'
 
 alias diskspace="du -S | sort -n -r | more" mountedinfo='df -hT' \
 	folders='du -h --max-depth=1' f="find . | grep " j='jobs -l' \
-	gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+	gpumeminfo='grep -i --color memory /var/log/Xorg.0.log' \
 command -v free &> /dev/null && alias meminfo='free -l'
 command -v tree &> /dev/null && alias tree='tree -CAhF --dirsfirst' \
 	treed='tree -CAFd'
@@ -456,6 +456,8 @@ LESS_TERMCAP_ZO=$(tput ssupm)
 LESS_TERMCAP_ZW=$(tput rsupm)
 export POSIXLY_CORRECT=true CLICOLOR=1 QT_SELECT=4 PYENV_ROOT="$HOME/.pyenv" \
 	PATH="/home/mb6ockatf/.local/share/gem/ruby/3.0.0/bin:$PATH" \
+	PATH="/opt/openresty/bin:$PATH" \
+	PATH="/home/mb6ockatf/.local/bin:$PATH" \
 	HISTFILESIZE=20000 HISTCONTROL=ignoreboth:erasedups \
 	PROMPT_COMMAND=set_bash_prompt BROWSER=/usr/bin/chromium EDITOR=vim \
 	GROFF_NO_SGR=1  # For Konsole and Gnome-terminal

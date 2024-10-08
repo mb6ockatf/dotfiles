@@ -1,4 +1,4 @@
-se nocp nu rnu nobomb wrap wm=80 lbr tw=80 cc=80 ai hi=50 ru so=3 nopaste sc
+se nocp nu rnu nobomb wrap wm=79 lbr tw=79 cc=79 ai hi=50 ru so=3 nopaste sc
 se wmnu noto nottimeout dy=truncate mouse-=a bg=dark cole=1 hls is showmatch ic
 se scs tpm=15 bs=indent,eol,start noet shell=sh enc=UTF-8 scl=auto
 se lmap=ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,ЯZ
@@ -27,8 +27,8 @@ map Q gq
 cal plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'sirver/ultisnips'
+" Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/tagbar'
