@@ -150,7 +150,7 @@ set_bash_prompt() {
 		git_answer
 	[ $LAST_RESULT -eq 0 ] && PATH_COLOR="$COLOR_PATH_OK" \
 		|| PATH_COLOR="$COLOR_PATH_ERR"
-	PS1="\n${DIVIDER}[${PATH_COLOR}\w${DIVIDER}"
+	PS1="${DIVIDER}[${PATH_COLOR}\w${DIVIDER}"
 	PS1="${PS1}:${COLOR_CMDCOUNT}\#${DIVIDER}"
 	GIT_IS_AVAILABLE=$(git --version 2>&1 >/dev/null ; echo $?)
 	if [ "$GIT_IS_AVAILABLE" -eq 0 ]; then
@@ -397,7 +397,7 @@ readonly -f light viewlines ex stats commit set_bash_prompt mcd wttr clock \
 	color_color_table color_form_output rot13 bashrc ls_help ping_help \
 	chmod_help
 alias less="less --use-color" ls='sleep 1; ls -Fh --color=auto' cpuinfo='lscpu' \
-	grep='grep --colour=auto' egrep='grep -E' fgrep='grep -F' \
+	grep='grep --color=auto' egrep='grep -E' fgrep='grep -F' \
 	cal="cal -m | pv -qL 10" ln='ln -i' cp='cp -i' df='df -h' \
 	chown='chown --preserve-root' chmod='chmod --preserve-root' \
 	chgrp='chgrp --preserve-root' rm='rm -ivI --preserve-root' \
