@@ -50,7 +50,7 @@ global_dot_files[tyler_durden.list.dat]="/usr/share/fortune/tyler_durden.list.da
 global_dot_files[nftables.conf]="/etc/nftables.conf"
 global_dot_files[bashrc]="/root/.bashrc"
 global_dot_files[tmux.conf]="/root/.tmux.conf"
-global_dot_files[alacritty.toml]="root/.alacritty.toml"
+global_dot_files[alacritty.toml]="/root/.alacritty.toml"
 global_dot_files[vimrc]="/root/.vim/vimrc"
 
 usage() {
