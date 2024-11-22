@@ -19,6 +19,7 @@ dotfiles
   `polybar <https://github.com/polybar/polybar>`_
 * `brainfuck.nanorc <onion/brainfuck.nanorc/>`_ for
   `nano syntax highlight <https://github.com/scopatz/nanorc/>`_
+* `grub <onion/grub>`_ is an example file for grub configuration
 
 for rofi there is
 `@adi1090x's configuration setup <https://github.com/adi1090x/rofi>`_

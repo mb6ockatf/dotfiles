@@ -45,8 +45,6 @@ dot_folders[10]="$HOME/.config/fish"
 declare -A global_dot_files
 global_dot_files[mylight.service]="/etc/systemd/system/mylight.service"
 global_dot_files[pacman.conf]="/etc/pacman.conf"
-global_dot_files[tyler_durden.list]="/usr/share/fortune/tyler_durden.list"
-global_dot_files[tyler_durden.list.dat]="/usr/share/fortune/tyler_durden.list.dat"
 global_dot_files[nftables.conf]="/etc/nftables.conf"
 global_dot_files[bashrc]="/root/.bashrc"
 global_dot_files[tmux.conf]="/root/.tmux.conf"
