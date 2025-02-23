@@ -1,30 +1,83 @@
-se nocp nu rnu nobomb wrap wm=79 lbr tw=79 cc=79 ai hi=50 ru so=3 nopaste sc
-se wmnu noto nottimeout dy=truncate mouse-=a bg=dark cole=1 hls is showmatch ic
-se scs tpm=15 bs=indent,eol,start noet shell=sh enc=UTF-8 scl=auto
-se lmap=ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,ЯZ
-se lmap+=ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs
-se lmap+=вd,аf,пg,рh,оj,лk,дl,яz,чx,сc,мv,иb,тn,ьm
-no <Up> <Nop>
-no <Down> <Nop>
-no <Left> <Nop>
-no <Right> <Nop>
-vn <Up> <Nop>
-vn <Down> <Nop>
-vn <Left> <Nop>
-vn <Right> <Nop>
-ino <Up> <Nop>
-ino <Down> <Nop>
-ino <Left> <Nop>
-ino <Right> <Nop>
-map <F1> :w<CR>
-map <F2> :wq<CR>
-map <F4> :NERDTree<CR><C-W>
-nmap <F5> :TagbarToggle<CR>
-map <F7> :tabp<CR>
-map <F8> :tabn<CR>
-map <F9> :tabnew<CR>
+set nocompatible number relativenumber nobomb wrap wrapmargin=79 linebreak
+\ textwidth=79 cc=79 autoindent hi=50 ru so=3 nopaste sc wildmenu notimeout
+\ nottimeout display=truncate mouse-=a bg=dark conceallevel=1 hlsearch is
+\ showmatch ignorecase scs tabpagemax=15 noexpandtab shell=bash
+\ encoding=UTF-8 scl=auto
+\ lmap=ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,ЯZ
+\ lmap+=ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs
+\ lmap+=вd,аf,пg,рh,оj,лk,дl,яz,чx,сc,мv,иb,тn,ьm
+" set backspace=indent,eol,start
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+noremap <Insert> <Nop>
+noremap <Del> <Nop>
+noremap <BS> <Nop>
+noremap <Home> <Nop>
+noremap <End> <Nop>
+noremap <PageUp> <Nop>
+noremap <PageDown> <Nop>
+noremap <F1> <Nop>
+noremap <F2> <Nop>
+noremap <F3> <Nop>
+noremap <F4> <Nop>
+noremap <F5> <Nop>
+noremap <F6> <Nop>
+noremap <F7> <Nop>
+noremap <F8> <Nop>
+noremap <F9> <Nop>
+noremap <F10> <Nop>
+noremap <F11> <Nop>
+noremap <F12> <Nop>
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+vnoremap <Insert> <Nop>
+vnoremap <Del> <Nop>
+vnoremap <BS> <Nop>
+vnoremap <Home> <Nop>
+vnoremap <End> <Nop>
+vnoremap <PageUp> <Nop>
+vnoremap <PageDown> <Nop>
+vnoremap <F1> <Nop>
+vnoremap <F2> <Nop>
+vnoremap <F3> <Nop>
+vnoremap <F4> <Nop>
+vnoremap <F5> <Nop>
+vnoremap <F6> <Nop>
+vnoremap <F7> <Nop>
+vnoremap <F8> <Nop>
+vnoremap <F9> <Nop>
+vnoremap <F10> <Nop>
+vnoremap <F11> <Nop>
+vnoremap <F12> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <Insert> <Nop>
+inoremap <Del> <Nop>
+inoremap <BS> <Nop>
+inoremap <Home> <Nop>
+inoremap <End> <Nop>
+inoremap <PageUp> <Nop>
+inoremap <PageDown> <Nop>
+inoremap <F1> <Nop>
+inoremap <F2> <Nop>
+inoremap <F3> <Nop>
+inoremap <F4> <Nop>
+inoremap <F5> <Nop>
+inoremap <F6> <Nop>
+inoremap <F7> <Nop>
+inoremap <F8> <Nop>
+inoremap <F9> <Nop>
+inoremap <F10> <Nop>
+inoremap <F11> <Nop>
+inoremap <F12> <Nop>
 map Q gq
-cal plug#begin()
+call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
 " Plug 'sirver/ultisnips'
@@ -53,10 +106,10 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'ryanoasis/vim-devicons'
 Plug 'timcharper/textile.vim'
-cal plug#end()
+call plug#end()
 " PlugUpdate
 " PlugInstall
-colo gruvbox
+colorscheme gruvbox
 let g:NERDTreeFileLines = 1
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 let g:NERDTreeGitStatusUseNerdFonts = 1
@@ -70,65 +123,65 @@ let g:UltiSnipsJumpForwardTrigger = 'c-b'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 filetype detect
 if &filetype == "html" || &filetype == "css"
-	se ts=2 sw=2 nolbr cc=140 tw=140
+	set ts=2 sw=2 nolinebreak cc=140 textwidth=140
 elsei &filetype == "asm"
-	se ts=8 sw=8 et nolbr
+	set ts=8 sw=8 expandtab nolinebreak
 elsei &filetype == "go"
-	se nolbr
+	set nolinebreak
 elsei &filetype == "haskell"
-	se cc=75 tw=75 nolbr ts=2 sw=2 et
-en
+	set cc=75 textwidth=75 nolinebreak ts=2 sw=2 expandtab
+endif
 
-fu PrepareBeforeWrite()
+function PrepareBeforeWrite()
 	if &filetype == "python"
 		%s/^	/    /e
-	en
+	endif
 	%s/\s\+$//e
 	%s/\^datetime\^/\=strftime("%c")/e
-	se fenc=utf-8
-endf
+	set fileencoding=utf-8
+endfunction
 
 
-fu StatuslineTrailingSpaceWarning()
+function StatuslineTrailingSpaceWarning()
 	if !exists("b:statusline_trailing_space_warning")
 		if !&modifiable
 			let b:statusline_trailing_space_warning = ''
-			retu b:statusline_trailing_space_warning
-		en
+			return b:statusline_trailing_space_warning
+		endif
 		if search('\s\+$', 'nw') != 0
 			let b:statusline_trailing_space_warning = '[\s]'
 		else
 			let b:statusline_trailing_space_warning = ''
-		en
-	en
-	retu b:statusline_trailing_space_warning
-endf
+		endif
+	endif
+	return b:statusline_trailing_space_warning
+endfunction
 
-fu StatuslineCurrentHighlight()
+function StatuslineCurrentHighlight()
 	let name = synIDattr(synID(line('.'),col('.'), 1), 'name')
-	if name == '' | retu ''  | else | retu '[' . name . ']' | en
-endf
+	if name == '' | return ''  | else | return '[' . name . ']' | endif
+endfunction
 
-fu StatuslineLongLineWarning()
+function StatuslineLongLineWarning()
 	if !exists("b:statusline_long_line_warning")
 		if !&modifiable
 			let b:statusline_long_line_warning = ''
-			retu b:statusline_long_line_warning
-		en
+			return b:statusline_long_line_warning
+		endif
 		let long_line_lens = s:LongLines()
 		if len(long_line_lens) > 0
 			let b:statusline_long_line_warning = "[" .
-					\ '#' . len(long_line_lens) . "," .
-					\ 'm' . s:Median(long_line_lens) . "," .
-					\ '$' . max(long_line_lens) . "]"
+			\ '#' . len(long_line_lens) . "," .
+			\ 'm' . s:Median(long_line_lens) . "," .
+			\ '$' . max(long_line_lens) . "]"
 		else
 			let b:statusline_long_line_warning = ""
-		en
-	en
-	retu b:statusline_long_line_warning
-endf
+		endif
+	endif
+	return b:statusline_long_line_warning
+endfunction
 
-fu s:LongLines()
+function s:LongLines()
 	let threshold = (&tw ? &tw : 80)
 	let spaces = repeat(" ", &ts)
 	let long_line_lens = []
@@ -136,53 +189,40 @@ fu s:LongLines()
 	while i <= line("$")
 		let len = strlen(substitute(getline(i), '\t', spaces, 'g'))
 		if len > threshold
-			cal add(long_line_lens, len)
-		en
+			call add(long_line_lens, len)
+		endif
 		let i += 1
-	endw
-	retu long_line_lens
-endf
+	endwhile
+	return long_line_lens
+endfunction
 
-fu s:Median(nums)
+function s:Median(nums)
 	let nums = sort(a:nums)
 	let l = len(nums)
 	if l % 2 == 1
 		let i = (l - 1) / 2
-		retu nums[i]
+		return nums[i]
 	else
-		retu nums[l / 2] + nums[(l / 2) - 1] / 2
-	en
-endf
+		return nums[l / 2] + nums[(l / 2) - 1] / 2
+	endif
+endfunction
 
-se ls=2
-se stl=%-03.f
-se stl+=%#warningmsg#
-se stl+=%{&ff!='unix'?'['.&ff.']':''}
-se stl+=%*
-se stl+=%#warningmsg#
-se stl+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-se stl+=%*
-se stl+=%h%y%r%m
-se stl+=%{StatuslineTrailingSpaceWarning()}
-se stl+=%{StatuslineLongLineWarning()}
-se stl+=%#warningmsg#
-se stl+=%#error#
-se stl+=%{&paste?'[paste]':''}
-se stl+=%*
-se stl+=%{FugitiveStatusline()}
-se stl+=%=
-se stl+=%{StatuslineCurrentHighlight()}\ \
-se stl+=%c,
-se stl+=%l/%L
-se stl+=\ %P
-au cursorhold,bufwritepost * unl! b:statusline_trailing_space_warning
-au cursorhold,bufwritepost * unl! b:statusline_long_line_warningS
-au StdinReadPre * let s:std_in=1
-au VimEnter * NERDTree | if argc() > 1 || exists("s:std_in") | winc p | endi
-au VimEnter * GitGutterEnable
-au BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endi
-au BufWritePost * GitGutter
-aug PreWriteEdits
-au BufWritePre * cal PrepareBeforeWrite()
-aug END
+set ls=2
+set stl=%-03.f%#warningmsg#%{&ff!='unix'?'['.&ff.']':''}%*%#warningmsg#
+set stl+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}%*%h%y%r%m
+set stl+=%{StatuslineTrailingSpaceWarning()}
+set stl+=%{StatuslineLongLineWarning()}
+set stl+=%#warningmsg#%#error#%{&paste?'[paste]':''}%*
+set stl+=%{FugitiveStatusline()}%=
+set stl+=%{StatuslineCurrentHighlight()}\ \%c,%l/%L\ %P
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+autocmd cursorhold,bufwritepost * unlet! b:statusline_long_line_warningS
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 1 || exists("s:std_in") | wincmd p | endif
+autocmd VimEnter * GitGutterEnable
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+autocmd BufWritePost * GitGutter
+augroup PreWriteEdits
+autocmd BufWritePre * call PrepareBeforeWrite()
+augroup END
 syntax on
