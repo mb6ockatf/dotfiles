@@ -398,7 +398,7 @@ readonly -f light viewlines ex stats commit set_bash_prompt mcd wttr clock \
 	chmod_help
 alias less="less --use-color" ls='sleep 1; ls -Fh --color=auto' cpuinfo='lscpu' \
 	grep='grep --color=auto' egrep='grep -E' fgrep='grep -F' \
-	cal="cal -m | pv -qL 10" ln='ln -i' cp='cp -i' df='df -h' \
+	cal="cal -m" ln='ln -i' cp='cp -i' df='df -h' \
 	chown='chown --preserve-root' chmod='chmod --preserve-root' \
 	chgrp='chgrp --preserve-root' rm='rm -ivI --preserve-root' \
 	scp='echo "use $(color_form_output red rsync)"' netstat='ss -v' \
@@ -418,11 +418,10 @@ command -v todo.sh &> /dev/null && alias todo='todo.sh -@ -+ -c -t -v'
 command -v shellcheck &> /dev/null && alias shellcheck='shellcheck -C'
 command -v cowsay &> /dev/null && alias cowsay='cowsay -d -W 80'
 command -v cowsay &> /dev/null && command -v fortune &> /dev/null && \
-	command -v pv &> /dev/null && alias moo='fortune | cowsay | pv -qL 30'
+	alias moo='fortune | cowsay'
 command -v free &> /dev/null && alias free='free -h'
 command -v systemctl &> /dev/null && alias poweroff='systemctl poweroff' \
 	halt='systemctl halt' reboot='systemctl reboot'
-
 alias diskspace="du -S | sort -n -r | more" mountedinfo='df -hT' \
 	folders='du -h --max-depth=1' f="find . | grep " j='jobs -l' \
 	gpumeminfo='grep -i --color memory /var/log/Xorg.0.log' \
@@ -454,7 +453,7 @@ LESS_TERMCAP_ZN=$(tput ssubm)
 LESS_TERMCAP_ZV=$(tput rsubm)
 LESS_TERMCAP_ZO=$(tput ssupm)
 LESS_TERMCAP_ZW=$(tput rsupm)
-export POSIXLY_CORRECT=true CLICOLOR=1 QT_SELECT=4 PYENV_ROOT="$HOME/.pyenv" \
+export POSIXLY_CORRECT=true CLICOLOR=1 QT_SELECT=4 \
 	PATH="/home/mb6ockatf/.local/share/gem/ruby/3.0.0/bin:$PATH" \
 	PATH="/opt/openresty/bin:$PATH" \
 	PATH="/home/mb6ockatf/.local/bin:$PATH" \
@@ -462,7 +461,8 @@ export POSIXLY_CORRECT=true CLICOLOR=1 QT_SELECT=4 PYENV_ROOT="$HOME/.pyenv" \
 	PROMPT_COMMAND=set_bash_prompt BROWSER=/usr/bin/chromium EDITOR=vim \
 	GROFF_NO_SGR=1  # For Konsole and Gnome-terminal
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+command -v pyenv >/dev/null && eval "$(pyenv init -)" && \
+	export PYENV_ROOT="$HOME/.pyenv"
 bind -f  ~/.inputrc
 [[ "$(whoami)" != "root" && "$reload" != "true" ]] && moo
 # rate.sx

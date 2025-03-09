@@ -1,10 +1,4 @@
 #function clear {sl -adF; /usr/bin/clear}
-function login_bar {
-	clear
-	$text="POWERSHELL SUCKS; USE BASH OR SOME OTHER NORMAL SHELL"
-	toilet --font future $text -w 80 --metal
-}
-login_bar
 
 # function cal {cal | pv -qL 10}
 # set-alias cat        get-content
@@ -20,15 +14,18 @@ new-alias rm         remove-item
 new-alias rmdir      remove-item
 
 function help {
-    get-help $args[0] | out-host -paging
+	echo "get-help $args | out-host -paging"
+	get-help $args[0] | out-host -paging
 }
 
 function man {
-    get-help $args[0] | out-host -paging
+	echo "get-help $args | out-host -paging"
+	get-help $args[0] | out-host -paging
 }
 
 function mkdir {
-    new-item -type directory -path $args
+	echo "new-item -type directory -path $args"
+	new-item -type directory -path $args
 }
 
 function prompt {
