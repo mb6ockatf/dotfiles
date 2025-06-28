@@ -1,0 +1,7 @@
+add-highlighter global/ number-lines
+set-option global scrolloff 8,3
+add-highlighter global/trailing-whitespace regex '\h+$' 0:Information
+add-highlighter global/ wrap -word -indent
+add-highlighter global/ show-matching
+define-command -docstring "save and quit" x "write-all; quit"
+colorscheme gruvbox-dark
