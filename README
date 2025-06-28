@@ -1,0 +1,6 @@
+dotfiles
+
+use GNU stow tool to install these files to your $HOME
+
+@adi1090x's configuration setup https://github.com/adi1090x/rofi
+
