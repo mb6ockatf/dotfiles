@@ -1,4 +1,98 @@
-commit 51f55c204fd7c4fbeecf0a14b70d819ca2216b45
+commit dd86957080bcefb2cec20a1de712d9c8f127d9f3
+Author: mb6ockatf <smokenmirror@tutamail.com>
+Date:   Sat Jun 28 13:46:18 2025 +0300
+
+    chore: update readme
+    
+    got rid of useless instructions as setup.sh is no more used
+
+commit 238261b35e45e5b45091889204ce78f6945b1b80
+Author: mb6ockatf <smokenmirror@tutamail.com>
+Date:   Sat Jun 28 13:43:24 2025 +0300
+
+    chore: migrate to stow
+
+commit 4654fff3577ab478d9d723946a8088cfac109e8d
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Mar 9 10:30:41 2025 +0300
+
+    chore(shell rc files): remove dependency
+    
+    pyenv can be not present on the system, so do not init it if it is not there -- as simple as that
+
+commit 4398c808b6abd571d7049be5353d346ea9a21da6
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Mar 9 10:25:48 2025 +0300
+
+    chore(xinitrc): feh called from bspwm, not xorg
+
+commit f00f3ca7a14edf2b82f39a7f04e2e0cb9becf112
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Feb 23 11:25:03 2025 +0300
+
+    feat(insert-pageup button block): unmap keys
+
+commit d6e84affd06333069a157fa0b04b435f32254174
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Feb 23 10:26:04 2025 +0300
+
+    feat(hosts): add yandex
+
+commit fe71325659ce6bc3f38d4dd145d01dd5cc23c790
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Nov 22 16:08:45 2024 +0300
+
+    feat(hosts): more added
+
+commit 8ab06b33c9a97665182afd002330804274fa9d74
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Fri Nov 22 15:55:01 2024 +0300
+
+    chore(tyler_durden): now separate repo
+
+commit d55dec96ec8589e9c7b3831eb0f87fb14378d904
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Nov 11 14:44:14 2024 +0300
+
+    chore(setup.sh): fix missprint
+
+commit c56889556365684417714187c37bc24389f9589e
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Mon Nov 4 12:42:40 2024 +0300
+
+    feat(hosts): add new names
+
+commit 4ad5ccb7a07d30ba29b365eef94fce0eb82f0640
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Nov 3 11:14:19 2024 +0300
+
+    feat(zshrc): aliases
+
+commit 5861c64df08f4a6935cb8c034e85a9511d12d8c4
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sun Nov 3 11:13:37 2024 +0300
+
+    fix(bashrc): missprints
+
+commit ca917d163bd2914d9ca542694027d6253e5ec4d1
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Sat Nov 2 22:17:14 2024 +0300
+
+    feat(kitty): gruvbox_dark: black bg
+
+commit 88ca5567b7fa612a85bf06c99d79457c8c064cd2
+Author: mb6ockatf <mdddmmmm@yandex.ru>
+Date:   Tue Oct 8 12:09:54 2024 +0300
+
+    chore: minor changes
+    
+    bashrc, pacman.conf -- minor additions
+    vimrc -- minor correction
+    bash_profile, setup.sh -- rename bash_profile file
+    kitty.conf: set history size to 0
+    hosts: add wildberries
+
+commit 2d718b32a1e820f5b1fdf289b03d1430b49e6cd0
 Author: mb6ockatf <mdddmmmm@yandex.ru>
 Date:   Sat Aug 10 16:10:51 2024 +0300
 
