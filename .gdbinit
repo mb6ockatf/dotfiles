@@ -15,3 +15,29 @@
 #
 set debuginfod enabled on
 set disassembly-flavour intel
+set listsize 10
+set print array on
+set print array-indexes on
+set print pretty on
+set print union on
+set print demangle on
+set multiple-symbols ask
+set stop-on-solib-events 1
+set print inferior-events on
+set step-mode on
+set breakpoint pending on
+set print object on
+set print static-members on
+set print vtbl on
+set demangle-style gnu-v3
+set print sevenbit-strings off
+
+set observer on
+# instructions when using gdb:
+# c-x,s enters tui mode.
+# c/n/f/s/u/d/v/w in tui mode.
+# c-x,c-a to exit tui mode.
+# p/t var to print var as ntw,
+# where t = c/i/x/..
+# x/ntw where n=int, t=type, w=width to view memory.
+
