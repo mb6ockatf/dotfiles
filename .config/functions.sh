@@ -168,3 +168,56 @@ updateos() {
 	$IS_GCC_HERE && gcc_version
 	$IS_PYTHON3_HERE && python3_version
 }
+
+##############################################################################
+# refactor *.sh files recirsively in the current folder                      #
+# original files are renamed into oldname.orig, like `artistic style` does   #
+# with c files                                                               #
+# basically, just removes empty lines, adds ones after code blocks and does  #
+# `shfmt` formatting (https://github.com/mvdan/sh)                           #
+# output: formatted sh files                                                 #
+##############################################################################
+refactor_sh(){
+	while IFS= read -r -d '' filename
+	do
+		cp "$filename" "${filename}.orig"
+		sed -i '/^\s*$/d; /.*\}$/G' "$filename"
+		shfmt --list --write --language-dialect bash --simplify \
+			--case-indent --func-next-line \
+			--space-redirects "$filename"
+	done <	<(find ./ -type f -iname "*.sh")
+}
+
+refactor_c() {
+	astyle --version >/dev/null 2>&1
+	if [ "$?" == 127 ]
+	then
+		return 127
+	fi
+	astyle -r -A7 --indent=force-tab=4 -xe -xC=79 -z2 "*.c"
+}
+
+##############################################################################
+# change screen light if intel_backlight settings are present. requires sudo #
+# arguments: [night | -inc VALUE | -dec VALUE]                               #
+# output: nothing                                                            #
+# return: 2 if backlight config is not available                             #
+##############################################################################
+light() {
+	file="/sys/class/backlight/intel_backlight/brightness"
+	if [[ ! -f $file ]]; then
+		echo "intel_backlight settings are not available"
+		return 2
+	fi
+	current=$(cat "$file")
+	new="$current"
+	if [ "$1" = "-dec" ]; then
+		new=$(( current - $2 ))
+	elif [ "$1" = "-inc" ]; then
+		new=$(( current + $2 ))
+	elif [ "$1" = "night" ]; then
+		new=1
+	fi
+	[[ "$new" -ge 0 ]] || exit
+	echo "$new" | sudo tee "$file"
+}

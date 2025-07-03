@@ -1,29 +1,9 @@
-# configuration.nix - nixOS configuration file
-#
-#   This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-#
-#   This program is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.luks.devices."luks-9ad211fe-bcc6-48b9-80db-3d4d82391db4".device = "/dev/disk/by-uuid/9ad211fe-bcc6-48b9-80db-3d4d82391db4";
@@ -73,43 +53,27 @@
     isNormalUser = true;
     description = "mb6ockatf";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages = with pkgs; [ ];
   };
   users.defaultUserShell = pkgs.bash;
   programs.firefox.enable = false;
-  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-      neovim
-      python314
-      wget
-      bc
-      telegram-desktop
-      ayugram-desktop
-      gcc
-      indent
-      librewolf-bin
-      gdb
-      kakoune
-      libreoffice
-      git
-      shellcheck
-      # lua5_4_compat
+      neovim python314 wget bc telegram-desktop ayugram-desktop gcc
+      indent librewolf-bin gdb kakoune libreoffice git shellcheck
       (lua5_4_compat.withPackages (subpkgs: with subpkgs;[
       	busted
 	]))
-      stow
-      kdePackages.marble
-      kstars
-      stellarium
-      kotlin
-      jetbrains.idea-community-bin
-      jdk24
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+      stow kdePackages.marble kstars stellarium kotlin
+      jetbrains.idea-community-bin jdk24 github-linguist
+      unzip astyle autoconf automake gnumake
   ];
+  fonts.packages = with pkgs; [
+  nasin-nanpa
+  nerd-fonts.lilex
+  nerd-fonts.iosevka
+  ];
+  fonts.fontconfig.useEmbeddedBitmaps = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
