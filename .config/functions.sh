@@ -35,7 +35,8 @@ separator="-----------------------------------------------------------------";
 separator="${separator}-----------"
 
 
-color_form_output() {
+color_form_output()
+{
 	color="$1"
 	message="$2"
 	case "$color" in
@@ -60,11 +61,13 @@ color_form_output() {
 	printf '%b%b%b' "$color" "$message" "$END"
 }
 
-statistics() {
+statistics()
+{
 	history | awk '{print $2}' | sort | uniq -c | sort -rn
 }
 
-ex() {
+ex()
+{
 	if [ -f "$1" ]; then
 		case $1 in
 			*.tar.bz2) tar xjf "$1";;
@@ -85,7 +88,8 @@ ex() {
 	fi
 }
 
-wttr() {
+wttr()
+{
 	city="$1" && options="$2" && header="Accept-Language: en"
 	[ "$options" = "" ] && options="1FnQp"
 	curl -H "$header " "wttr.in/$city?$options"
@@ -167,25 +171,6 @@ updateos() {
 	fi
 	$IS_GCC_HERE && gcc_version
 	$IS_PYTHON3_HERE && python3_version
-}
-
-##############################################################################
-# refactor *.sh files recirsively in the current folder                      #
-# original files are renamed into oldname.orig, like `artistic style` does   #
-# with c files                                                               #
-# basically, just removes empty lines, adds ones after code blocks and does  #
-# `shfmt` formatting (https://github.com/mvdan/sh)                           #
-# output: formatted sh files                                                 #
-##############################################################################
-refactor_sh(){
-	while IFS= read -r -d '' filename
-	do
-		cp "$filename" "${filename}.orig"
-		sed -i '/^\s*$/d; /.*\}$/G' "$filename"
-		shfmt --list --write --language-dialect bash --simplify \
-			--case-indent --func-next-line \
-			--space-redirects "$filename"
-	done <	<(find ./ -type f -iname "*.sh")
 }
 
 refactor_c() {

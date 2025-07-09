@@ -67,6 +67,8 @@
       stow kdePackages.marble kstars stellarium kotlin
       jetbrains.idea-community-bin jdk24 github-linguist
       unzip astyle autoconf automake gnumake
+      texlive.combined.scheme-small
+      shfmt
   ];
   fonts.packages = with pkgs; [
   nasin-nanpa

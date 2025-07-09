@@ -1,10 +1,9 @@
-#!/bin/bash
-# Script that shows terminal colors
-# -- elenapan @ github
-
+#!/usr/bin/env bash
 f=3 b=4
-for j in f b; do
-  for i in {0..7}; do
+for j in f b
+do
+  for i in {0..7}
+  do
     printf -v $j$i %b "\e[${!j}${i}m"
   done
 done

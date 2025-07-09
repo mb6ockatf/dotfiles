@@ -23,3 +23,4 @@ read -r
 address="https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/hosts/ultimate.txt"
 curl "$address" -o finalhosts
 cat hosts >> finalhosts
+

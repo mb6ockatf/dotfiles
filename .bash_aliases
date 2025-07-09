@@ -28,8 +28,10 @@ alias ll='ls -lh' la='ls -lha' l='ls -CF' \
 	emacs='emacs -nw' \
 	_='sudo' _i='sudo -i' fucking='sudo' please='sudo' \
 	python3='python3 -q' \
-	gcc='gcc -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors' \
 	chown='chown --preserve-root' chmod='chmod --preserve-root' \
 	chgrp='chgrp --preserve-root' \
-	rm='rm -ivI --preserve-root'
+	rm='rm -iI --preserve-root' \
+	gcc='gcc -std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror '`
+	`'-Wfatal-errors -Wshadow -Wconversion -Wstrict-prototypes '`
+	`'-Wold-style-definition'
 

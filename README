@@ -2,8 +2,8 @@ dotfiles
 
 use GNU stow tool to install these files to your $HOME
 
-stow --verbose --target=$$HOME --restow .
-stow --verbose --target=$$HOME --delete .
+stow --verbose --target=$HOME --restow .
+stow --verbose --target=$HOME --delete .
 
 @adi1090x's configuration setup https://github.com/adi1090x/rofi
 
