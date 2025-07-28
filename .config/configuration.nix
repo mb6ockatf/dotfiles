@@ -12,7 +12,14 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.nameservers = [
+  "116.202.176.26"  # libredns
+  "9.9.9.9"  # quad9
+  "149.112.112.112"  # quad9
+  "185.71.138.138"  # wikimedia dns
+  ];
   networking.networkmanager.enable = true;
+  networking.useDHCP = false;
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -59,16 +66,23 @@
   programs.firefox.enable = false;
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-      neovim python314 wget bc telegram-desktop ayugram-desktop gcc
-      indent librewolf-bin gdb kakoune libreoffice git shellcheck
+      neovim zathura
+      python314 wget bc
+      telegram-desktop ayugram-desktop libffi
+      librewolf-bin gdb kakoune libreoffice git shellcheck
+      lua54Packages.luarocks-nix
       (lua5_4_compat.withPackages (subpkgs: with subpkgs;[
       	busted
 	]))
-      stow kdePackages.marble kstars stellarium kotlin
-      jetbrains.idea-community-bin jdk24 github-linguist
-      unzip astyle autoconf automake gnumake
+	calcurse
+      kdePackages.marble kstars stellarium
+      kotlin jetbrains.idea-community-bin jdk24
+      unzip astyle 
       texlive.combined.scheme-small
-      shfmt
+      shfmt 
+      gcc indent github-linguist flex bison pkg-config ninja meson cmake autoconf
+      automake gnumake stow 
+      datamash octave cflow
   ];
   fonts.packages = with pkgs; [
   nasin-nanpa
