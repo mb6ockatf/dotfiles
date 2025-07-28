@@ -3,7 +3,6 @@ s/^sudo //
 # remove pipes as every step of piping is a different command
 s/ | /\n/g
 s/ && /\n/g
-s/vim /nvim /
 # remove comments that somehow got to history
 /^#/d
 # remove some commands as they are all the same, nothing interesting
@@ -14,5 +13,6 @@ s/vim /nvim /
 /^mkdir /d
 /^man /d
 /^nvim /d
+/^vim /d
 /^less /d
 /^, /d

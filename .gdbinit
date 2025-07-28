@@ -14,7 +14,6 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 set debuginfod enabled on
-set disassembly-flavour intel
 set listsize 10
 set print array on
 set print array-indexes on
@@ -31,6 +30,8 @@ set print static-members on
 set print vtbl on
 set demangle-style gnu-v3
 set print sevenbit-strings off
+set tui border-kind acs
+set tui compact-source on
 
 set observer on
 # instructions when using gdb:

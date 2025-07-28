@@ -17,21 +17,17 @@
 
 if [ -x /usr/bin/dircolors ]
 then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || \
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" ||
 		eval "$(dircolors -b)"
 	alias ls='ls --color=auto' dir='dir--color=auto' \
 		vdir='vdir --color=auto' grep='grep --color=auto' \
 		fgrep='fgrep --color=auto' egrep='color --auto'
 fi
 
-alias ll='ls -lh' la='ls -lha' l='ls -CF' \
-	emacs='emacs -nw' \
+alias emacs='emacs -nw' \
 	_='sudo' _i='sudo -i' fucking='sudo' please='sudo' \
-	python3='python3 -q' \
+	python3='python3 -q' bc='bc -qs' sed='sed --posix' awk='awk -P' \
 	chown='chown --preserve-root' chmod='chmod --preserve-root' \
 	chgrp='chgrp --preserve-root' \
-	rm='rm -iI --preserve-root' \
-	gcc='gcc -std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror '`
-	`'-Wfatal-errors -Wshadow -Wconversion -Wstrict-prototypes '`
-	`'-Wold-style-definition'
+	rm='rm -iI --preserve-root'
 

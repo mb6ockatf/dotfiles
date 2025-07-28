@@ -68,7 +68,8 @@ statistics()
 
 ex()
 {
-	if [ -f "$1" ]; then
+	if [ -f "$1" ]
+	then
 		case $1 in
 			*.tar.bz2) tar xjf "$1";;
 			*.tar.gz) tar xzf "$1";;
@@ -95,22 +96,27 @@ wttr()
 	curl -H "$header " "wttr.in/$city?$options"
 }
 
-rot13() {
+rot13()
+{
 	echo "$@" | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 }
 
-trim() {
+trim()
+{
+
 	var="$*"
 	var="${var#"${var%%[![:space:]]*}"}"
 	var="${var%"${var##*[![:space:]]}"}"
 	echo "$var"
 }
 
-hexencode() {
+hexencode()
+{
 	echo "$@" | xxd -p
 }
 
-hexdecode() {
+hexdecode()
+{
 	echo "$@" | xxd -p -r
 }
 
@@ -139,7 +145,8 @@ if command -v pip3 >/dev/null 2>&1
 then
 	export IS_PIP3_HERE=true
 fi
-gcc_version() {
+gcc_version()
+{
 	if $IS_GCC_HERE
 	then
 		printf "%s (latest: GCC 15 as of 06.30.2025)\n" \
@@ -150,7 +157,8 @@ gcc_version() {
 }
 export GCC_VERSION="$(gcc_version)"
 
-python3_version() {
+python3_version()
+{
 	if $IS_PYTHON3_HERE
 	then
 		printf "%s (latest: python 3.13.5 as of 06.30.2025)\n" \
@@ -161,7 +169,8 @@ python3_version() {
 }
 export PYTHON3_VERSION="$(python3_version)"
 
-updateos() {
+updateos()
+{
 	$IS_APT_HERE && sudo apt update -y && sudo apt full-upgrade -y
 	$IS_NMAP_HERE && sudo nmap --script-updatedb
 	if [ "$1" == "--with-pip" ] && $IS_PIP3_HERE
@@ -173,7 +182,8 @@ updateos() {
 	$IS_PYTHON3_HERE && python3_version
 }
 
-refactor_c() {
+refactor_c()
+{
 	astyle --version >/dev/null 2>&1
 	if [ "$?" == 127 ]
 	then
@@ -188,21 +198,27 @@ refactor_c() {
 # output: nothing                                                            #
 # return: 2 if backlight config is not available                             #
 ##############################################################################
-light() {
+light()
+{
 	file="/sys/class/backlight/intel_backlight/brightness"
-	if [[ ! -f $file ]]; then
+	if [[ ! -f $file ]]
+	then
 		echo "intel_backlight settings are not available"
 		return 2
 	fi
 	current=$(cat "$file")
 	new="$current"
-	if [ "$1" = "-dec" ]; then
+	if [ "$1" = "-dec" ]
+	then
 		new=$(( current - $2 ))
-	elif [ "$1" = "-inc" ]; then
+	elif [ "$1" = "-inc" ]
+	then
 		new=$(( current + $2 ))
-	elif [ "$1" = "night" ]; then
+	elif [ "$1" = "night" ]
+	then
 		new=1
 	fi
 	[[ "$new" -ge 0 ]] || exit
 	echo "$new" | sudo tee "$file"
 }
+
