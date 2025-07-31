@@ -20,6 +20,7 @@ return {
 	"tiagovla/tokyodark.nvim",
 	lazy = false,
 	opts = {
+		style = "night",
 		styles = {
 			comments = { italic = false },
 			keywords = { italic = false },

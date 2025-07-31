@@ -184,12 +184,7 @@ updateos()
 
 refactor_c()
 {
-	astyle --version >/dev/null 2>&1
-	if [ "$?" == 127 ]
-	then
-		return 127
-	fi
-	astyle -r -A7 --indent=force-tab=4 -xe -xC=79 -z2 "*.c"
+	indent "$1"
 }
 
 ##############################################################################

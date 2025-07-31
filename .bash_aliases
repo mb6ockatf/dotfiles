@@ -19,15 +19,15 @@ if [ -x /usr/bin/dircolors ]
 then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" ||
 		eval "$(dircolors -b)"
-	alias ls='ls --color=auto' dir='dir--color=auto' \
-		vdir='vdir --color=auto' grep='grep --color=auto' \
-		fgrep='fgrep --color=auto' egrep='color --auto'
 fi
 
 alias emacs='emacs -nw' \
 	_='sudo' _i='sudo -i' fucking='sudo' please='sudo' \
 	python3='python3 -q' bc='bc -qs' sed='sed --posix' awk='awk -P' \
 	chown='chown --preserve-root' chmod='chmod --preserve-root' \
-	chgrp='chgrp --preserve-root' \
-	rm='rm -iI --preserve-root'
+	chgrp='chgrp --preserve-root' rm='rm -iI --preserve-root' \
+	ls='ls --color=auto' dir='dir --color=auto' \
+	vdir='vdir --color=auto' grep='grep --color=auto' \
+	fgrep='grep -F --color=auto' egrep='grep -E --color=auto' \
+	rgrep='grep -r --color=auto'
 
