@@ -34,7 +34,8 @@ declare -x LC_ALL=en_US.UTF-8 POSIXLY_CORRECT=true CLICOLOR=1 \
 	CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror '`
 	`'-Wfatal-errors' \
 	PYTHON_COLORS=1 PYTHONOPTIMIZE=true \
-	PYTHONSTARTUP="/home/${USER}/.config/pythonrc"
+	PYTHONSTARTUP="/home/${USER}/.config/pythonrc" \
+	PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
 
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 [ -f ~/.config/functions.sh ] && . ~/.config/functions.sh

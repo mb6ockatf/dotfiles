@@ -28,6 +28,5 @@ alias emacs='emacs -nw' \
 	chgrp='chgrp --preserve-root' rm='rm -iI --preserve-root' \
 	ls='ls --color=auto' dir='dir --color=auto' \
 	vdir='vdir --color=auto' grep='grep --color=auto' \
-	fgrep='grep -F --color=auto' egrep='grep -E --color=auto' \
-	rgrep='grep -r --color=auto'
+	fgrep='grep --color=auto' egrep='grep -E --color=auto'
 
