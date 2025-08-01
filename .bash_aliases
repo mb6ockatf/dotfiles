@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash --posix
 # .bash_aliases - an addition to .bashrc, with bash aliases
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -28,5 +28,6 @@ alias emacs='emacs -nw' \
 	chgrp='chgrp --preserve-root' rm='rm -iI --preserve-root' \
 	ls='ls --color=auto' dir='dir --color=auto' \
 	vdir='vdir --color=auto' grep='grep --color=auto' \
-	fgrep='grep --color=auto' egrep='grep -E --color=auto'
+	fgrep='grep -F' egrep='grep -E' rgrep='grep -r' \
+	md5sum='md5sum --quiet --strict'
 

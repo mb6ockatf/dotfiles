@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash --posix
 # .bashrc - Bourne-again shell rc dotfile.
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -26,19 +26,27 @@ shopt -s histappend checkhash checkwinsize autocd cdable_vars cdspell \
 	nocasematch progcomp progcomp_alias globstar
 set -o posix hashall history monitor noclobber notify nounset pipefail
 declare -x LC_ALL=en_US.UTF-8 POSIXLY_CORRECT=true CLICOLOR=1 \
-	PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/home/${USER}/.local/bin:$PATH" \
-	HISTSIZE=10000000 \
-	HISTFILESIZE=10000000 HISTCONTROL=ignoreboth:erasedups EDITOR=nvim \
-	VISUAL=nvim GROFF_NO_SGR=1 GLOBSORT=nosort GAWK_READ_TIMEOUT=60000 \
+	PATH="/usr/local/bin:/usr/local/sbin:${PATH}" \
+	PATH="/usr/sbin:/home/${USER}/.local/bin:${PATH}" \
+	PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
+declare -x HISTSIZE=10000000 HISTFILESIZE=10000000 \
+	HISTIGNORE='clear:cd:exit:[bf]g' \
+	HISTCONTROL="${HISTCONTROL}:ignoreboth:erasedups"
+declare -x
+declare -x GROFF_NO_SGR=1 GLOBSORT=nosort GAWK_READ_TIMEOUT=60000 \
 	GAWK_SOCK_RETRIES=3 \
 	CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror '`
-	`'-Wfatal-errors' \
-	PYTHON_COLORS=1 PYTHONOPTIMIZE=true \
-	PYTHONSTARTUP="/home/${USER}/.config/pythonrc" \
-	PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
-
+	`'-Wfatal-errors'
+declare -x PYTHON_COLORS=1 PYTHONOPTIMIZE=true \
+	PYTHONSTARTUP="/home/${USER}/.config/pythonrc"
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 [ -f ~/.config/functions.sh ] && . ~/.config/functions.sh
+if $IS_NVIM_HERE
+then
+	declare -x EDITOR=nvim VISUAL=nvim
+else
+	declare -x EDITOR=vim VISUAL=vim
+fi
 [ -f /etc/.bash_completion ] && ! shopt -oq posix && . /etc/.bash_completion
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ] &&

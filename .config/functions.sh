@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash --posix
 # functions.sh - addition to .bashrc, with useful bash functions
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -121,22 +121,22 @@ hexdecode()
 }
 
 export IS_GCC_HERE=false
-if command -v gcc >/dev/null 2>&1
+if command -v gcc --version >/dev/null 2>&1
 then
 	export IS_GCC_HERE=true
 fi
 export IS_PYTHON3_HERE=false
-if command -v python3 >/dev/null 2>&1
+if command -v python3 -V >/dev/null 2>&1
 then
 	export IS_PYTHON3_HERE=true
 fi
 export IS_NMAP_HERE=false
-if command -v nmap >/dev/null 2>&1
+if command -v nmap -v >/dev/null 2>&1
 then
 	export IS_NMAP_HERE=true
 fi
 export IS_APT_HERE=false
-if command -v apt >/dev/null 2>&1
+if command -v apt -v >/dev/null 2>&1
 then
 	export IS_APT_HERE=true
 fi
@@ -144,6 +144,10 @@ export IS_PIP3_HERE=false
 if command -v pip3 >/dev/null 2>&1
 then
 	export IS_PIP3_HERE=true
+fi
+if command -v nvim --version >/dev/null 2>&1
+then
+	export IS_NVIM_HERE=true
 fi
 gcc_version()
 {
@@ -168,6 +172,18 @@ python3_version()
 	fi
 }
 export PYTHON3_VERSION="$(python3_version)"
+
+nvim_version()
+{
+	if $IS_NVIM_HERE
+	then
+		printf "%s (latest: nvim 0.11.2)\n" \
+			"$(nvim --version)"
+	else
+		printf "nvim ain't found\n"
+	fi
+}
+export NVIM_VERSION="$(nvim_version)"
 
 updateos()
 {
