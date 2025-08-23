@@ -28,6 +28,7 @@ set -o posix hashall history monitor noclobber notify nounset pipefail
 declare -x LC_ALL=en_US.UTF-8 POSIXLY_CORRECT=true CLICOLOR=1 \
 	PATH="/usr/local/bin:/usr/local/sbin:${PATH}" \
 	PATH="/usr/sbin:/home/${USER}/.local/bin:${PATH}" \
+	MANPATH="/home/${USER}/.local/share/man:${MANPATH}"
 	PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
 declare -x HISTSIZE=10000000 HISTFILESIZE=10000000 \
 	HISTIGNORE='clear:cd:exit:[bf]g' \

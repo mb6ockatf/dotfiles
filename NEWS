@@ -1,0 +1,33 @@
+This is a NEWS file for mb6ockatf's dotfiles
+
+v5: 220954ad559957eb7eeb7d2db2b85c54cd643c74 : Thu Jul 31 22:58:05 2025
+================================================================================
+Added neovim dotfiles & plugin installation data.  bash experience
+improvements.
+Moved to gnu stow configuration management from setup.sh.
+
+v4: 4654fff3577ab478d9d723946a8088cfac109e8d : Sun Mar 9 10:30:41 2025
+================================================================================
+Moved everything to `onion` folder; thought it would be great to have different
+dotfile directories for different systems.  Underestimated the difficulty of
+maintaining that, the idea was never implemented.  A lot of new files added:
+fehbg, gdb, htop, pacman.conf, kakrc (for `kakoune` file editor).
+New installation script: setup.sh
+
+v3: 97ae8b5428b5bf2e1ce713a48cfdbce9a98af336 : Sat Apr 1 15:01:06 2023
+================================================================================
+bash experience improvements, generally
+
+
+v2: ec77d1784adf716bc56c0e0d9ee41fc418f5343f : Fri Mar 31 14:50:41 2023
+================================================================================
+installed `bspwm` and had it for 3 years -- what a long journey...  added:
+polybar, bspwm, sxhkd, which are essential to run `bspwm`.  Also: VSCodium,
+neofetch, vim plugins
+Still using legendary DEPLOY.sh
+
+v1: a74e9f0a6a9901a183afc7117dd0ce70f05990db : Fri Mar 10 23:03:44 2023
+================================================================================
+provides dotfiles on vim, bash, alacritty, and a DEPLOY.sh script to install
+all that -- based on `copy` linux utility :-)
+

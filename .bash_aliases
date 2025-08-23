@@ -1,4 +1,4 @@
-#!/usr/bin/env bash --posix
+#!/usr/bin/env bash
 # .bash_aliases - an addition to .bashrc, with bash aliases
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
+set -o posix
 if [ -x /usr/bin/dircolors ]
 then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" ||
@@ -23,11 +23,17 @@ fi
 
 alias emacs='emacs -nw' \
 	_='sudo' _i='sudo -i' fucking='sudo' please='sudo' \
-	python3='python3 -q' bc='bc -qs' sed='sed --posix' awk='awk -P' \
+	python3='python3 -q' bc='bc -ilqs ~/.config/calc.bc' sed='sed --posix' \
+	awk='awk -P' apl="apl -q --Color" \
 	chown='chown --preserve-root' chmod='chmod --preserve-root' \
 	chgrp='chgrp --preserve-root' rm='rm -iI --preserve-root' \
-	ls='ls --color=auto' dir='dir --color=auto' \
-	vdir='vdir --color=auto' grep='grep --color=auto' \
+	ls='ls --color=always' dir='dir --color=always' \
+	vdir='vdir --color=always' grep='grep --color=always' \
+	mkdir='mkdir -p' \
 	fgrep='grep -F' egrep='grep -E' rgrep='grep -r' \
-	md5sum='md5sum --quiet --strict'
+	md5sum='md5sum --quiet --strict' \
+	gimp='gimp --no-cpu-accel -cs --stack-trace-mode never --pdb-compat-mode off &' \
+	configure="./configure -q" automake="automake --gnits" \
+	make="make -j 6 -s --shuffle=${RANDOM}" \
+	m4='m4 -EG' man="man --warnings"
 

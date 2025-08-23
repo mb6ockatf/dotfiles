@@ -1,33 +1,66 @@
-# calc.bc - usefull functions for GNU bc
-#
-#   This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-#
-#   This program is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-#
-#   You should have received a copy of the GNU General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
+/*
+	calc.bc - usefull functions for GNU bc
 
-define factorial(n) {
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+scale = 20
+/* factorial of n*/
+define f(n) {
 	if (n < 0) {
-		print "oops"
+		return (-1);
 		halt
 	}
-	if (n < 2) return 1
-	return n * factorial(n - 1);
+	if (n < 2) return (1);
+	return (n * f(n - 1));
 }
 
-define modulo(a, b) {
-	auto result, scale_buffer
-	scale_buffer = scale
+/* modulo operation. r = result, u = scale_buffer */
+define m(a, b) {
+	auto r, u
+	u = scale
 	scale = 0
-	result = (a % b)
-	scale = scale_buffer
-	return result
+	r = (a % b)
+	scale = u
+	return (r)
 }
+
+define e(x) {
+	auto a, d, e, f, i, m, v, z
+	if (x < 0) {
+		m = 1
+		x = -x
+	}
+	z = scale;
+	scale = 4 + z + .44 * x;
+	while (x > 1) {
+		f += 1;
+		x /= 2;
+	}
+	v = 1+x
+	a = x
+	d = 1
+	for (i = 2; 1; i++) {
+		e = (a *= x) / (d *= i)
+		if (e == 0) {
+	 		if (f > 0) while (f--)  v = v * v;
+			scale = z
+			if (m) return (1 / v);
+			return (v / 1);
+		}
+		v += e
+	}
+}
+

@@ -14,19 +14,59 @@
 --   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
 o, api, cmd = vim.opt, vim.api, vim.cmd
+o.background = 'dark'
 o.confirm = true
 o.number = true
 o.title = true
 o.mouse = ''
 o.hlsearch = false
 o.tabstop = 8
+o.expandtab = false
 o.relativenumber = true
+vim.opt.wildignore:append {
+	"*.pyc",
+	"*/node_modules/*",
+	"_site",
+	"*/cache/*",
+	"*/tmp/*",
+	"*.out",
+	"*/venv/*",
+	"__pycache__",
+	"*.opt-1",
+	"*.opt-2",
+	"*/target/*",
+	"*/.log",
+	"*/.aux",
+	"*/.cls",
+	"*/.aux",
+	"*/.bbl",
+	"*/.blg",
+	"*/.fls",
+	"*/.fdb*/",
+	"*/.toc",
+	"*/.out",
+	"*/.glo",
+	"*/.log",
+	"*/.ist",
+	"*/.fdb_latexmk",
+	"configure",
+	"*.in",
+	"install-sh",
+	"*.status",
+	"compile",
+	"*/autom4te.cache/*",
+	"stamp-h1",
+	"depcomp",
+	"*.o",
+	"*.scan",
+}
 o.bomb = false
 o.linebreak = true
 o.textwidth = 79
 o.autoindent = true
 o.cursorline = true
-o.hi = 50
+o.autowrite = true
+o.history = 50
 o.timeout = false
 o.ttimeout = false
 o.display = truncate
@@ -37,7 +77,7 @@ o.tabpagemax = 15
 o.syntax = "on"
 o.swapfile = false
 o.backup = false
-o.undofile = true
+o.undofile = false
 o.incsearch = true
 o.termguicolors = true
 o.scrolloff = 8

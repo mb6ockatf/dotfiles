@@ -1,0 +1,78 @@
+define(`bind', `.TP
+\fB$1\fP')
+.TH readlinebinds 8 "23 August 2025" "1.0" "readline bindables"
+.SH NAME
+gnu readline terminal hotkeys
+.SH SYNOPSIS
+.SH DESCRIPTION
+Most terminals utilise GNU readline library for input processing, which allows the user to use efficient hotkeys to edit commands & move around the line.  However, public awareness of these features seeks more support
+.SH OPTIONS
+.SS MOVEMENT
+bind(M-f)
+Move forward to the end of the next word
+bind(M-b)
+Move back to the start of the current or previous word
+bind(C-l)
+Clear the screen, then redraw the current line, leaving the current line at the top of the screen
+.SS HISTORY
+bind(M-<)
+Move to the first line in the history
+bind(M->)
+Move to the end of the input history, i.e., the line currently being entered
+bind(C-r)
+Search backward starting at the current line and moving ‘up’ through the history as necessary.  This is an incremental search.  This command sets the region to the matched text and activates the region
+bind(C-s)
+Search forward starting at the current line and moving ‘down’ through the history as necessary.  This is an incremental search.  This command sets the region to the matched text and activates the region
+bind(M-p)
+Search backward starting at the current line and moving ‘up’ through the history as necessary using a non-incremental search for a string supplied by the user.  The search string may match anywhere in a history line
+bind(M-n)
+Search forward starting at the current line and moving ‘down’ through the history as necessary using a non-incremental search for a string supplied by the user.  The search string may match anywhere in a history line
+bind(M-C-y)
+Insert the first argument to the previous command (usually the second word on the previous line) at point
+bind(M-. | M-_)
+Insert last argument to the previous command (the last word of the previous history entry).  Successive calls to yank-last-arg move back through the history list, inserting the last word of each line in turn.  This uses the history expansion facilities to extract the last word, as if the ‘!$’ history expansion had been specified
+bind(C-o)
+Accept the current line for return to the calling application as if a newline had been entered, and fetch the next line relative to the current line from the history for editing.
+.SS CHANGING TEXT
+bind(C-q | C-v)
+Add the next character typed to the line verbatim.  This is how to insert key sequences like C-q, for example
+bind(C-t)
+Drag the character before the cursor forward over the character at the cursor, moving the cursor forward as well.  If the insertion point is at the end of the line, then this transposes the last two characters of the line
+bind(M-t)
+Drag the word before point past the word after point, moving point past that word as well.  If the insertion point is at the end of the line, this transposes the last two words on the line
+bind(M-C-t)
+Drag the word before point past the word after point, moving point past that word as well.  If the insertion point is at the end of the line, this transposes the last two words on the line
+bind(M-u)
+Uppercase the current (or following) word
+bind(M-C-l)
+Lowercase the current (or following) word
+bind(M-c)
+Capitalize the current (or following) word
+.SS KILL & YANK
+bind(C-k)
+Kill the text from point to the end of the current line
+bind(C-u)
+Kill backward from the cursor to the beginning of the current line
+bind(M-d)
+Kill from point to the end of the current word, or if between words, to t end of the next word
+bind(M-del)
+Kill the word behind point
+bind(M-C-d)
+Kill from point to the end of the current word, or if between words, to the end of the next word
+bind(C-w)
+Kill the word behind point, using white space as a word boundary, saving the killed text on the kill-ring
+bind(C-y)
+Yank the top of the kill ring into the buffer at point
+bind(M-y)
+Rotate the kill-ring, and yank the new top
+.SH SEE ALSO
+bash(1)
+.SH NOTES
+Words are composed of letters and digits
+.SH AUTHOR
+mb6ockatf
+.MT smokenmirror@tutamail\.com
+.ME
+.SH BUGS
+The only bug here is the filling between the screen and the chair
+

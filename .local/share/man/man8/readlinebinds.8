@@ -1,0 +1,104 @@
+
+.TH readlinebinds 8 "23 August 2025" "1.0" "readline bindables"
+.SH NAME
+gnu readline terminal hotkeys
+.SH SYNOPSIS
+.SH DESCRIPTION
+Most terminals utilise GNU readline library for input processing, which allows the user to use efficient hotkeys to edit commands & move around the line.  However, public awareness of these features seeks more support
+.SH OPTIONS
+.SS MOVEMENT
+.TP
+\fBM-f\fP
+Move forward to the end of the next word
+.TP
+\fBM-b\fP
+Move back to the start of the current or previous word
+.TP
+\fBC-l\fP
+Clear the screen, then redraw the current line, leaving the current line at the top of the screen
+.SS HISTORY
+.TP
+\fBM-<\fP
+Move to the first line in the history
+.TP
+\fBM->\fP
+Move to the end of the input history, i.e., the line currently being entered
+.TP
+\fBC-r\fP
+Search backward starting at the current line and moving ‘up’ through the history as necessary.  This is an incremental search.  This command sets the region to the matched text and activates the region
+.TP
+\fBC-s\fP
+Search forward starting at the current line and moving ‘down’ through the history as necessary.  This is an incremental search.  This command sets the region to the matched text and activates the region
+.TP
+\fBM-p\fP
+Search backward starting at the current line and moving ‘up’ through the history as necessary using a non-incremental search for a string supplied by the user.  The search string may match anywhere in a history line
+.TP
+\fBM-n\fP
+Search forward starting at the current line and moving ‘down’ through the history as necessary using a non-incremental search for a string supplied by the user.  The search string may match anywhere in a history line
+.TP
+\fBM-C-y\fP
+Insert the first argument to the previous command (usually the second word on the previous line) at point
+.TP
+\fBM-. | M-_\fP
+Insert last argument to the previous command (the last word of the previous history entry).  Successive calls to yank-last-arg move back through the history list, inserting the last word of each line in turn.  This uses the history expansion facilities to extract the last word, as if the ‘!$’ history expansion had been specified
+.TP
+\fBC-o\fP
+Accept the current line for return to the calling application as if a newline had been entered, and fetch the next line relative to the current line from the history for editing.
+.SS CHANGING TEXT
+.TP
+\fBC-q | C-v\fP
+Add the next character typed to the line verbatim.  This is how to insert key sequences like C-q, for example
+.TP
+\fBC-t\fP
+Drag the character before the cursor forward over the character at the cursor, moving the cursor forward as well.  If the insertion point is at the end of the line, then this transposes the last two characters of the line
+.TP
+\fBM-t\fP
+Drag the word before point past the word after point, moving point past that word as well.  If the insertion point is at the end of the line, this transposes the last two words on the line
+.TP
+\fBM-C-t\fP
+Drag the word before point past the word after point, moving point past that word as well.  If the insertion point is at the end of the line, this transposes the last two words on the line
+.TP
+\fBM-u\fP
+Uppercase the current (or following) word
+.TP
+\fBM-C-l\fP
+Lowercase the current (or following) word
+.TP
+\fBM-c\fP
+Capitalize the current (or following) word
+.SS KILL & YANK
+.TP
+\fBC-k\fP
+Kill the text from point to the end of the current line
+.TP
+\fBC-u\fP
+Kill backward from the cursor to the beginning of the current line
+.TP
+\fBM-d\fP
+Kill from point to the end of the current word, or if between words, to t end of the next word
+.TP
+\fBM-del\fP
+Kill the word behind point
+.TP
+\fBM-C-d\fP
+Kill from point to the end of the current word, or if between words, to the end of the next word
+.TP
+\fBC-w\fP
+Kill the word behind point, using white space as a word boundary, saving the killed text on the kill-ring
+.TP
+\fBC-y\fP
+Yank the top of the kill ring into the buffer at point
+.TP
+\fBM-y\fP
+Rotate the kill-ring, and yank the new top
+.SH SEE ALSO
+bash(1)
+.SH NOTES
+Words are composed of letters and digits
+.SH AUTHOR
+mb6ockatf
+.MT smokenmirror@tutamail\.com
+.ME
+.SH BUGS
+The only bug here is the filling between the screen and the chair
+
