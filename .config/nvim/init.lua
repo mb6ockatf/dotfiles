@@ -23,7 +23,7 @@ o.hlsearch = false
 o.tabstop = 8
 o.expandtab = false
 o.relativenumber = true
-vim.opt.wildignore:append {
+o.wildignore:append {
 	"*.pyc",
 	"*/node_modules/*",
 	"_site",
@@ -66,10 +66,8 @@ o.textwidth = 79
 o.autoindent = true
 o.cursorline = true
 o.autowrite = true
-o.history = 50
-o.timeout = false
-o.ttimeout = false
-o.display = truncate
+o.history = 100
+o.display = "truncate"
 o.showmatch = true
 o.ignorecase = true
 o.smartcase = true
@@ -217,4 +215,16 @@ api.nvim_create_autocmd(
 )
 
 require("config.lazy")
-
+require("toggleterm").setup{
+	open_mapping = [[<c-\>]],
+	auto_scroll = true,
+	clear_env = false,
+	responsiveness = {
+	    horizontal_breakpoint = 135,
+	},
+	insert_mappings = true,
+	terminal_mappings = true,
+	start_in_insert = true,
+	shading_factor = 0,
+	shading_ratio = 0,
+}

@@ -92,8 +92,8 @@ ex()
 wttr()
 {
 	city="$1" && options="$2" && header="Accept-Language: en"
-	[ "$options" = "" ] && options="1FnQp"
-	curl -H "$header " "wttr.in/$city?$options"
+	[ "$options" = "" ] && options="Td1FnQp"
+	curl -H "$header " "https://wttr.in/$city?$options"
 }
 
 rot13()
@@ -231,5 +231,38 @@ light()
 	fi
 	[[ "$new" -ge 0 ]] || exit
 	echo "$new" | sudo tee "$file"
+}
+
+getrandomfile()
+{
+	ls | sort -R | tail -1 | while read file; do
+	echo $file
+	done
+
+}
+
+lesss()
+{
+	source-highlight -f esc -i "$1" -o 'STDOUT' | less -NRi
+}
+
+lesst()
+{
+	less -SFQ "$1"
+}
+
+basename()
+{
+	cat << EOF
+# Consider using parameter expansion instead (up to x10 faster)
+for file in *.txt
+do
+    basename="${file##*/}"      # Remove path
+    basename="${basename%.*}"   # Remove extension
+    dirname="${file%/*}"        # Extract directory
+    extension="${file##*.}"     # Extract extension
+done
+EOF
+return 1
 }
 

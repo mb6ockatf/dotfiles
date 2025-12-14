@@ -15,4 +15,9 @@ s/ && /\n/g
 /^nvim /d
 /^vim /d
 /^less /d
+/^clear /d
+/^exit /d
+/^cat /d
+/^tac /d
+/^rev /d
 /^, /d
