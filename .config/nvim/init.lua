@@ -13,7 +13,7 @@
 --   You should have received a copy of the GNU General Public License
 --   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
-o, api, cmd = vim.opt, vim.api, vim.cmd
+o, api, cmd, log = vim.opt, vim.api, vim.cmd, vim.log
 o.background = 'dark'
 o.confirm = true
 o.number = true
@@ -178,28 +178,7 @@ function table.reduce(list, reducer, init)
 	return accumulator
 end
 
-function add(a, b) return a + b end
-
-function nvim_add(opts)
-	arguments = mfr.split(opts.fargs[1], " ")
-	print(table.reduce(arguments, add, 0))
-	return 0
-end
-
-function nvim_add_completion(ArgLead, CmdLine, CursorPos)
-	return {"1", "100500"}
-end
-
-api.nvim_create_user_command(
-	"Add",
-	nvim_add,
-	{
-		nargs = 1,
-		complete = nvim_add_completion
-	}
-)
-
-function highlight_on_yank() vim.hl.on_yank() end
+function highlight_on_yank() vim.highlight.on_yank() end
 
 highlight_on_yank_group = api.nvim_create_augroup(
 			'kickstart-highlight-yank',
@@ -212,6 +191,171 @@ api.nvim_create_autocmd(
 		group = highlight_on_yank_group,
 		callback = highlight_on_yank
 	}
+)
+
+local function insert_text_at_cursor(text)
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    row = row - 1
+    local line = vim.api.nvim_get_current_line()
+    local new_line = line:sub(1, col) .. text .. line:sub(col + 1)
+    vim.api.nvim_set_current_line(new_line)
+    vim.api.nvim_win_set_cursor(0, {row + 1, col + #text})
+end
+
+local function cjk_notify(name, symbol, meaning, origin)
+	vim.notify(
+		'CJK: ' .. name ..
+		' (' .. symbol .. ') ' ..
+		'"' .. meaning .. '"' ..
+		' (' .. origin .. ')',
+		log.levels.INFO
+	)
+end
+
+api.nvim_create_user_command(
+	'CJK',
+	function(opts)
+		local h
+		if opts.args == 'gongzuo' or opts.args == 'work' then
+			h = '工作'
+			insert_text_at_cursor(h)
+			cjk_notify('gōngzuò', h, 'work', 'Chinese')
+		elseif opts.args == 'yue' or opts.args == 'month' then
+			h = '月'
+			insert_text_at_cursor(h)
+			cjk_notify('yuè', h, 'month', 'Chinese')
+		elseif opts.args == 'ri' or opts.args == 'day' then
+			h = '日'
+			insert_text_at_cursor(h)
+			cjk_notify('rì', h, 'day', 'Chinese')
+		elseif opts.args == 'yiyue' or opts.args == 'january' then
+			h = '一月'
+			insert_text_at_cursor(h)
+			cjk_notify('yīyuè', h, 'January', 'Chinese')
+		elseif opts.args == 'eryue' or opts.args == 'february' then
+			h = '二月'
+			insert_text_at_cursor(h)
+			cjk_notify('èryuè', h, 'February', 'Chinese')
+		elseif opts.args == 'sanyue' or opts.args == 'march' then
+			h = '三月'
+			insert_text_at_cursor(h)
+			cjk_notify('sānyuè', h, 'March', 'Chinese')
+		elseif opts.args == 'siyue' or opts.args == 'april' then
+			h = '四月'
+			insert_text_at_cursor(h)
+			cjk_notify('sìyuè', h, 'April', 'Chinese')
+		elseif opts.args == 'wuyue' or opts.args == 'may' then
+			h = '五月'
+			insert_text_at_cursor(h)
+			cjk_notify('wǔyuè', h, 'May', 'Chinese')
+		elseif opts.args == 'liuyue' or opts.args == 'june' then
+			h = '六月'
+			insert_text_at_cursor(h)
+			cjk_notify('liùyuè', h, 'June', 'Chinese')
+		elseif opts.args == 'qiyue' or opts.args == 'july' then
+			h = '七月'
+			insert_text_at_cursor(h)
+			cjk_notify('qīyuè', h, 'July', 'Chinese')
+		elseif opts.args == 'bayue' or opts.args == 'august' then
+			h = '八月'
+			insert_text_at_cursor(h)
+			cjk_notify('bāyuè', h, 'August', 'Chinese')
+		elseif opts.args == 'jiuyue' or opts.args == 'september' then
+			h = '九月'
+			insert_text_at_cursor(h)
+			cjk_notify('jiǔyuè', h, 'September', 'Chinese')
+		elseif opts.args == 'shiyue' or opts.args == 'october' then
+			h = '十月'
+			insert_text_at_cursor(h)
+			cjk_notify('shíyuè', h, 'october', 'Chinese')
+		elseif opts.args == 'shiyiyue' or opts.args == 'november' then
+			h = '十一月'
+			insert_text_at_cursor(h)
+			cjk_notify('shíyīyuè', h, 'November', 'Chinese')
+		elseif opts.args == 'shieryue' or opts.args == 'december' then
+			h = '十二月'
+			insert_text_at_cursor(h)
+			cjk_notify('shíèryuè', h, 'December', 'Chinese')
+		elseif opts.args == 'zhouyi' or opts.args == 'monday' then
+			h = '周一'
+			insert_text_at_cursor(h)
+			cjk_notify('zhōuyī', h, 'Monday', 'Chinese')
+		elseif opts.args == 'zhouer' or opts.args == 'tuesday' then
+			h = '周二'
+			insert_text_at_cursor(h)
+			cjk_notify('zhōuèr', h, 'Tuesday', 'Chinese')
+		elseif opts.args == 'zhousan' or opts.args == 'wednesday' then
+			h = '周三'
+			insert_text_at_cursor(h)
+			cjk_notify('zhōusān', h, 'Wednesday', 'Chinese')
+		elseif opts.args == 'zhousi' or opts.args == 'thursday' then
+			h = '周四'
+			insert_text_at_cursor(h)
+			cjk_notify('zhōusì', h, 'Thursday', 'Chinese')
+		elseif opts.args == 'zhouwu' or opts.args == 'friday' then
+			h = '周五'
+			insert_text_at_cursor(h)
+			cjk_notify('zhōuwǔ', h, 'Friday', 'Chinese')
+		elseif opts.args == 'zhouliu' or opts.args == 'saturday' then
+			h = '周六'
+			insert_text_at_cursor(h)
+			cjk_notify('zhōuliù', h, 'Saturday', 'Chinese')
+		elseif opts.args == 'zhouqi' or opts.args == 'sunday' then
+			h = '周七'
+			insert_text_at_cursor(h)
+			cjk_notify('zhōuqī', h, 'Sunday', 'Chinese')
+		elseif opts.args == 'rili' or opts.args == 'calendar' then
+			h = '日历'
+			insert_text_at_cursor(h)
+			cjk_notify('rìlì', h, 'calendar', 'Chinese')
+		elseif opts.args == 'shengri' or opts.args == 'birthday' then
+			h = '生日'
+			insert_text_at_cursor(h)
+			cjk_notify('shēngrì', h, 'birthday', 'Chinese')
+		elseif opts.args == "yi" or opts.args == "1" then
+			h = '一'
+			insert_text_at_cursor(h)
+			cjk_notify('yī', h, '1', 'Chinese')
+		elseif opts.args == "er" or opts.args == "2" then
+			h = '二'
+			insert_text_at_cursor(h)
+			cjk_notify('èr', h, '2', 'Chinese')
+		elseif opts.args == "san" or opts.args == "3" then
+			h = '三'
+			insert_text_at_cursor(h)
+			cjk_notify('sān', h, '3', 'Chinese')
+		elseif opts.args == "si" or opts.args == "4" then
+			h = '四'
+			insert_text_at_cursor(h)
+			cjk_notify('sì', h, '4', 'Chinese')
+		elseif opts.args == "wu" or opts.args == "5" then
+			h = '五'
+			insert_text_at_cursor(h)
+			cjk_notify('wǔ', h, '5', 'Chinese')
+		elseif opts.args == "liu" or opts.args == "6" then
+			h = '六'
+			insert_text_at_cursor(h)
+			cjk_notify('liù', h, '6', 'Chinese')
+		elseif opts.args == "qi" or opts.args == "7" then
+			h = '七'
+			insert_text_at_cursor(h)
+			cjk_notify('qī', h, '7', 'Chinese')
+		elseif opts.args == "ba" or opts.args == "8" then
+			h = '八'
+			insert_text_at_cursor(h)
+			cjk_notify('bā', h, '8', 'Chinese')
+		elseif opts.args == "jiu" or opts.args == "9" then
+			h = '九'
+			insert_text_at_cursor(h)
+			cjk_notify('jiǔ', h, '9', 'Chinese')
+		elseif opts.args == "shi" or opts.args == "10" then
+			h = '十'
+			insert_text_at_cursor(h)
+			cjk_notify('shí', h, '10', 'Chinese')
+		end
+
+	end,
+	{ nargs = 1, desc = 'print desired CJK character by its\' pinyin'}
 )
 
 require("config.lazy")

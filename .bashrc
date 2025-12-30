@@ -68,3 +68,4 @@ fi
 sed -i -f ~/.config/clean_history.sed ~/.bash_history
 sort -u ~/.bash_history -o ~/.bash_history
 clear
+

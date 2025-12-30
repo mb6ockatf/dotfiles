@@ -257,12 +257,24 @@ basename()
 # Consider using parameter expansion instead (up to x10 faster)
 for file in *.txt
 do
-    basename="${file##*/}"      # Remove path
-    basename="${basename%.*}"   # Remove extension
-    dirname="${file%/*}"        # Extract directory
-    extension="${file##*.}"     # Extract extension
+    basename='${file##*/}'      # Remove path
+    basename='${basename%.*}'   # Remove extension
+    dirname='${file%/*}'        # Extract directory
+    extension='${file##*.}'     # Extract extension
 done
 EOF
 return 1
+}
+
+cloakquest3r() {
+	local cloak_dir='~/.local/bin/CloakQuest3r' ENOENT=2
+	if [ -d "$cloak_dir" ]
+	then
+		cd "$cloak_dir"
+		return 0
+	else
+		printf "https://github.com/spyboy-productions/CloakQuest3r\n"
+		return "$ENOENT"
+	fi
 }
 
