@@ -1,5 +1,5 @@
 /*
-	calc.bc - usefull functions for GNU bc
+	calc.bc - useful functions for GNU bc
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -63,4 +63,34 @@ define e(x) {
 		v += e
 	}
 }
+
+define g(x) {
+	if(x > 0) return (1);
+	if (x < 0) return (-1);
+}
+
+/* abs */
+define b(x) {
+	return (g(x) * x);
+}
+/* max */
+define m(x,y) {
+	if (x > y) return (x);
+	return (y);
+}
+
+/* log_b(x) */
+define q(x, b){
+	return (l(x) / l(b));
+}
+
+/* pow */
+define p(x, n){
+	return (e(n * l(x)));
+}
+
+p = 4 * a(1)
+e = e(1)
+/* phi */
+h = (sqrt(5) + 1) / 2
 

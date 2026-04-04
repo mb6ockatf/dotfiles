@@ -15,13 +15,14 @@ declare -x LC_ALL=en_US.UTF-8 POSIXLY_CORRECT=true CLICOLOR=1 \
 	PATH="/usr/local/bin:/usr/local/sbin:$PATH" \
 	PATH="/usr/sbin:/home/$USER/.local/bin:$PATH" \
 	MANPATH="/home/$USER/.local/share/man:$MANPATH" \
+	MANWIDTH=$(tput cols) \
 	NIX_BUILD_CORES=0 \
 	HISTSIZE=100000000 HISTFILESIZE=100000000 \
 	HISTIGNORE="cd:rm:rmdir:mkdir:man:nvim:vim:less:clear:exit:[bf]g:git clone git@:cat:tac:rev:" \
 	HISTCONTROL="$HISTCONTROL:ignoreboth:erasedups" GROFF_NO_SGR=1 \
 	PS1="$ " \
 	GLOBSORT=nosort GAWK_READ_TIMEOUT=60000 GAWK_SOCK_RETRIES=3 \
-	CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors' \
+	CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors -lm' \
 	PYTHON_COLORS=1 PYTHONOPTIMIZE=true \
 	PYTHONSTARTUP="/home/$USER/.config/pythonrc" \
 	LESS='-Q --use-color --wordwrap --wheel-lines=0' \
@@ -68,4 +69,27 @@ fi
 sed -i -f ~/.config/clean_history.sed ~/.bash_history
 sort -u ~/.bash_history -o ~/.bash_history
 clear
+
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/mb6ockatf/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/mb6ockatf/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
+
+# Begin GOST LaTeX section
+#
+export TEXINPUTS=/home/mb6ockatf/Documents/projects/OUTSOURCE/gost/src/gost-7-32/tex/latex:$TEXINPUTS
+export BSTINPUTS=/home/mb6ockatf/Documents/projects/OUTSOURCE/gost/src/gost-7-32/tex/latex/gost-7-32/bibtex/bst:$BSTINPUTS
+#
+# End GOST LaTeX section
 
