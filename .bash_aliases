@@ -20,7 +20,7 @@ then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" ||
 		eval "$(dircolors -b)"
 fi
-S='--preserve-root' C='--color=always'
+S='--preserve-root' C='--color=always' W='-w 80'
 
 alias emacs='emacs -nw' \
 	_='sudo' _i='sudo -i' fucking='sudo' please='sudo' \
@@ -29,8 +29,8 @@ alias emacs='emacs -nw' \
 	mkdir='mkdir -p' sort="sort --parallel=$CPU_NUMBER" \
 	chown="chown ${S}" chmod="chmod ${S}" chgrp="chgrp ${S}" \
 	rm="rm -iI ${S}" basenc="basenc ${S}" \
-	ls="ls -hGUF ${C} -w 80" dir="dir -hGU ${C} -w 80" \
-	vdir="vdir -hGU ${C} -w 80" grep="grep ${C}" \
+	ls="ls -hGUF ${C} ${W}" dir="dir -hGU ${C} ${W}" \
+	vdir="vdir -hGU ${C} ${W}" grep="grep ${C}" \
 	fgrep='grep -F' egrep='grep -E' rgrep='grep -r' \
 	pathchk='pathchk --portability' \
 	gimp='gimp --no-cpu-accel -cs --stack-trace-mode never --pdb-compat-mode off &' \
@@ -48,8 +48,7 @@ alias emacs='emacs -nw' \
 	shuf='shuf --random-source=/dev/urandom' \
 	~='cd ~ 2>&1 > /dev/null' parallel="parallel -l 80 -j $CPU_NUMBER" \
 	fmt='fmt -u' mkdtemp='mktemp -d' mkstemp='mktemp' who='who -HT' \
-	nl='nl -b a' \
-	shfmt='shfmt -w -s -p -ci -sr -fn' \
+	nl='nl -b a' shfmt='shfmt -w -s -p -ci -sr -fn' \
 	pdf='pdflatex --interaction=batchmode 2>&1 > /dev/null' \
 	dmesg="dmesg ${C}" \
 	ed='rlwrap -crq "/|" -H "$HOME/.ed_history" red -vGp "[30;48;5;210m*[0m "'  \

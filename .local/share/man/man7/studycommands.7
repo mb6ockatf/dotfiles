@@ -1,0 +1,28 @@
+.TH CMDREF 7 "2026-04-05" "Your Name" "Personal Command Reference"
+.SH NAME
+cmdref \- a collection of useful bash commands
+
+.SH SYNOPSIS
+(no executable; this is a reference document)
+
+.SH DESCRIPTION
+This manual page stores bash commands I find or invent.
+
+.SH COMMANDS
+.SS Exclude .tree and .png files
+.nf
+find . -maxdepth 1 -type f ! -name "*.tree" ! -name "*.png" -printf "%f\\n"
+.fi
+Explanation: \fB-maxdepth 1\fR stays in current directory, \fB-printf "%f"\fR strips './'
+
+.SS All\-uppercase filenames (POSIX)
+.nf
+( LC_ALL=C; for f in *; do [ -f "$f" ] && case $f in *[!A-Z]*) ;; *) printf '%s\\n' "$f";; esac; done )
+.fi
+Uses \fBcase\fR to reject any non\-A\-Z character.
+
+.SH SEE ALSO
+bash(1), find(1), man(7)
+
+.SH AUTHOR
+mb6ockatf <smokenmirror@tutamail.ru>

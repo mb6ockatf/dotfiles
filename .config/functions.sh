@@ -243,7 +243,7 @@ getrandomfile()
 
 lesss()
 {
-	source-highlight -f esc -i "$1" -o 'STDOUT' | less -NRi
+	source-highlight --failsafe -f esc256 -i "$1" -o 'STDOUT' | less -NRi
 }
 
 lesst()
@@ -276,5 +276,13 @@ cloakquest3r() {
 		printf "https://github.com/spyboy-productions/CloakQuest3r\n"
 		return "$ENOENT"
 	fi
+}
+
+
+cppf() {
+	cpp -P "${1}" |
+		sed -f ~/.config/cppcleanup.sed |
+		source-highlight --failsafe -s "${2}" -f esc256 --style-file=esc256.style -o 'STDOUT' |
+		less -NRi
 }
 
