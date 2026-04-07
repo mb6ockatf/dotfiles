@@ -55,5 +55,5 @@ alias emacs='emacs -nw' \
 	goctave='octave --experimental-terminal-widget --gui --line-editing --traditional -q' \
 	octave='octave --line-editing --traditional -q' \
 	julia='julia -O3 --banner=no --color=yes --depwarn=error --warn-overwrite=yes --inline=no' \
-	a68g='a68g --strict --pedantic -O3' nm='nm -P'
+	a68g='a68g --strict --pedantic -O3' nm='nm -P' valgrind='valgrind -q'
 
