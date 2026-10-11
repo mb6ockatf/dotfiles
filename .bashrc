@@ -1,95 +1,89 @@
 #!/usr/bin/env bash
-
-# [ -z "$PS1" ] && return
 case $- in
 	*i*) ;;
 	*) return ;;
 esac
-shopt -s histappend checkhash checkwinsize autocd cdable_vars cdspell \
-	checkjobs cmdhist complete_fullquote dirspell expand_aliases \
-	globskipdots gnu_errfmt histreedit histverify hostcomplete huponexit \
-	interactive_comments lithist no_empty_cmd_completion nocaseglob \
-	nocasematch progcomp progcomp_alias globstar
-set -o posix hashall history monitor noclobber notify nounset pipefail
-declare -x LC_ALL=en_US.UTF-8 POSIXLY_CORRECT=true CLICOLOR=1 \
-	PATH="/usr/local/bin:/usr/local/sbin:$PATH" \
-	PATH="/usr/sbin:/home/$USER/.local/bin:$PATH" \
-	MANPATH="/home/$USER/.local/share/man:$MANPATH" \
-	MANWIDTH=$(tput cols) \
-	NIX_BUILD_CORES=0 \
-	HISTSIZE=100000000 HISTFILESIZE=100000000 \
-	HISTIGNORE="cd:rm:rmdir:mkdir:man:nvim:vim:less:clear:exit:[bf]g:git clone git@:cat:tac:rev:" \
-	HISTCONTROL="$HISTCONTROL:ignoreboth:erasedups" GROFF_NO_SGR=1 \
-	PS1="$ " \
-	GLOBSORT=nosort GAWK_READ_TIMEOUT=60000 GAWK_SOCK_RETRIES=3 \
-	CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors -lm' \
-	PYTHON_COLORS=1 PYTHONOPTIMIZE=true \
-	PYTHONSTARTUP="/home/$USER/.config/pythonrc" \
-	LESS='-Q --use-color --wordwrap --wheel-lines=0' \
-	CPU_NUMBER="$(nproc --all)" VMOPTIONS="$HOME/.jetbrains.vmoptions.sh" \
-	LESSSECURE=1 PAGER='less' MANPAGER='less' PROCPS_USERLEN=10 EPERM=1 \
-	ENOENT=2 ESRCH=3 EINTR=4 EIO=5 ENXIO=6 E2BIG=7 ENOEXEC=8 EBADF=9 \
-	ECHILD=10 EAGAIN=11 ENOMEM=12 EACCES=13 EFAULT=14 ENOTBLK=15 EBUSY=16 \
-	EEXIST=17 EXDEV=18 ENODEV=19 ENOTDIR=20 EISDIR=21 EINVAL=22 ENFILE=23 \
-	EMFILE=24 ENOTTY=25 ETXTBSY=26 EFBIG=27 ENOSPC=28 ESPIPE=29 EROFS=30 \
-	EMLINK=31 EPIPE=32 EDOM=33 ERANGE=34 EDEADLK=35 ENAMETOOLONG=36 \
-	ENOLCK=37 ENOSYS=38 ENOTEMPTY=39 ELOOP=40 ENOMSG=42 EIDRM=43 \
-	ECHRNG=44 EL2NSYNC=45 EL3HLT=46 EL3RST=47 ELNRNG=48 EUNATCH=49 \
-	ENOCSI=50 EL2HLT=51 EBADE=52 EBADR=53 EXFULL=54 ENOANO=55 EBADRQC=56 \
-	EBADSLT=57 EBFONT=59 ENOSTR=60 ENODATA=61 ETIME=62 ENOSR=63 ENONET=64 \
-	ENOPKG=65 EREMOTE=66 ENOLINK=67 EADV=68 ESRMNT=69 ECOMM=70 EPROTO=71 \
-	EMULTIHOP=72 EDOTDOT=73 EBADMSG=74 EOVERFLOW=75 ENOTUNIQ=76 EBADFD=77 \
-	EREMCHG=78 ELIBACC=79 ELIBBAD=80 ELIBSCN=81 ELIBMAX=82 ELIBEXEC=83 \
-	EILSEQ=84 ERESTART=85 ESTRPIPE=86 EUSERS=87 ENOTSOCK=88 \
-	EDESTADDRREQ=89 EMSGSIZE=90 EPROTOTYPE=91 ENOPROTOOPT=92 \
-	EPROTONOSUPPORT=93 ESOCKTNOSUPPORT=94 EOPNOTSUP=95 EPFNOSUPPORT=96 \
-	EAFNOSUPPORT=97 EADDRINUSE=98 EADDRNOTAVAIL=99 ENETDOWN=100 \
-	ENETUNREACH=101 ENETRESET=102 ECONNABORTED=103 ECONNRESET=104 \
-	ENOBUFS=105 EISCONN=106 ENOTCONN=107 ESHUTCONN=108 ETOOMANYREFS=109 \
-	ETIMEDOUT=110 ECONNREFUSED=111 EHOSTDOWN=112 EHOSTUNREACH=113 \
-	EALREADY=114 EINPROGRESS=115 ESTALE=116 EUCLEAN=117 ENOTNAM=118 \
-	ENAVAIL=119 EISNAM=120 EREMOTEIO=121 EDQUOT=122 ENOMEDIUM=123 \
-	EMEDIUMTYPE=124 ECANCELED=125 ENOKEY=126 EKEYEXPIRED=127 \
-	EKEYREVOKED=128 EKEYREJECTED=129 EOWNERDEAD=130 ENOTRECOVERABLE=131 \
-	ERFKILL=132 EHWPOISON=133 ENOTSUP=134 ENOMEDIUM=135 EILSEQ=138 \
-	EOVERFLOW=139 ECANCELED=140 ENOTRECOVERABLE=141 EOWNERDEAD=142 \
-	ESTRPIPE=143
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-[ -f ~/.config/functions.sh ] && . ~/.config/functions.sh
-if $IS_NVIM_HERE; then
-	declare -x EDITOR=nvim VISUAL=nvim
-else
-	declare -x EDITOR=vim VISUAL=vim
-fi
-[ -f /etc/.bash_completion ] && ! shopt -oq posix && . /etc/.bash_completion
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-[ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ] &&
-	debian_chroot=$(cat /etc/debian_chroot)
-[ -f "$VMOPTIONS" ] && . "$___MY_VMOPTIONS_SHELL_FILE"
-sed -i -f ~/.config/clean_history.sed ~/.bash_history
-sort -u ~/.bash_history -o ~/.bash_history
-clear
+set -o posix -o noclobber -o notify -o pipefail
+command -v lesspipe > /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+[[ -f ~/.config/functions.sh ]] && . ~/.config/functions.sh
+[[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
+[[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && export debian_chroot="$(< /etc/debian_chroot)"
+PATH="${HOME}/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:${PATH}"
+PATH="${HOME}/Documents/projects/notes/OSS/pintos_lab_2/src/utils:${PATH}"
+PATH="${HOME}/.local/opt/gcc-16/bin:${PATH}" # plain gcc/g++/cc -> /opt/gcc-16.2.0
+export LC_ALL=C POSIXLY_CORRECT=true PATH CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))" NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+export GORTEX_TOOLS=compact claude
+alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
+CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors -g3' LDFLAGS='-lm'
+COB_CFLAGS='-O0 -g -std=ibm-strict -fstatic-call -ffold-copy=lower -fdebugging -ftrace -fstack-check'
+# drop each command both bare ("cd") and with arguments ("cd foo")
+for c in cat cd ls rm cp mv rmdir mkdir man nvim vim less lesss lesst clear exit '[bf]g' tac rev apt make \
+	echo factor indent clip chmod touch la ll pwd
+do HISTIGNORE="${HISTIGNORE}:${c}:${c} *"
+done
+unset c
+HISTIGNORE="${HISTIGNORE}:history*:*psk*:*password*"
+shopt -s histappend cmdhist lithist histverify histreedit
+HISTFILE="${HOME}/.bash_history" HISTSIZE=100000 HISTFILESIZE=200000
+HISTCONTROL=ignoreboth HISTTIMEFORMAT='%F %T ' PROMPT_COMMAND='history -a'
+export VMOPTIONS="${HOME}/.jetbrains.vmoptions.sh" CLICOLOR=1 GROFF_NO_SGR=1
+export EDITOR=nvim VISUAL=nvim SUDO_EDITOR=nvim LIBPROC_HIDE_KERNEL=1
+export GAWK_READ_TIMEOUT=60000 GAWK_SOCK_RETRIES=3 ENOENT=2 PROCPS_USERLEN=10
+export LESS='-QR --use-color --wordwrap --wheel-lines=0 --no-keypad --no-histdups'
+export MANPATH="${HOME}/.local/share/man:${MANPATH}" PYTHONSTARTUP="${HOME}/.config/pythonrc" GLOBSORT=nosort
+export all_proxy=socks5h://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890
+export no_proxy=localhost,127.0.0.1
+export LESSSECURE=1 LESSCHARSET=utf-8 PAGER='less' MANPAGER='less' PYTHON_COLORS=1 PYTHONOPTIMIZE=true
+documents="${HOME}/Documents/" projects="${documents}/projects" notes="${projects}/notes" algs="${notes}/algs" solutions="${projects}/solutions" cf="${solutions}/codeforces"
+CDPATH=":${notes}:${notes}/OSS:${projects}:${solutions}:${HOME}/.config:${HOME}"
+shopt -s cdspell dirspell autocd
+GCAL='--exit-status-help-non-zero --time-offset=+03:00 --atmosphere=991.915643,20 --precise --gregorian-reform=1918,02,01,13 --iso-week-number=yes -s 2 -X -G -K'
+FGBLACK=$'\e[30m'             BGBLACK=$'\e[40m'             FGBLACKB=$'\e[90m'             BGBLACKB=$'\e[100m'
+FGRED=$'\e[31m'               BGRED=$'\e[41m'               FGREDB=$'\e[91m'               BGREDB=$'\e[101m'
+FGGREEN=$'\e[32m'             BGGREEN=$'\e[42m'             FGGREENB=$'\e[92m'             BGGREENB=$'\e[102m'
+FGYELLOW=$'\e[33m'            BGYELLOW=$'\e[43m'            FGYELLOWB=$'\e[93m'            BGYELLOWB=$'\e[103m'
+FGBLUE=$'\e[34m'              BGBLUE=$'\e[44m'              FGBLUEB=$'\e[94m'              BGBLUEB=$'\e[104m'
+FGPURPLE=$'\e[35m'            BGPURPLE=$'\e[45m'            FGPURPLEB=$'\e[95m'            BGPURPLEB=$'\e[105m'
+FGCYAN=$'\e[36m'              BGCYAN=$'\e[46m'              FGCYANB=$'\e[96m'              BGCYANB=$'\e[106m'
+FGWHITE=$'\e[37m'             BGWHITE=$'\e[47m'	            FGWHITEB=$'\e[97m'             BGWHITEB=$'\e[107m'
+FGCRIMSON=$'\e[38;5;160m'     BGCRIMSON=$'\e[48;5;160m'     FGCRIMSONB=$'\e[38;5;197m'     BGCRIMSONB=$'\e[48;5;197m'
+FGTOMATO=$'\e[38;5;202m'      BGTOMATO=$'\e[48;5;202m'      FGTOMATOB=$'\e[38;5;209m'      BGTOMATOB=$'\e[48;5;209m'
+FGORANGE=$'\e[38;5;208m'      BGORANGE=$'\e[48;5;208m'      FGORANGEB=$'\e[38;5;215m'      BGORANGEB=$'\e[48;5;215m'
+FGAMBER=$'\e[38;5;214m'       BGAMBER=$'\e[48;5;214m'       FGAMBERB=$'\e[38;5;221m'       BGAMBERB=$'\e[48;5;221m'
+FGGOLD=$'\e[38;5;220m'        BGGOLD=$'\e[48;5;220m'        FGGOLDB=$'\e[38;5;227m'        BGGOLDB=$'\e[48;5;227m'
+FGLIME=$'\e[38;5;154m'        BGLIME=$'\e[48;5;154m'        FGLIMEB=$'\e[38;5;156m'        BGLIMEB=$'\e[48;5;156m'
+FGCHARTREUSE=$'\e[38;5;118m'  BGCHARTREUSE=$'\e[48;5;118m'  FGCHARTREUSEB=$'\e[38;5;120m'  BGCHARTREUSEB=$'\e[48;5;120m'
+FGEMERALD=$'\e[38;5;40m'      BGEMERALD=$'\e[48;5;40m'      FGEMERALDB=$'\e[38;5;42m'      BGEMERALDB=$'\e[48;5;42m'
+FGMINT=$'\e[38;5;84m'         BGMINT=$'\e[48;5;84m'         FGMINTB=$'\e[38;5;86m'         BGMINTB=$'\e[48;5;86m'
+FGSKY=$'\e[38;5;39m'          BGSKY=$'\e[48;5;39m'          FGSKYB=$'\e[38;5;75m'          BGSKYB=$'\e[48;5;75m'
+FGAZURE=$'\e[38;5;33m'        BGAZURE=$'\e[48;5;33m'        FGAZUREB=$'\e[38;5;69m'        BGAZUREB=$'\e[48;5;69m'
+FGCOBALT=$'\e[38;5;27m'       BGCOBALT=$'\e[48;5;27m'       FGCOBALTB=$'\e[38;5;63m'       BGCOBALTB=$'\e[48;5;63m'
+FGNAVY=$'\e[38;5;21m'         BGNAVY=$'\e[48;5;21m'         FGNAVYB=$'\e[38;5;57m'         BGNAVYB=$'\e[48;5;57m'
+FGVIOLET=$'\e[38;5;129m'      BGVIOLET=$'\e[48;5;129m'      FGVIOLETB=$'\e[38;5;141m'      BGVIOLETB=$'\e[48;5;141m'
+FGORCHID=$'\e[38;5;135m'      BGORCHID=$'\e[48;5;135m'      FGORCHIDB=$'\e[38;5;177m'      BGORCHIDB=$'\e[48;5;177m'
+FGROSE=$'\e[38;5;205m'        BGROSE=$'\e[48;5;205m'        FGROSEB=$'\e[38;5;211m'        BGROSEB=$'\e[48;5;211m'
+FGBLUSH=$'\e[38;5;225m'       BGBLUSH=$'\e[48;5;225m'       FGBLUSHB=$'\e[38;5;231m'       BGBLUSHB=$'\e[48;5;231m'
+END=$'\e[0m'                  BOLD=$'\e[1m'                 DIM=$'\e[2m'                   ITALIC=$'\e[3m'
+UNDERLINE=$'\e[4m'            REVERSE=$'\e[7m'              STRIKETHROUGH=$'\e[9m'
+export PS1="\[${BGPURPLEB}${FGBLACK}\]\$\[${END}\] "
+export separator='────────────────────────────────────────────────────────────────────────────'
+printf '
+                     \\                                     [
+                      @                 ⟡                  ╢
+              /       ╣▒                                  ]▒       \\
+             ╔       ]Ñ▒                                  ╟╣┐       ▓
+            ╢╣       ╣▓            √          t            ▓╣       ▓╣
+           ▓╣▒╖    ╓╫╜           ╥▓    UNIX    ▓@           ╙▓╖    ╔╣╢║
+           ▓▓▓▓  ,p▓,,,,,,      ╜╙▓▄╖,      ,╓╥╜╙╙    ,,,,,,,,▓▓,  ▀▓▓╣U
+           ▀▓Ö   ╙█▓▓▓▓▓▓╢╫╣▓▓▓▓▓╦, ▀▓▓╗  g╢▓╝ ,╓H╢╢╢╢╢╢▓▓▓▓▓▓▒▓╜   ]▓▓
+            ▓▓▓╦╥╖ ╙╙╙╙`     `""▀▓▓@ ▐█▓L]▓╫╛ Æ▒╨╜"       ""╙╙` ╓╖∩▒▒▓
+         ╒▓▒╜""╙▀▓▓                ▀  █▒Γ▐▓▓  ╩                ▓╢╜""╙▀█╫L
+	 ▐▌`      └╝                  ▓▒` █▓                  ╜       └█▓
+	 ▐▓                           ▓▒  █╢                           ▐▓
+         ▐Γ                            ╛  ▐"                           ▐[
+         ¬U                                                            jU
+          C                                                            j
+           L                                                          ]
 
-
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-case ":$PATH:" in
-    *:/home/mb6ockatf/.juliaup/bin:*)
-        ;;
-
-    *)
-        export PATH=/home/mb6ockatf/.juliaup/bin${PATH:+:${PATH}}
-        ;;
-esac
-
-# <<< juliaup initialize <<<
-
-# Begin GOST LaTeX section
-#
-export TEXINPUTS=/home/mb6ockatf/Documents/projects/OUTSOURCE/gost/src/gost-7-32/tex/latex:$TEXINPUTS
-export BSTINPUTS=/home/mb6ockatf/Documents/projects/OUTSOURCE/gost/src/gost-7-32/tex/latex/gost-7-32/bibtex/bst:$BSTINPUTS
-#
-# End GOST LaTeX section
-
+'
