@@ -9,3 +9,5 @@ README
 \.bak-
 ^/\.vim/stats
 \.gitmodules
+^/NEWS$
+^/TODO$
