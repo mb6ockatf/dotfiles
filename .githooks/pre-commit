@@ -1,0 +1,32 @@
+#!/bin/sh
+# pre-commit - refuse commits that add personal data: email addresses,
+# IPv4 addresses, ssh logins, private keys and credentials.
+#
+#   .githooks/pre-commit         scan the lines added by the staged commit
+#   .githooks/pre-commit --all   scan every tracked file (used by "make check")
+#
+# Known-harmless matches are listed, one extended regex per line, in
+# .githooks/allowlist.  Bypass a single false positive with
+# "git commit --no-verify".
+
+top=$(git rev-parse --show-toplevel) || exit 2
+allowlist="${top}/.githooks/allowlist"
+pattern='[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}'
+pattern="${pattern}"'|(^|[^0-9.])([0-9]{1,3}\.){3}[0-9]{1,3}([^0-9.]|$)'
+pattern="${pattern}"'|-----BEGIN [A-Z ]*PRIVATE KEY'
+pattern="${pattern}"'|\bssh\b[^#]*\b[a-z_][a-z0-9_-]*@'
+pattern="${pattern}"'|(passw(or)?d|passphrase|secret|token|api[_-]?key)[A-Za-z_]*[[:space:]]*[:=][[:space:]]*[^[:space:]]'
+
+if [ "$1" = --all ]; then
+	found=$(cd "${top}" && git grep -I -n -i -E -e "${pattern}" -- . ':!.vim/plugged')
+else
+	found=$(git diff --cached -U0 --no-color --diff-filter=ACMR |
+		awk '/^\+\+\+ /{file=substr($0, 7); next} /^\+/{print file ": " substr($0, 2)}' |
+		grep -i -E -e "${pattern}")
+fi
+[ -r "${allowlist}" ] && [ -n "${found}" ] &&
+	found=$(printf '%s\n' "${found}" | grep -v -E -f "${allowlist}")
+[ -z "${found}" ] && exit 0
+printf 'pre-commit: possible personal data:\n%s\n' "${found}" >&2
+printf 'Remove it, extend .githooks/allowlist, or commit with --no-verify.\n' >&2
+exit 1

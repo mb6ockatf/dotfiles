@@ -12,3 +12,5 @@ README
 ^/NEWS$
 ^/TODO$
 ^/archive
+^/Makefile$
+^/\.githooks
