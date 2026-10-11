@@ -1,27 +1,15 @@
 #!/usr/bin/env bash
 color_form_output()
 {
-	color="$1" message="$2"
+	local color="$1" message="$2"
 	case "$color" in
-		black) color="${BLACK}" ;;
-		blackb) color="${BLACKB}" ;;
-		white) color="${WHITE}" ;;
-		whiteb) color="${WHITEB}" ;;
-		red) color="${RED}" ;;
-		redb) color="${REDB}" ;;
-		green) color="${GREEN}" ;;
-		greenb) color="${GREENB}" ;;
-		yellow) color="${YELLOW}" ;;
-		yellowb) color="${YELLOWB}" ;;
-		blue) color="${BLUE}" ;;
-		blueb) color="${BLUEB}" ;;
-		purple) color="${PURPLE}" ;;
-		purpleb) color="${PURPLEB}" ;;
-		lightblue) color="${LIGHTBLUE}" ;;
-		lightblueb) color="${LIGHTBLUEB}" ;;
+		black|white|red|green|yellow|blue|purple|cyan) color="FG${color^^}" ;;
+		blackb|whiteb|redb|greenb|yellowb|blueb|purpleb|cyanb) color="FG${color^^}" ;;
+		lightblue) color=FGCYAN ;;
+		lightblueb) color=FGCYANB ;;
 		*) return 2 ;;
 	esac
-	printf '%b%b%b' "$color" "$message" "$END"
+	printf '%b%b%b' "${!color}" "$message" "$END"
 }
 
 trim()
