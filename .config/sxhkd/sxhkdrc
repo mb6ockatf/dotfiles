@@ -4,23 +4,41 @@ XF86Calculator
  	kitty
 
 super + Return
-	kitty
+	kitty --single-instance
+
+super + x
+	slock
 
 # launcher
 super + d
-	~/.config/rofi/launchers/type-2/launcher.sh
+	rofi -show drun
 
 # reload sxhkd configuration files
 super + Escape
 	pkill -USR1 -x sxhkd
 
+super + grave
+    wid=$(xdotool search --class scratchpad | head -1); \
+    if bspc query -N -n "$wid.hidden" > /dev/null 2>&1; then \
+        bspc node "$wid" -g hidden=off -f; \
+    else \
+        bspc node "$wid" -g hidden=on; \
+    fi
+
+super + shift + l
+    slock
+
 # reload bspwm
 super + shift + r
 	bspc wm -r
 
+# move focused node to the monitor in that direction
+super + alt + shift + {h,j,k,l}
+    bspc node -m {west,south,north,east}
+
 # rofi power menu
 super + shift + e
-	. ~/.config/rofi/powermenu/type-2/powermenu.sh
+	~/.config/rofi/powermenu.sh
 
 # kill node
 super + shift + q
@@ -60,7 +78,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
+super + {Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
@@ -70,8 +88,11 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + {1-8}
+	~/.local/bin/bspc-ws {1-8}
+
+super + shift + {1-8}
+	bspc node -d 'focused:^{1-8}'
 
 #
 # preselect
@@ -107,23 +128,22 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +5%
-
-XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -5%
-
-XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
-
 super + shift + s
-	gscreenshot -s -f /home/mb6ockatf/downloads/
+	maim -s -u ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png
 
 XF86MonBrightness{Up,Down}
-	brightnessctl s 50{+,-}
+    brightnessctl -q set {+1%,1%-}
 
-XF86Audio{Raise,Lower}Volume
-	pulsemixer --change-volume {+,-}10
+# volume
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +1%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -1%
 
 XF86AudioMute
-	pulsemixer  --toggle-mute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# emoji picker
+super + e
+	~/.local/bin/rofimoji

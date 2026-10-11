@@ -1,28 +1,36 @@
 #!/usr/bin/env bash
+bspc rule -a firefox-management desktop='^1' follow=on
+bspc rule -a firefox-default desktop='^2' follow=on
+bspc rule -a firefox-SE desktop='^3' follow=on
+bspc rule -a scratchpad state=floating sticky=on border=off
 pgrep -x sxhkd > /dev/null || sxhkd &
-bspc monitor -d 0001 0010 0011 0100
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+~/.local/bin/monitor-setup.sh
+pgrep -f monitor-hotplug.sh > /dev/null || ~/.local/bin/monitor-hotplug.sh &
+for mon in $(bspc query -M --names); do
+    bspc monitor "$mon" -d 0001 0010 0011 0100 0101 0110 0111 1000
+done
 bspc config border_width 0
 bspc config window_gap 0
 bspc config split_ratio 0.52
 bspc config borderless_monocle false
 bspc config gapless_monocle false
 bspc config single_monocle false
-bspc config paddingless_monocle	true
 bspc config pointer_modifier mod4
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action2 resize_corner
-bspc rule -a Gimp desktop='^4' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a Zathura desktop='^3'
-bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc config focus_follows_pointer true
-bspc config normal_border_color "#272e33"
-bspc config focused_border_color "#7fbbb3"
+bspc config normal_border_color "#565f89"
+bspc config focused_border_color "#ff9e64"
 bspc config active_border_color "#1a1b26"
-feh --bg-scale ~/Pictures/wallpaper.jpg &
-picom -b --config ~/.config/picom/config.ini &
+feh --bg-scale ~/Pictures/Wallpapers/konata.jpeg &
+pgrep -f wallpaperloop.sh > /dev/null || ~/.local/bin/wallpaperloop.sh &
+pgrep -f kitty-borders.sh > /dev/null || ~/.local/bin/kitty-borders.sh &
 bash ~/.config/polybar/launch.sh &
-xsetroot -cursor_name left_ptr &
+pgrep -x dunst > /dev/null || dunst &
+~/.config/bspwm/autostart.sh &
+xkbset bouncekeys 40 && xkbset exp =bouncekeys
