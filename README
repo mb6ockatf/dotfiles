@@ -1,9 +1,66 @@
 dotfiles
 
-use GNU stow tool to install these files to your $HOME
+mb6ockatf's configuration files, installed into $HOME with GNU stow.
 
-stow -t $HOME -R .
-stow -t $HOME -D .
+Install
+-------
+
+    make install      link everything into $HOME, enable the git hooks
+    make dry-run      show what install would do
+    make uninstall    remove the links
+    make check        syntax-check shell files, scan for personal data
+
+or by hand:
+
+    stow -t $HOME -R .
+    stow -t $HOME -D .
+
+To clone with the vim plugins:
+
+    git clone --recurse-submodules <url>
+
+What is not linked
+------------------
+
+.stow-local-ignore keeps these out of $HOME: README, NEWS, TODO,
+Makefile, .githooks/, archive/, .gitmodules and *.bak backups.
+
+archive/ holds configs for software that is no longer installed (NixOS,
+pacman, PowerShell, fish, kakoune, csh, Tor Browser, neofetch, htop,
+nano, GIMP 2.6).  Move a file back out of archive/ and restow to use it
+again.
+
+Generated files stay untracked: ~/.fehbg (rewritten by feh) and
+.vim/stats/.
+
+Private and machine-specific settings
+-------------------------------------
+
+Nothing personal belongs in this repository.  Put private or
+machine-specific settings in ~/.profile.local, which ~/.profile sources
+if it exists.  It may call path_prepend, for example:
+
+    path_prepend "${HOME}/.local/opt/gcc-16/bin"
+    export SOME_HOST=...
+
+.githooks/pre-commit refuses commits that add email addresses, IPv4
+addresses, ssh logins, private keys or credentials.  Harmless matches go
+in .githooks/allowlist.
+
+Shell start-up
+--------------
+
+~/.profile       PATH and ~/.profile.local; POSIX sh, safe to re-run
+~/.bash_profile  sources ~/.bashrc
+~/.bashrc        sources ~/.profile, then the interactive settings,
+                 ~/.bash_aliases and ~/.config/functions.sh
+~/.xprofile      X settings for display-manager logins
+~/.xinitrc       sources ~/.xprofile, then starts bspwm (startx)
+
+~/.local/bin/clean-history tidies ~/.bash_history with
+~/.config/clean_history.sed.  It is not run automatically.
+
+Credits
+-------
 
 @adi1090x's configuration setup https://github.com/adi1090x/rofi
-

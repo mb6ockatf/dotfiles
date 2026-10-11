@@ -1,5 +1,17 @@
 This is a NEWS file for mb6ockatf's dotfiles
 
+v6: 2026-10-12
+================================================================================
+Everything is stowed again, including the shell files, which had drifted
+into separate copies in $HOME.  New: rofi, bottom, top, nala, mimeapps,
+XCompose, Xresources, xprofile and the bspwm helper scripts in
+~/.local/bin.  neovim config folded into one init.lua; kitty.conf cut to
+the options actually set.
+.profile is POSIX and idempotent, sourced by .bashrc; private settings
+live in the untracked ~/.profile.local.  Unused configs moved to
+archive/.  Added a Makefile, .gitmodules for the vim plugins, and a
+pre-commit hook that blocks personal data.
+
 v5: 220954ad559957eb7eeb7d2db2b85c54cd643c74 : Thu Jul 31 22:58:05 2025
 ================================================================================
 Added neovim dotfiles & plugin installation data.  bash experience
