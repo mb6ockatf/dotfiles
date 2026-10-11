@@ -1,1 +1,2 @@
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[ -r ~/.profile ] && . ~/.profile
+[ -r ~/.bashrc ] && . ~/.bashrc
