@@ -1,0 +1,9 @@
+#!/bin/sh
+# clean-history - tidy ~/.bash_history with ~/.config/clean_history.sed
+#
+# The sed script keeps "#<epoch>" timestamps attached to their (possibly
+# multi-line) commands, so never sort the file.  Run once per graphical
+# login from ~/.xprofile.
+history="${HISTFILE:-${HOME}/.bash_history}"
+[ -w "${history}" ] || exit 0
+exec sed -i -f "${HOME}/.config/clean_history.sed" "${history}"

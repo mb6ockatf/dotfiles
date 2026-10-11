@@ -9,10 +9,8 @@ command -v lesspipe > /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 [[ -f ~/.config/functions.sh ]] && . ~/.config/functions.sh
 [[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 [[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && export debian_chroot="$(< /etc/debian_chroot)"
-PATH="${HOME}/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:${PATH}"
-PATH="${HOME}/Documents/projects/notes/OSS/pintos_lab_2/src/utils:${PATH}"
-PATH="${HOME}/.local/opt/gcc-16/bin:${PATH}" # plain gcc/g++/cc -> /opt/gcc-16.2.0
-export LC_ALL=C POSIXLY_CORRECT=true PATH CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))" NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+[[ -r ~/.profile ]] && . ~/.profile
+export LC_ALL=C POSIXLY_CORRECT=true CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))" NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 export GORTEX_TOOLS=compact claude
 alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
 CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors -g3' LDFLAGS='-lm'
