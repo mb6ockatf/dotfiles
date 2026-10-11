@@ -1,0 +1,16 @@
+[
+  {
+    "key": "alt+d",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "CPA --test -d ${fileBasename}\n"
+    }
+  },
+  {
+    "key": "alt+f",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "CPA --parse\n"
+    }
+  }
+]
