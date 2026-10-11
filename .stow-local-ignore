@@ -5,4 +5,6 @@ COPYING
 README
 .gitattributes
 .gitignore
-
+\.bak$
+\.bak-
+^/\.vim/stats
