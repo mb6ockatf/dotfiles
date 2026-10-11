@@ -1,0 +1,7 @@
+# Dotfiles source files that only exist at run time (~/.profile.local, ...).
+disable=SC1090,SC1091
+# Colour and path variables are defined for interactive use, and some are
+# read indirectly (${!name}, printf -v).
+disable=SC2034
+# Aliases are meant to expand their variables when defined.
+disable=SC2139

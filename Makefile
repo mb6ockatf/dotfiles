@@ -4,11 +4,18 @@
 #   make uninstall   remove the links
 #   make dry-run     show what install would do
 #   make check       syntax-check the shell files and scan for personal data
+#   make lint        run shellcheck (needs shellcheck installed)
 
 TARGET ?= $(HOME)
 STOW = stow --target=$(TARGET)
+SHELLCHECK ?= shellcheck
+BASH_FILES = .bashrc .bash_aliases .bash_profile .config/functions.sh
+SH_FILES = .profile .xprofile .xinitrc .xsessionrc .githooks/pre-commit \
+	.local/bin/* .config/bspwm/bspwmrc .config/bspwm/autostart.sh \
+	.config/polybar/launch.sh .config/rofi/powermenu.sh \
+	.config/install_hosts.sh .config/bcalc.sh
 
-.PHONY: all install uninstall dry-run check hooks
+.PHONY: all install uninstall dry-run check lint hooks
 
 all: check
 
@@ -33,3 +40,7 @@ check:
 		head -n 1 "$$script" | grep -q bash && bash -n "$$script" || dash -n "$$script" || exit 1; \
 	done
 	.githooks/pre-commit --all
+
+lint:
+	$(SHELLCHECK) --severity=warning $(SH_FILES)
+	$(SHELLCHECK) --severity=warning --shell=bash $(BASH_FILES)

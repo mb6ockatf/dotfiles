@@ -1,3 +1,4 @@
+# shellcheck shell=sh
 # ~/.xsessionrc - read by Debian's /etc/X11/Xsession, which lightdm runs.
 # That Xsession reads neither ~/.profile nor ~/.xprofile, so pull them in.
 [ -r ~/.profile ] && . ~/.profile

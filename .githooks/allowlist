@@ -5,3 +5,4 @@
 chet\.ramey@case\.edu
 ^archive/
 ^\.vim/autoload/plug\.vim:
+^\.local/share/man/man7/studycommands\.7:

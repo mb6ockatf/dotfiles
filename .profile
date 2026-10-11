@@ -1,3 +1,4 @@
+# shellcheck shell=sh
 # ~/.profile - login environment
 #
 # Read by sh login shells, by the display manager's Xsession, and by every

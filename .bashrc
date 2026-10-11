@@ -8,7 +8,7 @@ command -v lesspipe > /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.config/functions.sh ]] && . ~/.config/functions.sh
 [[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
-[[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && export debian_chroot="$(< /etc/debian_chroot)"
+[[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && debian_chroot="$(< /etc/debian_chroot)" && export debian_chroot
 [[ -r ~/.profile ]] && . ~/.profile
 export LC_ALL=C POSIXLY_CORRECT=true CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))" NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 export GORTEX_TOOLS=compact claude
