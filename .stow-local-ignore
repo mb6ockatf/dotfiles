@@ -8,3 +8,4 @@ README
 \.bak$
 \.bak-
 ^/\.vim/stats
+\.gitmodules
