@@ -27,7 +27,6 @@ bspc config focus_follows_pointer true
 bspc config normal_border_color "#565f89"
 bspc config focused_border_color "#ff9e64"
 bspc config active_border_color "#1a1b26"
-feh --bg-scale ~/Pictures/Wallpapers/konata.jpeg &
 pgrep -f wallpaperloop.sh > /dev/null || ~/.local/bin/wallpaperloop.sh &
 pgrep -f kitty-borders.sh > /dev/null || ~/.local/bin/kitty-borders.sh &
 bash ~/.config/polybar/launch.sh &
