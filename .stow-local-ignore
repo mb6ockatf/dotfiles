@@ -11,3 +11,4 @@ README
 \.gitmodules
 ^/NEWS$
 ^/TODO$
+^/archive
