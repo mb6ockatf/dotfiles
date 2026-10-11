@@ -54,7 +54,9 @@ Shell start-up
 ~/.bash_profile  sources ~/.bashrc
 ~/.bashrc        sources ~/.profile, then the interactive settings,
                  ~/.bash_aliases and ~/.config/functions.sh
-~/.xprofile      X settings for display-manager logins
+~/.xsessionrc    read by lightdm (Debian Xsession); sources ~/.profile
+                 and ~/.xprofile
+~/.xprofile      X settings: compose key, Xresources
 ~/.xinitrc       sources ~/.xprofile, then starts bspwm (startx)
 
 ~/.local/bin/clean-history tidies ~/.bash_history with

@@ -28,7 +28,7 @@ hooks:
 
 check:
 	bash -n .bashrc .bash_aliases .bash_profile .config/functions.sh
-	dash -n .profile .xprofile .xinitrc .githooks/pre-commit
+	dash -n .profile .xprofile .xinitrc .xsessionrc .githooks/pre-commit
 	for script in .local/bin/*; do \
 		head -n 1 "$$script" | grep -q bash && bash -n "$$script" || dash -n "$$script" || exit 1; \
 	done
