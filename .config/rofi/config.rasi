@@ -1,0 +1,8 @@
+configuration {
+	modi: "drun,run,window";
+	font: "JetBrainsMono Nerd Font 12";
+	show-icons: true;
+	drun-display-format: "{name}";
+	disable-history: false;
+}
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
