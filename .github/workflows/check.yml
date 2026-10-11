@@ -1,0 +1,43 @@
+# Syntax checks, personal-data scan, shellcheck, and a stow install into
+# an empty home directory.  Checking out the submodules also proves every
+# vim plugin URL in .gitmodules still resolves.
+name: check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends stow shellcheck dash
+
+      - name: Syntax check and personal-data scan
+        run: make check
+
+      - name: Shellcheck
+        run: make lint
+
+      - name: Stow into an empty home
+        run: |
+          target=$(mktemp -d)
+          make install TARGET="$target"
+          broken=$(find "$target" -xtype l)
+          if [ -n "$broken" ]; then
+            printf 'broken links:\n%s\n' "$broken"
+            exit 1
+          fi
+          test -L "$target/.bashrc"
+          test -f "$target/.config/bspwm/bspwmrc"

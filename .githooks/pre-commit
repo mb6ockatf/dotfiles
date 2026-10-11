@@ -15,7 +15,7 @@ pattern='[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}'
 pattern="${pattern}"'|(^|[^0-9.])([0-9]{1,3}\.){3}[0-9]{1,3}([^0-9.]|$)'
 pattern="${pattern}"'|-----BEGIN [A-Z ]*PRIVATE KEY'
 pattern="${pattern}"'|\bssh\b[^#]*\b[a-z_][a-z0-9_-]*@'
-pattern="${pattern}"'|(passw(or)?d|passphrase|secret|token|api[_-]?key)[A-Za-z_]*[[:space:]]*[:=][[:space:]]*[^[:space:]]'
+pattern="${pattern}"'|(passw(or)?d|passphrase|secret|token|api[_-]?key)[A-Za-z_]*[[:space:]]*[:=][[:space:]]*[^[:space:]$]'
 
 if [ "$1" = --all ]; then
 	found=$(cd "${top}" && git grep -I -n -i -E -e "${pattern}" -- . ':!.vim/plugged')

@@ -9,6 +9,7 @@ Install
     make dry-run      show what install would do
     make uninstall    remove the links
     make check        syntax-check shell files, scan for personal data
+    make lint         shellcheck the shell files
 
 or by hand:
 
@@ -23,7 +24,8 @@ What is not linked
 ------------------
 
 .stow-local-ignore keeps these out of $HOME: README, NEWS, TODO,
-Makefile, .githooks/, archive/, .gitmodules and *.bak backups.
+Makefile, .githooks/, .github/, archive/, .gitmodules, .shellcheckrc
+and *.bak backups.
 
 archive/ holds configs for software that is no longer installed (NixOS,
 pacman, PowerShell, fish, kakoune, csh, Tor Browser, neofetch, htop,
@@ -46,6 +48,16 @@ if it exists.  It may call path_prepend, for example:
 .githooks/pre-commit refuses commits that add email addresses, IPv4
 addresses, ssh logins, private keys or credentials.  Harmless matches go
 in .githooks/allowlist.
+
+GitHub
+------
+
+.github/workflows/check.yml runs make check, make lint and a stow
+install into an empty directory on every push; its submodule checkout
+also proves the vim plugin URLs still resolve.
+.github/workflows/gitleaks.yml scans the whole history for secrets.
+.github/dependabot.yml opens a monthly pull request for the vim plugins
+and one for the workflow actions.
 
 Shell start-up
 --------------
