@@ -51,7 +51,7 @@ Shell start-up
 --------------
 
 ~/.profile       PATH and ~/.profile.local; POSIX sh, safe to re-run
-~/.bash_profile  sources ~/.bashrc
+~/.bash_profile  sources ~/.profile and ~/.bashrc
 ~/.bashrc        sources ~/.profile, then the interactive settings,
                  ~/.bash_aliases and ~/.config/functions.sh
 ~/.xsessionrc    read by lightdm (Debian Xsession); sources ~/.profile
