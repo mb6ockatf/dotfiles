@@ -29,10 +29,10 @@ export VMOPTIONS="${HOME}/.jetbrains.vmoptions.sh" CLICOLOR=1 GROFF_NO_SGR=1
 export EDITOR=nvim VISUAL=nvim SUDO_EDITOR=nvim LIBPROC_HIDE_KERNEL=1
 export GAWK_READ_TIMEOUT=60000 GAWK_SOCK_RETRIES=3 ENOENT=2 PROCPS_USERLEN=10
 export LESS='-QR --use-color --wordwrap --wheel-lines=0 --no-keypad --no-histdups'
-export MANPATH="${HOME}/.local/share/man:${MANPATH}" PYTHONSTARTUP="${HOME}/.config/pythonrc" GLOBSORT=nosort
+export MANPATH="${HOME}/.local/share/man:${MANPATH}" PYTHONSTARTUP="${HOME}/.config/pythonrc" GLOBSORT=none
 export all_proxy=socks5h://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890
 export no_proxy=localhost,127.0.0.1
-export LESSSECURE=1 LESSCHARSET=utf-8 PAGER='less' MANPAGER='less' PYTHON_COLORS=1 PYTHONOPTIMIZE=true
+export LESSSECURE=1 LESSCHARSET=utf-8 PAGER='less' MANPAGER='less' PYTHON_COLORS=1 PYTHONOPTIMIZE=true PYTHON_JIT=1
 documents="${HOME}/Documents/" projects="${documents}/projects" notes="${projects}/notes" algs="${notes}/algs" solutions="${projects}/solutions" cf="${solutions}/codeforces"
 CDPATH=":${notes}:${notes}/OSS:${projects}:${solutions}:${HOME}/.config:${HOME}"
 shopt -s cdspell dirspell autocd
