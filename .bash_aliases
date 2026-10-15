@@ -101,7 +101,7 @@ alias view='nvim -R'
 alias vimdiff='nvim -d'
 # building
 alias valgrind='valgrind -q'
-alias gnulib-tool='~/projects/gnulib/gnulib-tool'
+alias gnulib-tool='~/Documents/projects/foreign_projects.d/gnulib/gnulib-tool'
 alias gitlog-to-changelog='gitlog-to-changelog --append-dot --strip-tab --commit-timezone'
 alias configure="./configure -q"
 alias automake="automake --gnits -W all" aclocal="aclocal -W all"
