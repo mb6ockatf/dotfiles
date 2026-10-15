@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# statistics -- show shell history statistics
+#
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+set -euo pipefail
+readonly VERSION="0.1.2" AUTHOR="@mb6ockatf"
+case "${1-}" in
+	--help|-h)
+		cat <<EOF
+statistics -- show shell history statistics
+Usage: $0
+
+Arguments:
+	none
+
+Input:
+	\$HISTFILE, or ~/.bash_history if it is not set
+
+Output:
+	list of most frequent commands
+
+Exit:
+	0
+EOF
+		exit 0;
+		;;
+	--version|-v)
+		cat <<EOF
+statistics $VERSION
+Copyright (C) 2026 $AUTHOR
+This if free software; see the source for copying conditions.  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+EOF
+		exit 0;
+		;;
+	"")
+		;;
+	*)
+		printf "%s: unknown argument: %s\n" "$0" "$1" >&2
+		exit 2;
+		;;
+esac
+# history is empty inside a script, so read the history file itself.
+# Count the first word of every command, without a leading sudo.  Old
+# entries are one per line; timestamped ones start after a "#<epoch>" line
+# and may continue over several lines, of which only the first counts.
+awk '
+	/^#[0-9]+$/ { stamped = 1; first = 1; next }
+	stamped && !first { next }
+	{ first = 0; sub(/^sudo +/, ""); if ($1 != "") print $1 }
+' "${HISTFILE:-${HOME}/.bash_history}" | sort | uniq -c | sort -rn

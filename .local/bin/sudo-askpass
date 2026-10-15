@@ -1,0 +1,76 @@
+#!/bin/sh
+# SUDO_ASKPASS helper: rofi password prompt that also shows the command
+# sudo is about to run. stdout carries only the typed password; rofi's exit
+# status (nonzero on Escape) is passed through to sudo as a cancel.
+# ASKPASS_DRYRUN=1: print the computed prompt/message to stderr and exit 1
+# without opening rofi (for testing).
+
+# Find the sudo process: normally our direct parent; walk up a couple of
+# levels in case something sits in between. Never fail if it is not found.
+sudo_pid=
+pid=$PPID
+i=0
+while [ "$i" -lt 3 ] && [ -n "$pid" ] && [ "$pid" -gt 1 ] 2>/dev/null; do
+	comm=$(cat "/proc/$pid/comm" 2>/dev/null)
+	case $comm in
+	sudo|sudoedit) sudo_pid=$pid; break ;;
+	esac
+	pid=$(awk '/^PPid:/ { print $2 }' "/proc/$pid/status" 2>/dev/null)
+	i=$((i + 1))
+done
+
+# Rebuild sudo's argv without "sudo" and its -A/--askpass flag, truncate to
+# ~300 characters, then escape for Pango markup (truncating first so an
+# entity is never cut in half).
+cmd=
+if [ -n "$sudo_pid" ]; then
+	cmd=$(tr '\0' '\n' < "/proc/$sudo_pid/cmdline" 2>/dev/null |
+	LC_ALL=C.UTF-8 awk -v max=300 '
+	function add(s) { out = (out == "" ? s : out " " s) }
+	BEGIN { opts = 1 }
+	NR == 1 { n = split($0, p, "/"); if (p[n] == "sudo") next; opts = 0 }
+	skip { skip = 0; add($0); next }
+	opts && $0 == "--" { opts = 0; next }
+	opts && ($0 == "-A" || $0 == "--askpass") { next }
+	opts && /^-[CDgpRrTtUu]$/ { skip = 1; add($0); next }
+	opts && /^-./ { add($0); next }
+	{ opts = 0; add($0) }
+	END {
+		if (length(out) > max) out = substr(out, 1, max) "..."
+		gsub(/&/, "\\&amp;", out)
+		gsub(/</, "\\&lt;", out)
+		gsub(/>/, "\\&gt;", out)
+		printf "%s", out
+	}')
+fi
+
+# sudo's prompt (e.g. "[sudo] password for user: ") minus the trailing
+# colon, since the rofi theme adds its own.
+prompt=$(printf '%s' "${1-}" | sed 's/[[:space:]:]*$//')
+[ -n "$prompt" ] || prompt="sudo password"
+
+set -- -dmenu -password -l 0 -p "$prompt"
+[ -n "$cmd" ] && set -- "$@" -mesg "<b>Command:</b> $cmd"
+
+# Make this prompt hard to miss: grey window, thick orange border, wide and
+# centered.
+set -- "$@" -theme-str '
+* { background-color: #4a4a4a; text-color: #f0f0f0; font: "monospace 13"; }
+window { location: center; anchor: center; width: 60%; border: 6px; border-color: #ff8c00; border-radius: 10px; padding: 18px; }
+mainbox { spacing: 12px; }
+inputbar { padding: 10px; border: 2px; border-color: #ff8c00; border-radius: 6px; children: [ prompt, textbox-prompt-colon, entry ]; }
+prompt { text-color: #ffb347; }
+textbox-prompt-colon { expand: false; str: ": "; text-color: #ffb347; }
+entry { placeholder: "password"; placeholder-color: #9a9a9a; }
+message { padding: 10px; border: 0; background-color: #3a3a3a; border-radius: 6px; }
+textbox { background-color: #3a3a3a; }
+'
+
+if [ -n "${ASKPASS_DRYRUN-}" ]; then
+	printf 'rofi'  >&2
+	printf ' [%s]' "$@" >&2
+	printf '\n' >&2
+	exit 1
+fi
+
+exec rofi "$@"

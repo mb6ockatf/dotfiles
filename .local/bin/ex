@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# ex -- unpack any format archive
+#
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+set -euo pipefail
+readonly VERSION="0.1.1" AUTHOR="@mb6ockatf"
+case "$1" in
+	--help|-h)
+		cat <<EOF
+ex -- unpack any format archive
+Usage: $0 FILENAME
+
+Arguments:
+	FILENAME	archive file path
+
+Output:
+	Whatever the corresponding unarchiver ouutput
+
+Exit:
+	ENOENT(2) if FILENAME is invalid
+	0
+EOF
+		exit 0;
+		;;
+	--version|-v)
+		cat <<EOF
+ex $VERSION
+Copyright (C) 2026 $AUTHOR
+This if free software; see the source for copying conditions.  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+EOF
+		exit 0;
+		;;
+esac
+if [[ -f "$1" ]]
+then
+	case $1 in
+		*.tar.bz2) tar xjf "$1" ;;
+		*.tar.gz) tar xzf "$1" ;;
+		*.bz2) bunzip2 "$1" ;;
+		*.rar) unrar x "$1" ;;
+		*.gz) gunzip "$1" ;;
+		*.tar) tar xf "$1" ;;
+		*.tbz2) tar xjf "$1" ;;
+		*.tgz) tar xzf "$1" ;;
+		*.zip) unzip "$1" ;;
+		*.Z) uncompress "$1" ;;
+		*.7z) 7z x "$1" ;;
+		*) echo "'$1' cannot be extracted via ex()" ;;
+	esac
+else
+	echo "'$1' is not a valid file" && exit "$ENOENT"
+fi
+exit 0
