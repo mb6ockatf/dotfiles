@@ -45,6 +45,13 @@ if it exists.  It may call path_prepend, for example:
     path_prepend "${HOME}/.local/opt/gcc-16/bin"
     export SOME_HOST=...
 
+Your git name and email go in ~/.gitconfig.local, which the tracked
+~/.gitconfig includes:
+
+    [user]
+    	name = ...
+    	email = ...
+
 .githooks/pre-commit refuses commits that add email addresses, IPv4
 addresses, ssh logins, private keys or credentials.  Harmless matches go
 in .githooks/allowlist.
