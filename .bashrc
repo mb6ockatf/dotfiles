@@ -10,7 +10,7 @@ command -v lesspipe > /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 [[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 [[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && debian_chroot="$(< /etc/debian_chroot)" && export debian_chroot
 [[ -r ~/.profile ]] && . ~/.profile
-export LC_ALL=C POSIXLY_CORRECT=true CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))" NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+export LC_ALL=C CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))" NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 export GORTEX_TOOLS=compact claude
 alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
 CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors -g3' LDFLAGS='-lm'
@@ -32,7 +32,8 @@ export LESS='-QR --use-color --wordwrap --wheel-lines=0 --no-keypad --no-histdup
 export MANPATH="${HOME}/.local/share/man:${MANPATH}" PYTHONSTARTUP="${HOME}/.config/pythonrc" GLOBSORT=none
 export all_proxy=socks5h://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890
 export no_proxy=localhost,127.0.0.1
-export LESSSECURE=1 LESSCHARSET=utf-8 PAGER='less' MANPAGER='less' PYTHON_COLORS=1 PYTHONOPTIMIZE=true PYTHON_JIT=1
+export LESSSECURE=1 LESSCHARSET=utf-8 PAGER='less' MANPAGER='less' PYTHON_COLORS=1 PYTHON_JIT=1
+export NVIM_NOTTYFAST=1
 documents="${HOME}/Documents/" projects="${documents}/projects" notes="${projects}/notes" algs="${notes}/algs" solutions="${projects}/solutions" cf="${solutions}/codeforces"
 CDPATH=":${notes}:${notes}/OSS:${projects}:${solutions}:${HOME}/.config:${HOME}"
 shopt -s cdspell dirspell autocd
