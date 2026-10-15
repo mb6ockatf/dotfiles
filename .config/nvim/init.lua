@@ -28,6 +28,8 @@ local create_autocmd = api.nvim_create_autocmd
 o.undofile = true
 o.clipboard = "unnamedplus"
 g.mapleader, g.maplocalleader = " ", " "
+g.loaded_node_provider, g.loaded_perl_provider = 0, 0
+g.loaded_python3_provider, g.loaded_ruby_provider = 0, 0
 o.confirm = true
 o.number, o.relativenumber, o.title = true, true, true
 o.mouse = ''
@@ -93,6 +95,18 @@ keymap.set("n", "<leader>m", "<cmd>write | !make -s<CR>", { desc = "Build all" }
 create_autocmd("FileType", {
   callback = function(args) pcall(vim.treesitter.start, args.buf) end,
 })
+-- ripgrep is not installed on purpose: :grep keeps the default 'grepprg' (plain grep),
+-- so :checkhealth reports that as OK instead of warning (loading vim.health: ~0.2 ms)
+do
+  local health = vim.health
+  local warn = health.warn
+  health.warn = function(msg, ...)
+    if msg == "ripgrep not available" then
+      return health.ok("ripgrep not installed; :grep uses " .. vim.o.grepprg)
+    end
+    return warn(msg, ...)
+  end
+end
 require("lazy").setup({
   {
   "folke/tokyonight.nvim", lazy = false, priority = 1000,
@@ -130,4 +144,6 @@ require("lazy").setup({
 	  "lewis6991/gitsigns.nvim",
 	  opts = { signs = { add = { text = "▎" }, change = { text = "▎" }, delete = { text = "" }, }, },
   },
+}, {
+  rocks = { enabled = false },
 })
