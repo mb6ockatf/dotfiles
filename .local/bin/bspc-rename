@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ $# -eq 1 ]; then
+    set -- "$(bspc query -D -d focused --names | xargs -I{} sh -c 'bspc query -D -m focused --names | grep -nx "{}" | cut -d: -f1')" "$1"
+fi
+[ $# -eq 2 ] || { echo "usage: bspc-rename [N] NAME" >&2; exit 1; }
+for mon in $(bspc query -M --names); do
+    bspc desktop "$mon:^$1" -n "$2"
+done

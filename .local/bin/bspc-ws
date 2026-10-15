@@ -1,0 +1,6 @@
+#!/bin/sh
+cur=$(bspc query -M -m focused --names)
+for mon in $(bspc query -M --names); do
+    [ "$mon" = "$cur" ] || bspc desktop -f "$mon:^$1"
+done
+bspc desktop -f "$cur:^$1"

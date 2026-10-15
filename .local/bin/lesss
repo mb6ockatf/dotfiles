@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+source-highlight --failsafe -f esc256 -i "$1" -o 'STDOUT' | less -NRi
