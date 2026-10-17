@@ -1,0 +1,42 @@
+[global]
+    font = JetBrainsMono Nerd Font 11
+    width = (250, 420)
+    origin = top-right
+    offset = (12, 36)
+    corner_radius = 8
+    frame_width = 2
+    padding = 10
+    horizontal_padding = 12
+    gap_size = 6
+    separator_height = 0
+    icon_position = off
+    markup = full
+    format = "<b>%s</b>\n%b"
+    word_wrap = yes
+    ellipsize = end
+    show_indicators = no
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
+
+[urgency_low]
+    background = "#1a1b26"
+    foreground = "#a9b1d6"
+    frame_color = "#565f89"
+    timeout = 5
+
+[urgency_normal]
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#7aa2f7"
+    timeout = 10
+
+[urgency_critical]
+    background = "#1a1b26"
+    foreground = "#c0caf5"
+    frame_color = "#ff9e64"
+    timeout = 0
+
+[claude]
+    appname = "Claude Code"
+    frame_color = "#ff9e64"

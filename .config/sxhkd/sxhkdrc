@@ -33,8 +33,8 @@ super + shift + r
 	bspc wm -r
 
 # move focused node to the monitor in that direction
-super + alt + shift + {h,j,k,l}
-    bspc node -m {west,south,north,east}
+super + shift + {Left,Down,Up,Right}
+    bspc node -m {west,south,north,east} -f
 
 # rofi power menu
 super + shift + e
@@ -78,7 +78,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {Tab}
+super + {_,shift + }Tab
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
@@ -129,7 +129,7 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 super + shift + s
-	maim -s -u ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png
+	maim -s -u | tee ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png
 
 XF86MonBrightness{Up,Down}
     brightnessctl -q set {+1%,1%-}
@@ -147,3 +147,11 @@ XF86AudioMute
 # emoji picker
 super + e
 	~/.local/bin/rofimoji
+
+# notifications: reopen the last one / dismiss all
+super + {_,shift + }n
+	dunstctl {history-pop,close-all}
+
+# clipboard history (clipmenu): pick / delete entries
+super + {_,shift + }v
+	~/.local/bin/{clipmenu,clipdelmenu}
