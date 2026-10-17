@@ -107,6 +107,28 @@ do
     return warn(msg, ...)
   end
 end
+-- C/C++: clangd (editor only; builds stay on GCC). Per project: `bear -- make`
+-- once, or a compile_flags.txt in the root. Ctrl-] jumps via LSP, K hover,
+-- grr references, grn rename, gra code actions, ]d/[d next/prev diagnostic.
+vim.lsp.config("clangd", {
+  cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=never", "-j=4" },
+  filetypes = { "c", "cpp" },
+  root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
+  init_options = { fallbackFlags = { "-std=c23" } },
+})
+vim.lsp.enable("clangd")
+create_autocmd("LspAttach", {
+  group = create_augroup("lsp-completion", { clear = true }),
+  callback = function(args) vim.bo[args.buf].complete = "o," .. vim.o.complete end,
+})
+vim.diagnostic.config({ virtual_text = true, severity_sort = true })
+-- no line-length limit in the editor (formatters handle width): override
+-- built-in ftplugins (gitcommit, mail: 72) and editorconfig max_line_length
+require("editorconfig").properties.max_line_length = function() end
+create_autocmd("FileType", {
+  group = create_augroup("no-textwidth", { clear = true }),
+  callback = function() vim.bo.textwidth = 0; vim.wo.colorcolumn = "" end,
+})
 require("lazy").setup({
   {
   "folke/tokyonight.nvim", lazy = false, priority = 1000,
