@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-bspc rule -a firefox-management desktop='^1' follow=on
-bspc rule -a firefox-default desktop='^2' follow=on
-bspc rule -a firefox-SE desktop='^3' follow=on
 bspc rule -a scratchpad state=floating sticky=on border=off
 pgrep -x sxhkd > /dev/null || sxhkd &
 bspc config remove_disabled_monitors true
@@ -31,5 +28,6 @@ pgrep -f wallpaperloop.sh > /dev/null || ~/.local/bin/wallpaperloop.sh &
 pgrep -f kitty-borders.sh > /dev/null || ~/.local/bin/kitty-borders.sh &
 bash ~/.config/polybar/launch.sh &
 pgrep -x dunst > /dev/null || dunst &
+pgrep -x clipmenud > /dev/null || ~/.local/bin/clipmenud &
 ~/.config/bspwm/autostart.sh &
 xkbset bouncekeys 40 && xkbset exp =bouncekeys
