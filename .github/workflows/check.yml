@@ -1,6 +1,5 @@
 # Syntax checks, personal-data scan, shellcheck, and a stow install into
-# an empty home directory.  Checking out the submodules also proves every
-# vim plugin URL in .gitmodules still resolves.
+# an empty home directory.
 name: check
 
 on:
@@ -16,8 +15,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
 
       - name: Install tools
         run: |

@@ -18,7 +18,7 @@ pattern="${pattern}"'|\bssh\b[^#]*\b[a-z_][a-z0-9_-]*@'
 pattern="${pattern}"'|(passw(or)?d|passphrase|secret|token|api[_-]?key)[A-Za-z_]*[[:space:]]*[:=][[:space:]]*[^[:space:]$]'
 
 if [ "$1" = --all ]; then
-	found=$(cd "${top}" && git grep -I -n -i -E -e "${pattern}" -- . ':!.vim/plugged')
+	found=$(cd "${top}" && git grep -I -n -i -E -e "${pattern}")
 else
 	found=$(git diff --cached -U0 --no-color --diff-filter=ACMR |
 		awk '/^\+\+\+ /{file=substr($0, 7); next} /^\+/{print file ": " substr($0, 2)}' |

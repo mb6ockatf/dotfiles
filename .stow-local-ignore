@@ -7,8 +7,6 @@ README
 .gitignore
 \.bak$
 \.bak-
-^/\.vim/stats
-\.gitmodules
 ^/NEWS$
 ^/TODO$
 ^/archive

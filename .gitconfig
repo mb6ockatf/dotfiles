@@ -4,5 +4,42 @@
 	proxy = http://127.0.0.1:7890
 [core]
 	pager = less -NRi
+[status]
+	short = true
+	branch = true
+[commit]
+	verbose = true
+[diff]
+	algorithm = histogram
+	colorMoved = zebra
+[merge]
+	conflictStyle = zdiff3
+[rerere]
+	enabled = true
+[fetch]
+	prune = true
+[pull]
+	ff = only
+[push]
+	autoSetupRemote = true
+[rebase]
+	autoStash = true
+	autoSquash = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[log]
+	date = iso
+[help]
+	autocorrect = prompt
+[column]
+	ui = auto
+[alias]
+	lg = log --oneline --graph --decorate
+	last = log -1 --stat
+	amend = commit --amend --no-edit
+	unstage = restore --staged
+	undo = reset --soft HEAD~1
 [include]
 	path = ~/.gitconfig.local

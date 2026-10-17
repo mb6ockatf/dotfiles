@@ -4,7 +4,6 @@
 @FreeBSD\.org
 chet\.ramey@case\.edu
 ^archive/
-^\.vim/autoload/plug\.vim:
 ^\.local/share/man/man7/studycommands\.7:
 ^\.local/share/man/man7/readlinebinds\.7:
 ^man/readlinebinds\.7\.m4:

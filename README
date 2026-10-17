@@ -17,16 +17,12 @@ or by hand:
     stow -t $HOME -R .
     stow -t $HOME -D .
 
-To clone with the vim plugins:
-
-    git clone --recurse-submodules <url>
-
 What is not linked
 ------------------
 
 .stow-local-ignore keeps these out of $HOME: README, NEWS, TODO,
-Makefile, man/, .githooks/, .github/, archive/, .gitmodules,
-.shellcheckrc and *.bak backups.
+Makefile, man/, .githooks/, .github/, archive/, .shellcheckrc and
+*.bak backups.
 
 man/ holds the m4 sources of the manual pages.  Edit those, not the
 generated pages under .local/share/man; make man (and make install)
@@ -34,11 +30,11 @@ regenerates them.
 
 archive/ holds configs for software that is no longer installed (NixOS,
 pacman, PowerShell, fish, kakoune, csh, Tor Browser, neofetch, htop,
-nano, GIMP 2.6).  Move a file back out of archive/ and restow to use it
+nano, GIMP 2.6, and vim and vi, replaced by neovim).  Move a file back out of archive/ and restow to use it
 again.
 
-Generated files stay untracked: ~/.fehbg (rewritten by feh) and
-.vim/stats/.
+Generated files stay untracked: ~/.fehbg (rewritten by feh).  The
+neovim vim-stats plugin keeps its data in ~/.local/state/nvim/vim-stats.
 
 Private and machine-specific settings
 -------------------------------------
@@ -65,11 +61,10 @@ GitHub
 ------
 
 .github/workflows/check.yml runs make check, make lint and a stow
-install into an empty directory on every push; its submodule checkout
-also proves the vim plugin URLs still resolve.
+install into an empty directory on every push.
 .github/workflows/gitleaks.yml scans the whole history for secrets.
-.github/dependabot.yml opens a monthly pull request for the vim plugins
-and one for the workflow actions.
+.github/dependabot.yml opens a monthly pull request for the workflow
+actions.
 
 Shell start-up
 --------------
