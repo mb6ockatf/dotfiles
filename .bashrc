@@ -3,40 +3,10 @@ case $- in
 	*i*) ;;
 	*) return ;;
 esac
-set -o posix -o noclobber -o notify -o pipefail
-command -v lesspipe > /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
-[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
-[[ -f ~/.config/functions.sh ]] && . ~/.config/functions.sh
-[[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
-[[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && debian_chroot="$(< /etc/debian_chroot)" && export debian_chroot
-[[ -r ~/.profile ]] && . ~/.profile
-export LC_ALL=C CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))" NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-export GORTEX_TOOLS=compact claude
-alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
-CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors -g3' LDFLAGS='-lm'
-COB_CFLAGS='-O0 -g -std=ibm-strict -fstatic-call -ffold-copy=lower -fdebugging -ftrace -fstack-check'
-# drop each command both bare ("cd") and with arguments ("cd foo")
-for c in cat cd ls rm cp mv rmdir mkdir man nvim vim less lesss lesst clear exit '[bf]g' tac rev apt make \
-	echo factor indent clip chmod touch la ll pwd
-do HISTIGNORE="${HISTIGNORE}:${c}:${c} *"
-done
-unset c
-HISTIGNORE="${HISTIGNORE}:history*:*psk*:*password*"
-shopt -s histappend cmdhist lithist histverify histreedit
-HISTFILE="${HOME}/.bash_history" HISTSIZE=100000 HISTFILESIZE=200000
-HISTCONTROL=ignoreboth HISTTIMEFORMAT='%F %T ' PROMPT_COMMAND='history -a'
-export VMOPTIONS="${HOME}/.jetbrains.vmoptions.sh" CLICOLOR=1 GROFF_NO_SGR=1
-export EDITOR=nvim VISUAL=nvim SUDO_EDITOR=nvim LIBPROC_HIDE_KERNEL=1
-export GAWK_READ_TIMEOUT=60000 GAWK_SOCK_RETRIES=3 ENOENT=2 PROCPS_USERLEN=10
-export LESS='-QR --use-color --wordwrap --wheel-lines=0 --no-keypad --no-histdups'
-export MANPATH="${HOME}/.local/share/man:${MANPATH}" PYTHONSTARTUP="${HOME}/.config/pythonrc" GLOBSORT=none
-export all_proxy=socks5h://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890
-export no_proxy=localhost,127.0.0.1
-export LESSSECURE=1 LESSCHARSET=utf-8 PAGER='less' MANPAGER='less' PYTHON_COLORS=1 PYTHON_JIT=1
-export NVIM_NOTTYFAST=1
-documents="${HOME}/Documents/" projects="${documents}/projects" notes="${projects}/notes" algs="${notes}/algs" solutions="${projects}/solutions" cf="${solutions}/codeforces"
-CDPATH=":${notes}:${notes}/OSS:${projects}:${solutions}:${HOME}/.config:${HOME}"
-shopt -s cdspell dirspell autocd
+[[ $- == *i* ]] && source ~/.local/share/blesh/ble.sh --noattach
+set -o notify
+shopt -s histappend cmdhist lithist histverify histreedit globstar cdspell dirspell autocd extglob checkjobs
+
 GCAL='--exit-status-help-non-zero --time-offset=+03:00 --atmosphere=991.915643,20 --precise --gregorian-reform=1918,02,01,13 --iso-week-number=yes -s 2 -X -G -K'
 FGBLACK=$'\e[30m'             BGBLACK=$'\e[40m'             FGBLACKB=$'\e[90m'             BGBLACKB=$'\e[100m'
 FGRED=$'\e[31m'               BGRED=$'\e[41m'               FGREDB=$'\e[91m'               BGREDB=$'\e[101m'
@@ -65,8 +35,50 @@ FGROSE=$'\e[38;5;205m'        BGROSE=$'\e[48;5;205m'        FGROSEB=$'\e[38;5;21
 FGBLUSH=$'\e[38;5;225m'       BGBLUSH=$'\e[48;5;225m'       FGBLUSHB=$'\e[38;5;231m'       BGBLUSHB=$'\e[48;5;231m'
 END=$'\e[0m'                  BOLD=$'\e[1m'                 DIM=$'\e[2m'                   ITALIC=$'\e[3m'
 UNDERLINE=$'\e[4m'            REVERSE=$'\e[7m'              STRIKETHROUGH=$'\e[9m'
-export PS1="\[${BGPURPLEB}${FGBLACK}\]\$\[${END}\] "
+CFLAGS='-std=c23 -Wall -Wextra -Wpedantic -pedantic-errors -Werror -Wfatal-errors -g3' LDFLAGS='-lm'
+COB_CFLAGS='-O0 -g -std=ibm-strict -fstatic-call -ffold-copy=lower -fdebugging -ftrace -fstack-check'
+HISTIGNORE="${HISTIGNORE}:history*:*psk*:*password*"
+CDPATH=".:${HOME}/Documents/projects:${HOME}"
+HISTFILE="${HOME}/.bash_history" HISTSIZE=100000 HISTFILESIZE=200000
+HISTCONTROL=ignoreboth HISTTIMEFORMAT='%F %T '
+
+command -v lesspipe > /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+[[ -f ~/.config/functions.sh ]] && . ~/.config/functions.sh
+[[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
+[[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && debian_chroot="$(< /etc/debian_chroot)" && export debian_chroot
+[[ -r ~/.profile ]] && . ~/.profile
+
+alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
+unset LC_ALL
+export LC_COLLATE=C CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))"
+export NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+export GORTEX_TOOLS=compact
+export VMOPTIONS="${HOME}/.jetbrains.vmoptions.sh" CLICOLOR=1 GROFF_NO_SGR=1
+export EDITOR=nvim VISUAL=nvim SUDO_EDITOR=nvim LIBPROC_HIDE_KERNEL=1
+export GAWK_READ_TIMEOUT=60000 GAWK_SOCK_RETRIES=3 ENOENT=2 PROCPS_USERLEN=10
+export LESS='-QR --use-color --wordwrap --wheel-lines=0 --no-keypad --no-histdups'
+export MANPATH="${HOME}/.local/share/man:${MANPATH}" PYTHONSTARTUP="${HOME}/.config/pythonrc" GLOBSORT=none
+export all_proxy=socks5h://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890
+export no_proxy=localhost,127.0.0.1 LESSSECURE=1 LESSCHARSET=utf-8 PAGER='less'
+export MANPAGER='less' PYTHON_COLORS=1 PYTHON_JIT=1 NVIM_NOTTYFAST=1
 export separator='────────────────────────────────────────────────────────────────────────────'
+
+. /usr/lib/git-core/git-sh-prompt
+GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM=auto GIT_PS1_SHOWCONFLICTSTATE=yes
+GIT_PS1_SHOWCOLORHINTS=1 GIT_PS1_HIDE_IF_PWD_IGNORED=1
+PROMPT_DIRTRIM=3
+__prompt(){
+	local status=$?
+        history -a
+        local mark="\[${BGPURPLEB}${FGBLACK}\]\\\$\[${END}\] "
+        (( status )) && mark="\[${FGRED}\]${status}\[${END}\] ${mark}"
+        __git_ps1 '' "${mark}" '%s '
+}
+PROMPT_COMMAND=__prompt
+command -v direnv > /dev/null && eval "$(direnv hook bash)"
+[[ ${BLE_VERSION-} ]] && ble-attach
 printf '
                      \\                                     [
                       @                 ⟡                  ╢

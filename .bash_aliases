@@ -25,7 +25,7 @@ alias l1="/usr/bin/ls ${ls_basic} -1"
 alias lU="/usr/bin/ls ${ls_basic} -UAF"
 alias lla="/usr/bin/ls ${ls_basic} -lA"
 alias basenc="basenc ${S}" dir="dir -hGU ${C}" vdir="vdir -hGU ${C}"
-alias mkdir='mkdir -p' date='/usr/bin/date -u' mkdtemp='mktemp -d' mkstemp='mktemp'
+alias mkdir='mkdir -p' mkdtemp='mktemp -d' mkstemp='mktemp'
 alias who='who -HT' fmt='fmt -u' nl='nl -b a'
 alias shuf='shuf --random-source=/dev/urandom' factor='factor -h'
 alias pathchk='pathchk --portability' errno='errno -ls'
@@ -37,7 +37,7 @@ za() {
 }
 
 # scripting
-alias awk='awk --posix' python3='python3 -q' sed='sed --posix'
+alias python3='python3 -q'
 alias julia='julia -O3 --banner=no --color=yes --depwarn=error --warn-overwrite=yes --inline=no'
 alias a68g='a68g --strict --pedantic -O3' apl="apl -q --Color"
 # archive
@@ -106,7 +106,7 @@ alias gitlog-to-changelog='gitlog-to-changelog --append-dot --strip-tab --commit
 alias configure="./configure -q"
 alias automake="automake --gnits -W all" aclocal="aclocal -W all"
 alias autom4te='autom4te -W all'
-alias autoreconf='autoreconf -W all' make="make -j$(nproc) --shuffle=random"
+alias autoreconf='autoreconf -W all' make="make -j$(nproc)"
 alias mixvm='/usr/bin/mixvm -t -d -l' prof='gprof'
 alias compile_static="echo 'sudo nix-shell -p glibc.static'"
 alias shfmt='shfmt -w -s -p -ci -sr -fn' black='/usr/bin/black -q -l 80 --color'
