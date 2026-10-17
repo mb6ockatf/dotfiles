@@ -7,6 +7,11 @@ psql, rlwrap and many more), edits its input line with Readline.
 Its default Emacs-mode bindings go far beyond the arrow keys; this page
 lists the ones worth learning.
 .PP
+At the bash prompt here, ble.sh replaces Readline; it keeps most of
+these keys and adds its own, see \fBblesh\-guide\fP(7).
+This page still applies to the other programs, and to bash after
+\fBble\-detach\fP.
+.PP
 \fBC\-\fP\fIx\fP means Control+\fIx\fP.
 \fBM\-\fP\fIx\fP means Meta+\fIx\fP: hold Alt, or press and release Esc
 before \fIx\fP.
@@ -184,8 +189,11 @@ Personal Readline settings; it includes \fI/etc/inputrc\fP.
 With terminal flow control on (the default), \fBC\-s\fP freezes the
 terminal and \fBC\-q\fP unfreezes it, so neither reaches Readline.
 Run \fBstty \-ixon\fP, for example in \fI~/.bashrc\fP, to free them.
+ble.sh turns flow control off while it edits, so at its prompt both
+keys work.
 .SH SEE ALSO
 \fBbash\fP(1), \fBreadline\fP(3), \fBstty\fP(1),
+\fBblesh\-guide\fP(7),
 \fBinfo rluserman\fP.
 .PP
 In bash, \fBbind \-p\fP lists every binding and \fBbind \-q\fP

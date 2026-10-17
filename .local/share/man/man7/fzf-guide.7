@@ -1,0 +1,207 @@
+'\" t
+.TH FZF-GUIDE 7 "2026-10-17" "dotfiles" "Personal Command Reference"
+.SH NAME
+fzf-guide \- a working guide to the fzf fuzzy finder in the shell and in pipelines
+.SH DESCRIPTION
+\fBfzf\fP(1) is a fuzzy finder: it reads lines, narrows them down as
+you type, and prints what you picked.
+It is wired into the shell (\fBC-r\fP, \fBC-t\fP, \fBM-c\fP,
+\fB**\fP\fITAB\fP) through ble.sh, and is also an ordinary filter for
+any pipeline.
+.PP
+\fBC-\fP\fIx\fP is Ctrl+\fIx\fP, \fBM-\fP\fIx\fP is Alt+\fIx\fP,
+\fBS-\fP is Shift, \fBRET\fP is Enter.
+The keys were checked against fzf 0.60's own shell scripts on this
+machine.
+.SH THE SHELL KEYS
+The ble.sh integration binds these at the bash prompt.
+.TP
+\fBC-r\fP
+Fuzzy search through the whole history.
+\fBRET\fP puts the chosen command on the line without running it, so it
+can be edited first.
+\fBC-r\fP again inside fzf toggles between sorting by relevance and by
+time.
+.TP
+\fBC-t\fP
+Pick files and directories below the current directory and insert their
+paths at the cursor; mark several with \fBTAB\fP.
+Example: \fBtar czf out.tgz\fP, \fBC-t\fP, pick, \fBRET\fP.
+.TP
+\fBM-c\fP
+Pick a directory below the current one and \fBcd\fP into it.
+.SH ** COMPLETION
+Type \fB**\fP where an argument goes and press \fBTAB\fP; fzf opens
+with candidates that fit the command:
+.TP
+\fBnvim **\fP\fITAB\fP
+Files.
+.TP
+\fBcd **\fP\fITAB\fP
+Directories only.
+.TP
+\fBnvim src/**\fP\fITAB\fP
+Files below \fIsrc/\fP.
+.TP
+\fBkill \-9 **\fP\fITAB\fP
+Running processes; inserts their PIDs.
+.TP
+\fBssh **\fP\fITAB\fP
+Hosts from \fI~/.ssh/config\fP and \fIknown_hosts\fP.
+.TP
+\fBexport **\fP\fITAB\fP, \fBunset **\fP\fITAB\fP
+Variable names.
+.TP
+\fBunalias **\fP\fITAB\fP
+Aliases.
+.PP
+Mark several items with \fBTAB\fP where that makes sense (files,
+PIDs).
+.SH INSIDE THE FINDER
+.TP
+\fBtyping\fP
+Filters the list.
+.TP
+\fBUp\fP, \fBDown\fP, \fBC-p C-n\fP
+Move; \fBC-k\fP and \fBC-j\fP work too.
+.TP
+\fBRET\fP
+Accept.
+.TP
+\fBTAB\fP, \fBS-TAB\fP
+Mark or unmark, when multiple selection is on.
+.TP
+\fBEsc\fP, \fBC-c\fP, \fBC-g\fP
+Cancel; nothing is printed.
+.TP
+\fBmouse\fP
+Click and scroll work in kitty.
+.TP
+\fBS-Up\fP, \fBS-Down\fP
+Scroll the preview window, when there is one.
+.SH SEARCH SYNTAX
+Space-separated terms must all match (AND), in any order.
+.TP
+\fBconf nvim\fP
+Fuzzy: c..o..n..f somewhere, and n..v..i..m somewhere.
+.TP
+\fB\(aqinit\fP
+The exact substring \(lqinit\(rq.
+.TP
+\fB^src\fP
+Starts with \(lqsrc\(rq.
+.TP
+\fB.c$\fP
+Ends with \(lq.c\(rq.
+.TP
+\fB!test\fP
+Does \fInot\fP contain \(lqtest\(rq.
+.TP
+\fB!^build\fP
+Does not start with \(lqbuild\(rq.
+.TP
+\fB.c$ | .h$\fP
+OR: ends with .c or with .h.
+.PP
+An all-lowercase query ignores case; one capital letter makes the whole
+query case-sensitive.
+So \fB^src .c$ !test\fP means \(lqC files under src, but no tests\(rq,
+built up while watching the list shrink.
+.SH FZF IN PIPELINES
+fzf reads lines on standard input and prints the selection on standard
+output, so it fits any pipeline.
+Without input it lists the files below the current directory.
+.PP
+.EX
+nvim "$(fzf)"
+cd "$(find . \-type d | fzf)"
+git switch "$(git branch \-\-format=\(aq%(refname:short)\(aq | fzf)"
+man "$(man \-k . | fzf | cut \-d\(aq \(aq \-f1)"
+.EE
+.PP
+Options worth knowing, all on the command line:
+.TP
+\fB\-m\fP, \fB\-\-multi\fP
+Allow several selections, one per output line.
+.TP
+\fB\-q\fP \fItext\fP
+Start with \fItext\fP already typed.
+.TP
+\fB\-1\fP, \fB\-0\fP
+Accept a single match at once; exit when nothing matches.
+.TP
+\fB\-\-height 40%\fP
+Open below the prompt instead of full screen.
+.TP
+\fB\-\-tac\fP
+Reverse the input order, newest first for logs.
+.TP
+\fB\-\-no\-sort\fP
+Keep the input order while filtering.
+.TP
+\fB\-\-header\-lines 1\fP
+Treat the first input line as a fixed header.
+.TP
+\fB\-d : \-\-nth 2\fP
+Split on \(lq:\(rq and search only field 2.
+.TP
+\fB\-\-preview\fP \fI\(aqcmd {}\(aq\fP
+Run \fIcmd\fP on the highlighted line and show its output.
+.TP
+\fB\-f\fP \fItext\fP
+No interface: print the lines that fuzzy-match \fItext\fP.
+.PP
+In \fB\-\-preview\fP and \fB\-\-bind\fP commands, \fB{}\fP is the whole
+line, \fB{1}\fP, \fB{2}\fP ... are fields (split by \fB\-d\fP), and
+\fB{+}\fP is every marked line.
+.SH RECIPES
+Kill processes, choosing from a ps listing with its header kept:
+.PP
+.EX
+ps \-ef | fzf \-m \-\-header\-lines 1 | awk \(aq{print $2}\(aq | xargs kill
+.EE
+.PP
+Browse the git log with the full commit alongside:
+.PP
+.EX
+git log \-\-oneline | fzf \-\-preview \(aqgit show \-\-color=always {1}\(aq
+.EE
+.PP
+Look at files before picking:
+.PP
+.EX
+fzf \-\-preview \(aqhead \-n 100 {}\(aq
+.EE
+.PP
+Grep, then jump straight to the hit in nvim:
+.PP
+.EX
+grep \-rn TODO . | fzf \-d : \e
+  \-\-preview \(aqhead \-n {2} {1} | tail \-n 20\(aq \e
+  \-\-bind \(aqenter:become(nvim +{2} {1})\(aq
+.EE
+.PP
+Fuzzy filtering without any interface, inside scripts:
+.PP
+.EX
+printf \(aq%s\en\(aq * | fzf \-f rdme
+.EE
+.PP
+\fBbecome(\fP...\fB)\fP replaces fzf with the command, so nvim gets the
+terminal directly.
+Other useful \fB\-\-bind\fP actions: \fBexecute(\fP...\fB)\fP runs a
+command and returns to fzf, \fBreload(\fP...\fB)\fP refills the list.
+.SH FILES
+.TP
+\fI~/.blerc\fP
+Loads fzf's key bindings and \fB**\fP completion through ble.sh
+(\fBble-import integration/fzf-key-bindings\fP and
+\fBfzf-completion\fP).
+.TP
+\fI/usr/share/doc/fzf/examples/\fP
+fzf's own \fIkey-bindings.bash\fP and \fIcompletion.bash\fP, which
+those integrations load.
+.SH SEE ALSO
+\fBfzf\fP(1), \fBblesh\-guide\fP(7), \fBbash\fP(1)
+.SH AUTHOR
+mb6ockatf <smokenmirror@tutamail.com>

@@ -10,4 +10,8 @@ chet\.ramey@case\.edu
 ^man/readlinebinds\.7\.m4:
 ^\.local/share/man/man7/kitty-guide\.7:
 ^man/kitty-guide\.7\.m4:
+^\.local/share/man/man7/blesh-guide\.7:
+^man/blesh-guide\.7\.m4:
+^\.local/share/man/man7/fzf-guide\.7:
+^man/fzf-guide\.7\.m4:
 ^\.github/workflows/gitleaks\.yml:([0-9]+:)? ?# 
