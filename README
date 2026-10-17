@@ -10,6 +10,7 @@ Install
     make uninstall    remove the links
     make check        syntax-check shell files, scan for personal data
     make lint         shellcheck the shell files
+    make man          regenerate the manual pages from man/*.m4
 
 or by hand:
 
@@ -24,8 +25,12 @@ What is not linked
 ------------------
 
 .stow-local-ignore keeps these out of $HOME: README, NEWS, TODO,
-Makefile, .githooks/, .github/, archive/, .gitmodules, .shellcheckrc
-and *.bak backups.
+Makefile, man/, .githooks/, .github/, archive/, .gitmodules,
+.shellcheckrc and *.bak backups.
+
+man/ holds the m4 sources of the manual pages.  Edit those, not the
+generated pages under .local/share/man; make man (and make install)
+regenerates them.
 
 archive/ holds configs for software that is no longer installed (NixOS,
 pacman, PowerShell, fish, kakoune, csh, Tor Browser, neofetch, htop,

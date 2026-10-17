@@ -5,21 +5,24 @@
 #   make dry-run     show what install would do
 #   make check       syntax-check the shell files and scan for personal data
 #   make lint        run shellcheck (needs shellcheck installed)
+#   make man         regenerate the manual pages from man/*.m4 (needs m4)
 
 TARGET ?= $(HOME)
 STOW = stow --target=$(TARGET)
 SHELLCHECK ?= shellcheck
+M4 ?= m4
+MAN_PAGES = .local/share/man/man7/readlinebinds.7 .local/share/man/man7/kitty-guide.7
 BASH_FILES = .bashrc .bash_aliases .bash_profile .config/functions.sh
 SH_FILES = .profile .xprofile .xinitrc .xsessionrc .githooks/pre-commit \
 	.local/bin/* .config/bspwm/bspwmrc .config/bspwm/autostart.sh \
 	.config/polybar/launch.sh .config/rofi/powermenu.sh \
 	.config/install_hosts.sh .config/bcalc.sh
 
-.PHONY: all install uninstall dry-run check lint hooks
+.PHONY: all install uninstall dry-run check lint hooks man
 
 all: check
 
-install: dry-run hooks
+install: man dry-run hooks
 	$(STOW) --restow .
 
 uninstall:
@@ -32,6 +35,11 @@ dry-run:
 
 hooks:
 	git config core.hooksPath .githooks
+
+man: $(MAN_PAGES)
+
+.local/share/man/man7/%.7: man/%.7.m4
+	$(M4) -P $< > $@.tmp && mv $@.tmp $@
 
 check:
 	bash -n .bashrc .bash_aliases .bash_profile .config/functions.sh

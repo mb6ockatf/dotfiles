@@ -6,4 +6,8 @@ chet\.ramey@case\.edu
 ^archive/
 ^\.vim/autoload/plug\.vim:
 ^\.local/share/man/man7/studycommands\.7:
+^\.local/share/man/man7/readlinebinds\.7:
+^man/readlinebinds\.7\.m4:
+^\.local/share/man/man7/kitty-guide\.7:
+^man/kitty-guide\.7\.m4:
 ^\.github/workflows/gitleaks\.yml:([0-9]+:)? ?# 

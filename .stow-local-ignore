@@ -13,6 +13,7 @@ README
 ^/TODO$
 ^/archive
 ^/Makefile$
+^/man$
 ^/\.githooks
 ^/\.github
 ^/\.shellcheckrc$

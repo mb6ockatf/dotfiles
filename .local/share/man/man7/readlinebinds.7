@@ -1,0 +1,194 @@
+.TH READLINEBINDS 7 "2026-10-17" "dotfiles" "Personal Command Reference"
+.SH NAME
+readlinebinds \- lesser known GNU Readline key bindings
+.SH DESCRIPTION
+Bash, and every other program built on GNU Readline (gdb, python3,
+psql, rlwrap and many more), edits its input line with Readline.
+Its default Emacs-mode bindings go far beyond the arrow keys; this page
+lists the ones worth learning.
+.PP
+\fBC\-\fP\fIx\fP means Control+\fIx\fP.
+\fBM\-\fP\fIx\fP means Meta+\fIx\fP: hold Alt, or press and release Esc
+before \fIx\fP.
+\fBDEL\fP is the Backspace key.
+.PP
+Readline words are runs of letters and digits.
+\fBC\-w\fP splits at white space instead, and the \fBshell\-\fP commands
+(\fBM\-C\-f\fP, \fBM\-C\-b\fP, \fBM\-C\-d\fP, \fBM\-C\-t\fP) split the way bash
+does, so a quoted string or \fIfile.tar.gz\fP counts as one word.
+.SS Moving
+.TP
+\fBM\-f\fP
+Move forward to the end of the next word.
+.TP
+\fBM\-b\fP
+Move back to the start of the current or previous word.
+.TP
+\fBM\-C\-f\fP, \fBM\-C\-b\fP
+Move forward or back by shell word.
+.TP
+\fBC\-]\fP
+Read a character and move to its next occurrence.
+.TP
+\fBM\-C\-]\fP
+Read a character and move to its previous occurrence.
+.TP
+\fBC\-x C\-x\fP
+Swap the cursor and the mark.
+\fBC\-@\fP or \fBM\-SPC\fP sets the mark.
+.TP
+\fBC\-l\fP
+Clear the screen and redraw the current line at the top.
+.TP
+\fBM\-C\-l\fP
+Clear the screen and the terminal scrollback, then redraw the current
+line.
+.SS History
+.TP
+\fBM\-<\fP, \fBM\->\fP
+Go to the first history line, or back to the line being typed.
+.TP
+\fBC\-r\fP, \fBC\-s\fP
+Incremental search backward or forward through the history.
+Type to refine, repeat the key for the next match, \fBC\-g\fP to give up.
+See \fBBUGS\fP about \fBC\-s\fP.
+.TP
+\fBM\-p\fP, \fBM\-n\fP
+Non-incremental search backward or forward: type the whole string,
+then press Enter.
+The string may match anywhere in a history line.
+.TP
+\fBM\-.\fP, \fBM\-_\fP
+Insert the last argument of the previous command, like \fB!$\fP.
+Repeat to step back through older commands.
+With a numeric prefix (\fBM\-\fP\fIn\fP), insert the \fIn\fPth argument
+instead.
+.TP
+\fBM\-C\-y\fP
+Insert the first argument of the previous command.
+.TP
+\fBC\-o\fP
+Run the current line, then load the history line after it for editing.
+Repeat to replay a sequence of commands one by one.
+.TP
+\fBM\-r\fP
+Undo every change made to the current history line.
+.TP
+\fBM\-^\fP
+Do history expansion (\fB!!\fP, \fB!$\fP, ...) on the line without
+running it.
+.SS Changing text
+.TP
+\fBC\-_\fP, \fBC\-x C\-u\fP
+Undo the last change; repeat to undo further.
+.TP
+\fBC\-v\fP, \fBC\-q\fP
+Insert the next character typed literally, for example a Tab or
+\fBC\-v\fP itself.
+See \fBBUGS\fP about \fBC\-q\fP.
+.TP
+\fBC\-t\fP
+Swap the two characters before and at the cursor.
+.TP
+\fBM\-t\fP
+Swap the word before the cursor with the word after it.
+.TP
+\fBM\-C\-t\fP
+Same as \fBM\-t\fP for shell words.
+.TP
+\fBM\-u\fP, \fBM\-l\fP, \fBM\-c\fP
+Uppercase, lowercase or capitalize the word from the cursor on.
+.TP
+\fBM\-\e\fP
+Delete the spaces and tabs around the cursor.
+.TP
+\fBM\-#\fP
+Comment out the line and enter it, so it is saved in the history but
+not run.
+.SS Killing and yanking
+Killed text goes to the kill ring, not the X clipboard.
+.TP
+\fBC\-k\fP
+Kill from the cursor to the end of the line.
+.TP
+\fBC\-u\fP
+Kill from the cursor back to the start of the line.
+.TP
+\fBM\-d\fP
+Kill to the end of the current or next word.
+.TP
+\fBM\-DEL\fP, \fBM\-C\-h\fP
+Kill the word before the cursor.
+.TP
+\fBM\-C\-d\fP
+Kill to the end of the current or next shell word.
+.TP
+\fBC\-w\fP
+Kill the white-space separated word before the cursor.
+.TP
+\fBC\-y\fP
+Yank (paste) the most recent kill.
+.TP
+\fBM\-y\fP
+Right after \fBC\-y\fP: replace the yanked text with the previous kill
+in the ring.
+.SS Expansion and completion
+.TP
+\fBC\-x *\fP
+Replace the glob before the cursor with the files it matches.
+\fBC\-x g\fP only lists them.
+.TP
+\fBM\-C\-e\fP
+Expand aliases, history, variables and substitutions in the whole line
+without running it.
+.TP
+\fBM\-&\fP
+Expand a tilde at the start of the word.
+.TP
+\fBM\-?\fP, \fBM\-=\fP
+List the possible completions.
+.TP
+\fBM\-*\fP
+Insert all the possible completions.
+.TP
+\fBM\-/\fP
+Complete the word as a file name, whatever the command.
+.SH CUSTOM BINDINGS
+\fI~/.inputrc\fP adds these on top of the defaults:
+.TP
+\fBUp\fP, \fBDown\fP
+Search the history backward or forward for lines that start with what
+is already typed.
+On an empty line they step through the history as usual.
+.TP
+\fBTAB\fP, \fBS\-TAB\fP
+Cycle through the completions one at a time, forward or backward,
+instead of only listing them.
+.TP
+\fBSPC\fP
+Perform history expansion on the word before the cursor, then insert a
+space, so \fB!!\fP and \fB!$\fP show what they stand for before Enter.
+.TP
+\fBC\-x C\-e\fP
+Open the line in \fB$VISUAL\fP or \fB$EDITOR\fP (nvim) and run it on
+exit.
+Saving an empty file cancels.
+.TP
+\fBC\-x C\-r\fP
+Reload \fI~/.inputrc\fP.
+.SH FILES
+.TP
+\fI~/.inputrc\fP
+Personal Readline settings; it includes \fI/etc/inputrc\fP.
+.SH BUGS
+With terminal flow control on (the default), \fBC\-s\fP freezes the
+terminal and \fBC\-q\fP unfreezes it, so neither reaches Readline.
+Run \fBstty \-ixon\fP, for example in \fI~/.bashrc\fP, to free them.
+.SH SEE ALSO
+\fBbash\fP(1), \fBreadline\fP(3), \fBstty\fP(1),
+\fBinfo rluserman\fP.
+.PP
+In bash, \fBbind \-p\fP lists every binding and \fBbind \-q\fP
+\fIcommand\fP shows the keys for one command.
+.SH AUTHOR
+mb6ockatf <smokenmirror@tutamail.com>
