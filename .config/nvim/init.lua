@@ -122,12 +122,35 @@ create_autocmd("LspAttach", {
   callback = function(args) vim.bo[args.buf].complete = "o," .. vim.o.complete end,
 })
 vim.diagnostic.config({ virtual_text = true, severity_sort = true })
--- no line-length limit in the editor (formatters handle width): override
--- built-in ftplugins (gitcommit, mail: 72) and editorconfig max_line_length
-require("editorconfig").properties.max_line_length = function() end
-create_autocmd("FileType", {
-  group = create_augroup("no-textwidth", { clear = true }),
-  callback = function() vim.bo.textwidth = 0; vim.wo.colorcolumn = "" end,
+-- line length: prose wraps as you type (textwidth); code only gets a guide
+-- (colorcolumn, one past the limit) and never wraps. An .editorconfig
+-- max_line_length replaces the limit: still a wrap for prose, a guide for
+-- everything else. Other file types (markdown, roff, ...)
+-- have no limit and soft-wrap on screen (wrap + linebreak).
+local wrap_at = { gitcommit = 72, mail = 72, text = 72, changelog = 72 }
+local guide_at = {
+  c = 80, cpp = 80, sh = 80, bash = 80, make = 80, m4 = 80, lua = 80,
+  python = 80, awk = 80,
+}
+vim.filetype.add({ filename = { NEWS = "text", TODO = "text" } })
+local function apply_line_length(buf)
+  local ft = vim.bo[buf].filetype
+  local project = vim.b[buf].editorconfig_max_line_length
+  local wrap = wrap_at[ft] and (project or wrap_at[ft])
+  local guide = project or guide_at[ft]
+  vim.bo[buf].textwidth = wrap or 0
+  local column = wrap and "+1" or (guide and tostring(guide + 1) or "")
+  for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+    api.nvim_set_option_value("colorcolumn", column, { scope = "local", win = win })
+  end
+end
+require("editorconfig").properties.max_line_length = function(buf, value)
+  vim.b[buf].editorconfig_max_line_length = tonumber(value)
+  apply_line_length(buf)
+end
+create_autocmd({ "FileType", "BufWinEnter" }, {
+  group = create_augroup("line-length", { clear = true }),
+  callback = function(args) apply_line_length(args.buf) end,
 })
 require("lazy").setup({
   {
