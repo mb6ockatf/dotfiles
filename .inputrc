@@ -6,10 +6,17 @@ set show-all-if-ambiguous on
 set mark-symlinked-directories on
 set match-hidden-files off
 set page-completions off
-set completion-query-items 200
+set completion-query-items 1000
 set visible-stats on
 set skip-completed-text on
 set input-meta on
 set output-meta on
 set convert-meta off
+set colored-stats on
+set colored-completion-prefix on
+set menu-complete-display-prefix on
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+" ": magic-space
+"\C-x\C-e": edit-and-execute-command
 
