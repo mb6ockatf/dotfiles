@@ -12,7 +12,8 @@ STOW = stow --target=$(TARGET)
 SHELLCHECK ?= shellcheck
 M4 ?= m4
 MAN_PAGES = .local/share/man/man7/readlinebinds.7 .local/share/man/man7/kitty-guide.7 \
-	.local/share/man/man7/blesh-guide.7 .local/share/man/man7/fzf-guide.7
+	.local/share/man/man7/blesh-guide.7 .local/share/man/man7/fzf-guide.7 \
+	.local/share/man/man7/sxhkd-keys.7
 BASH_FILES = .bashrc .bash_aliases .bash_profile .config/functions.sh
 SH_FILES = .profile .xprofile .xinitrc .xsessionrc .githooks/pre-commit \
 	.local/bin/* .config/bspwm/bspwmrc .config/bspwm/autostart.sh \

@@ -1,0 +1,217 @@
+'\" t
+.TH SXHKD-KEYS 7 "2026-10-18" "dotfiles" "Personal Command Reference"
+.SH NAME
+sxhkd-keys \- the desktop key bindings set in sxhkdrc
+.SH DESCRIPTION
+\fBsxhkd\fP is the hotkey daemon that runs beside \fBbspwm\fP.
+bspwm itself reads no keys: every binding below is a line in
+\fI~/.config/sxhkd/sxhkdrc\fP that runs a command, mostly \fBbspc\fP.
+.PP
+\fBS\fP means the Super (Windows) key, so \fBS+Return\fP is
+Super+Enter.
+\fBShift\fP, \fBCtrl\fP and \fBAlt\fP are spelled out.
+\fBh j k l\fP are the directions left, down, up, right, as in vi;
+the arrow keys mean the same where they appear.
+.SS Words bspwm uses
+.TP
+\fInode\fP
+A window, or a split holding two nodes; bspwm keeps each desktop as a
+binary tree of them.
+.TP
+\fIdesktop\fP
+A workspace; here they are numbered 1 to 8 on each monitor.
+.TP
+\fIpreselection\fP
+A marked spot beside a window where the next window opens.
+.SH PROGRAMS
+.TP
+\fBS+Return\fP
+Open a kitty window (\fB\-\-single\-instance\fP, so it starts fast).
+.TP
+\fBXF86Calculator\fP
+The calculator key also opens kitty.
+.TP
+\fBS+d\fP
+Application launcher: \fBrofi \-show drun\fP.
+.TP
+\fBS+e\fP
+Emoji picker (\fBrofimoji\fP).
+.TP
+\fBS+v\fP
+Clipboard history (\fBclipmenu\fP): pick an entry to copy it again.
+.TP
+\fBS+Shift+v\fP
+Delete entries from the clipboard history (\fBclipdelmenu\fP).
+.TP
+\fBS+n\fP
+Bring back the last dunst notification.
+.TP
+\fBS+Shift+n\fP
+Dismiss every notification.
+.TP
+\fBS+Shift+s\fP
+Screenshot of a selected area (\fBmaim \-s\fP): saved to
+\fI~/Pictures/\fP as \fIdate_time\fP\fB.png\fP and copied to the
+clipboard.
+.TP
+\fBS+grave\fP
+Show or hide the scratchpad: a floating, sticky kitty with class
+\fBscratchpad\fP, started hidden by \fIbspwm/autostart.sh\fP.
+(\fBgrave\fP is the \fB`\fP key, left of 1.)
+.SH SESSION
+.TP
+\fBS+x\fP
+Lock the screen (\fBslock\fP).
+.TP
+\fBS+Shift+e\fP
+Power menu (\fI~/.config/rofi/powermenu.sh\fP).
+.TP
+\fBS+Shift+r\fP
+Restart bspwm in place, rereading \fIbspwmrc\fP; windows stay.
+.TP
+\fBS+Escape\fP
+Make sxhkd reread \fIsxhkdrc\fP.
+Do this after editing the file.
+.SH WINDOWS
+.TP
+\fBS+Shift+q\fP
+Close the focused window.
+.TP
+\fBS+h\fP, \fBS+j\fP, \fBS+k\fP
+Focus the window to the west, south or north; \fBS+l\fP for east.
+.TP
+\fBS+Shift+h\fP, \fBS+Shift+j\fP, \fBS+Shift+k\fP
+Swap the focused window with its west, south or north neighbour.
+See \fBBUGS\fP for east.
+.TP
+\fBS+c\fP, \fBS+Shift+c\fP
+Focus the next or previous visible window on this desktop.
+.TP
+\fBS+o\fP, \fBS+i\fP
+Walk back or forward through the focus history.
+.TP
+\fBS+Tab\fP
+Focus the last focused window.
+.TP
+\fBS+g\fP
+Swap the focused window with the biggest one on the desktop.
+.TP
+\fBS+p\fP, \fBS+b\fP
+Focus the parent node, or the sibling (\fIbrother\fP) node.
+.TP
+\fBS+comma\fP, \fBS+period\fP
+Focus the first or second child of the focused split.
+.TP
+\fBS+m\fP
+Toggle the desktop between tiled and monocle (one window fills it).
+.SS States and flags
+.TP
+\fBS+Ctrl+m\fP
+Toggle \fImarked\fP: a window you mean to move with \fBS+y\fP.
+.TP
+\fBS+Ctrl+x\fP
+Toggle \fIlocked\fP: \fBS+Shift+q\fP will not close it.
+.TP
+\fBS+Ctrl+y\fP
+Toggle \fIsticky\fP: it follows you to every desktop.
+.TP
+\fBS+Ctrl+z\fP
+Toggle \fIprivate\fP: bspwm keeps it where it is when placing new
+windows.
+.TP
+\fBS+y\fP
+Send the newest marked window to the newest manual preselection.
+.SH DESKTOPS AND MONITORS
+.TP
+\fBS+1 \(en S+8\fP
+Go to desktop \fIN\fP, on every monitor at once
+(\fI~/.local/bin/bspc\-ws\fP); focus stays on the current monitor.
+.TP
+\fBS+Shift+1 \(en S+Shift+8\fP
+Send the focused window to desktop \fIN\fP of this monitor.
+.TP
+\fBS+bracketleft\fP, \fBS+bracketright\fP
+Previous or next desktop on this monitor (\fB[\fP and \fB]\fP).
+.TP
+\fBS+Shift+Tab\fP
+Go back to the last desktop.
+.TP
+\fBS+Shift+Left\fP, \fBS+Shift+Down\fP, \fBS+Shift+Up\fP
+Move the focused window to the monitor in that direction, and follow
+it; \fBS+Shift+Right\fP for east.
+.SH PRESELECT
+Preselect a spot, then open or send a window; it lands there instead
+of where bspwm would put it.
+.TP
+\fBS+Ctrl+h\fP, \fBS+Ctrl+j\fP, \fBS+Ctrl+k\fP
+Preselect west, south or north of the focused window;
+\fBS+Ctrl+l\fP for east.
+Press the same key again to cancel it.
+.TP
+\fBS+Ctrl+1 \(en S+Ctrl+9\fP
+Set the split ratio of the preselection to 0.1 \(en 0.9.
+.TP
+\fBS+Ctrl+space\fP
+Cancel the preselection of the focused window.
+.TP
+\fBS+Ctrl+Shift+space\fP
+Cancel every preselection on the desktop.
+.SH MOVE AND RESIZE
+Steps are 20 pixels.
+.TP
+\fBS+Alt+h\fP, \fBS+Alt+j\fP, \fBS+Alt+k\fP
+Grow the window by pushing its left, bottom or top edge outward;
+\fBS+Alt+l\fP pushes the right edge.
+.TP
+\fBS+Alt+Shift+h\fP, \fBS+Alt+Shift+j\fP, \fBS+Alt+Shift+k\fP
+Shrink it by pulling its right, top or bottom edge inward;
+\fBS+Alt+Shift+l\fP pulls the left edge.
+.TP
+\fBS+Left\fP, \fBS+Down\fP, \fBS+Up\fP
+Move a floating window; \fBS+Right\fP moves it right.
+.SH HARDWARE KEYS
+.TP
+\fBXF86MonBrightnessUp\fP, \fBXF86MonBrightnessDown\fP
+Screen brightness up or down by 1% (\fBbrightnessctl\fP).
+.TP
+\fBXF86AudioRaiseVolume\fP, \fBXF86AudioLowerVolume\fP
+Volume of the default sink up or down by 1% (\fBpactl\fP).
+.TP
+\fBXF86AudioMute\fP
+Toggle mute.
+.SH QUICK REFERENCE
+.TS
+l l.
+terminal, launcher	S+Return  S+d
+lock, power, reload	S+x  S+Shift+e  S+Escape
+close window	S+Shift+q
+focus, swap	S+hjkl  S+Shift+hjk
+desktops	S+1..8  S+Shift+1..8  S+[  S+]
+preselect	S+Ctrl+hjkl  S+Ctrl+space
+resize	S+Alt+hjkl  S+Alt+Shift+hjkl
+scratchpad	S+`
+screenshot	S+Shift+s
+clipboard, emoji	S+v  S+e
+notifications	S+n  S+Shift+n
+.TE
+.SH FILES
+.TP
+\fI~/.config/sxhkd/sxhkdrc\fP
+The bindings, a symlink into the dotfiles.
+.TP
+\fI~/.config/bspwm/bspwmrc\fP
+bspwm settings and window rules.
+.TP
+\fI~/.local/bin/bspc\-ws\fP
+Switches a desktop number on every monitor.
+.SH BUGS
+\fBS+Shift+l\fP is bound twice: to \fBslock\fP and, through
+\fBS+Shift+{h,j,k,l}\fP, to swapping east.
+sxhkd uses the first definition in the file, so it locks the screen
+and there is no key for swapping east.
+\fBS+x\fP locks the screen too.
+.SH SEE ALSO
+\fBsxhkd\fP(1), \fBbspwm\fP(1), \fBbspc\fP(1), \fBrofi\fP(1),
+\fBkitty\-guide\fP(7).
+.SH AUTHOR
+mb6ockatf <smokenmirror@tutamail.com>

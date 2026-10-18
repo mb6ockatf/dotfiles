@@ -13,4 +13,6 @@ chet\.ramey@case\.edu
 ^man/blesh-guide\.7\.m4:
 ^\.local/share/man/man7/fzf-guide\.7:
 ^man/fzf-guide\.7\.m4:
+^\.local/share/man/man7/sxhkd-keys\.7:
+^man/sxhkd-keys\.7\.m4:
 ^\.github/workflows/gitleaks\.yml:([0-9]+:)? ?# 
