@@ -53,7 +53,6 @@ alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
 unset LC_ALL
 export LC_COLLATE=C CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))"
 export NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-export GORTEX_TOOLS=compact
 export VMOPTIONS="${HOME}/.jetbrains.vmoptions.sh" CLICOLOR=1 GROFF_NO_SGR=1
 export EDITOR=nvim VISUAL=nvim SUDO_EDITOR=nvim LIBPROC_HIDE_KERNEL=1
 export GAWK_READ_TIMEOUT=60000 GAWK_SOCK_RETRIES=3 ENOENT=2 PROCPS_USERLEN=10
@@ -77,6 +76,32 @@ __prompt(){
         __git_ps1 '' "${mark}" '%s '
 }
 PROMPT_COMMAND=__prompt
+ask()
+{
+	claude -p --model claude-haiku-5-5 "$*"
+}
+
+howto()
+{
+	claude -p --model claude-haiku-5-5 \
+		"Give one bash command for Devuan 6 (sysvinit, no systemd; packages via nala) that does: $*. Output only the command, no explanation."
+}
+
+why()
+{
+	"$@" 2>&1 | tail -200 | claude -p "I ran: $* ; this is its output. Explain why it failed and how to fix it."
+}
+
+explain()
+{
+	claude -p "Explain this command piece by piece: $*"
+}
+
+askclip()
+{
+	xclip -o -selection clipboard | claude -p "$*"
+}
+
 command -v direnv > /dev/null && eval "$(direnv hook bash)"
 [[ ${BLE_VERSION-} ]] && ble-attach
 printf '
