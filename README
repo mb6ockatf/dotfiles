@@ -1,4 +1,5 @@
-dotfiles
+dotfiles -- mb6ockatf's configuration files
+===========================================
 
 mb6ockatf's configuration files, installed into $HOME with GNU stow.
 
@@ -30,8 +31,8 @@ regenerates them.
 
 archive/ holds configs for software that is no longer installed (NixOS,
 pacman, PowerShell, fish, kakoune, csh, Tor Browser, neofetch, htop,
-nano, GIMP 2.6, and vim and vi, replaced by neovim).  Move a file back out of archive/ and restow to use it
-again.
+nano, GIMP 2.6, and vim and vi, replaced by neovim).  Move a file back
+out of archive/ and restow to use it again.
 
 Generated files stay untracked: ~/.fehbg (rewritten by feh).  The
 neovim vim-stats plugin keeps its data in ~/.local/state/nvim/vim-stats.
@@ -85,3 +86,14 @@ Credits
 -------
 
 @adi1090x's configuration setup https://github.com/adi1090x/rofi
+
+Copying
+-------
+
+Copyright (C) 2022-2026 mb6ockatf
+
+These files are free software: you can redistribute them and/or modify
+them under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at
+your option) any later version, except where a file says otherwise.
+See COPYING.
