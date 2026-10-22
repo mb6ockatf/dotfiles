@@ -1,0 +1,12 @@
+#!/bin/sh
+# notify-sound -- play the cyberpunk notification sound; dunst runs it for
+# every notification from Claude Code and the Claude desktop app (see the
+# [claude-sound] rule in ~/.config/dunst/dunstrc).  Notifications that
+# arrive within a second of the last one stay silent instead of stacking.
+sound="${HOME}/.local/share/sounds/claude-cyberpunk.flac"
+stamp="${XDG_RUNTIME_DIR:-/tmp}/notify-sound.last"
+now=$(date +%s)
+last=$(cat "${stamp}" 2>/dev/null || echo 0)
+[ $((now - last)) -lt 1 ] && exit 0
+echo "${now}" >| "${stamp}"
+paplay --volume=52428 "${sound}" </dev/null >/dev/null 2>&1 &

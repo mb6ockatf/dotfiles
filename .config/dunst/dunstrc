@@ -40,3 +40,8 @@
 [claude]
     appname = "Claude Code"
     frame_color = "#ff9e64"
+
+# Cyberpunk sound for Claude Code ("Claude Code") and the desktop app ("Claude").
+[claude-sound]
+    appname = "Claude*"
+    script = ~/.local/bin/notify-sound
