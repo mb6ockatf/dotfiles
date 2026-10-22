@@ -1,5 +1,7 @@
 [init]
 	defaultBranch = master
+[user]
+	useConfigOnly = true
 [http]
 	proxy = http://127.0.0.1:7890
 [core]
