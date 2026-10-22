@@ -1,11 +1,12 @@
 #!/bin/sh
 # Configure the external HDMI monitor (rotated, right of eDP-1) or turn it off.
-# Tries 144 Hz, then 120 Hz, then the monitor's preferred mode.
+# Runs at 120 Hz, falling back to the monitor's preferred mode.  144 Hz
+# needs a 583.6 MHz pixel clock, at the edge of the laptop's HDMI 2.0 port,
+# and made the monitor blink on and off with a black screen.
 out=HDMI-1
 status=$(cat /sys/class/drm/card0-HDMI-A-1/status 2>/dev/null)
 
 if [ "$status" = connected ]; then
-	xrandr --output "$out" --rotate right --mode 2560x1440 --rate 144 --right-of eDP-1 ||
 	xrandr --output "$out" --rotate right --mode 2560x1440 --rate 120 --right-of eDP-1 ||
 	xrandr --output "$out" --rotate right --auto --right-of eDP-1
 else
