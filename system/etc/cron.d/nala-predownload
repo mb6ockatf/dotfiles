@@ -1,0 +1,4 @@
+# Download pending upgrades (no install) after 8 hours on AC; see
+# /usr/local/sbin/nala-predownload for the conditions.
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+*/15 * * * * root /usr/local/sbin/nala-predownload

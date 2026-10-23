@@ -6,6 +6,7 @@
 #   make check       syntax-check the shell files and scan for personal data
 #   make lint        run shellcheck (needs shellcheck installed)
 #   make man         regenerate the manual pages from man/*.m4 (needs m4)
+#   make system      install the files under system/ into / (needs sudo)
 
 TARGET ?= $(HOME)
 STOW = stow --target=$(TARGET)
@@ -18,9 +19,10 @@ BASH_FILES = .bashrc .bash_aliases .bash_profile .config/functions.sh
 SH_FILES = .profile .xprofile .xinitrc .xsessionrc .githooks/pre-commit \
 	.local/bin/* .config/bspwm/bspwmrc .config/bspwm/autostart.sh \
 	.config/polybar/launch.sh .config/rofi/powermenu.sh \
-	.config/install_hosts.sh .config/bcalc.sh
+	.config/install_hosts.sh .config/bcalc.sh system/usr/local/sbin/*
+SUDO ?= sudo
 
-.PHONY: all install uninstall dry-run check lint hooks man
+.PHONY: all install uninstall dry-run check lint hooks man system
 
 all: check
 
@@ -40,6 +42,10 @@ hooks:
 
 man: $(MAN_PAGES)
 
+system:
+	$(SUDO) install -o root -g root -m 0755 system/usr/local/sbin/* /usr/local/sbin/
+	$(SUDO) install -o root -g root -m 0644 system/etc/cron.d/* /etc/cron.d/
+
 .local/share/man/man7/%.7: man/%.7.m4
 	$(M4) -P $< > $@.tmp && mv $@.tmp $@
 
@@ -49,6 +55,7 @@ check:
 	for script in .local/bin/*; do \
 		head -n 1 "$$script" | grep -q bash && bash -n "$$script" || dash -n "$$script" || exit 1; \
 	done
+	for script in system/usr/local/sbin/*; do dash -n "$$script" || exit 1; done
 	.githooks/pre-commit --all
 
 lint:

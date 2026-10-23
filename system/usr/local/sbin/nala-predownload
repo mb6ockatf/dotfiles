@@ -1,0 +1,61 @@
+#!/bin/sh
+# nala-predownload -- refresh the package lists and download every pending
+# upgrade into /var/cache/apt/archives without installing anything, so a
+# later "nala upgrade" only has to install.
+#
+# Runs from /etc/cron.d/nala-predownload every 15 minutes and does the work
+# only when all of these hold:
+#   - the laptop is on mains power (AC),
+#   - it has been on AC and awake without a break for at least 8 hours
+#     (a cron gap longer than 30 minutes means it was off or asleep, and
+#     the 8 hours start again),
+#   - the last successful download was at least 8 hours ago,
+#   - the first apt mirror in /etc/apt/sources.list answers.
+# Log: /var/log/nala-predownload.log.  State: /var/lib/nala-predownload.
+
+state=/var/lib/nala-predownload
+log=/var/log/nala-predownload.log
+lock=/run/nala-predownload.lock
+need_ac=$((8 * 3600))
+min_interval=$((8 * 3600))
+max_gap=$((30 * 60))
+
+mkdir -p "$state"
+now=$(date +%s)
+
+on_ac=0
+for supply in /sys/class/power_supply/*; do
+	[ "$(cat "$supply/type" 2>/dev/null)" = Mains ] || continue
+	[ "$(cat "$supply/online" 2>/dev/null)" = 1 ] && on_ac=1
+done
+
+last_seen=$(cat "$state/last-seen" 2>/dev/null || echo 0)
+echo "$now" > "$state/last-seen"
+
+if [ "$on_ac" != 1 ] || [ $((now - last_seen)) -gt "$max_gap" ]; then
+	rm -f "$state/ac-since"
+fi
+[ "$on_ac" = 1 ] || exit 0
+[ -f "$state/ac-since" ] || echo "$now" > "$state/ac-since"
+
+ac_since=$(cat "$state/ac-since")
+[ $((now - ac_since)) -ge "$need_ac" ] || exit 0
+
+last_run=$(cat "$state/last-run" 2>/dev/null || echo 0)
+[ $((now - last_run)) -ge "$min_interval" ] || exit 0
+
+mirror=$(awk '$1 == "deb" && $2 ~ /^https?:/ {print $2 "/dists/" $3 "/InRelease"; exit}' /etc/apt/sources.list)
+curl -fsI --max-time 20 -o /dev/null "$mirror" || exit 0
+
+exec 9> "$lock"
+flock -n 9 || exit 0
+
+{
+	echo "=== $(date '+%F %T') on AC since $(date -d "@$ac_since" '+%F %T')"
+	nice -n 19 ionice -c 3 nala upgrade --full --download-only --assume-yes </dev/null
+	status=$?
+	echo "=== exit $status"
+} >> "$log" 2>&1
+
+[ "$status" = 0 ] && echo "$now" > "$state/last-run"
+exit 0

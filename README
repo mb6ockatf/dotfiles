@@ -22,12 +22,25 @@ What is not linked
 ------------------
 
 .stow-local-ignore keeps these out of $HOME: README, NEWS, TODO,
-Makefile, man/, .githooks/, .github/, archive/, .shellcheckrc and
-*.bak backups.
+Makefile, man/, system/, .githooks/, .github/, archive/, .shellcheckrc
+and *.bak backups.
 
 man/ holds the m4 sources of the manual pages.  Edit those, not the
 generated pages under .local/share/man; make man (and make install)
 regenerates them.
+
+system/ holds root-owned files that live outside $HOME, laid out like
+their paths under /.  make system installs them with sudo (stow does
+not touch them):
+
+    system/usr/local/sbin/nala-predownload
+    system/etc/cron.d/nala-predownload
+
+        Every 15 minutes, cron checks whether the laptop has been on AC
+        and awake for 8 hours without a break, last downloaded at least
+        8 hours ago, and can reach the first apt mirror.  If so, it runs
+        "nala upgrade --full --download-only" at idle priority, so the
+        next upgrade only installs.  Log: /var/log/nala-predownload.log.
 
 archive/ holds configs for software that is no longer installed (NixOS,
 pacman, PowerShell, fish, kakoune, csh, Tor Browser, neofetch, htop,
