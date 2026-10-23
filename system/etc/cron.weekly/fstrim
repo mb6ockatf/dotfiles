@@ -1,0 +1,9 @@
+#!/bin/sh
+# fstrim -- tell the SSD which blocks are free, once a week.  Debian does
+# this with a systemd timer; without systemd, anacron runs this instead
+# (and catches up after the laptop was off).  Log: /var/log/fstrim.log.
+[ -x /usr/sbin/fstrim ] || exit 0
+{
+	echo "=== $(date '+%F %T')"
+	nice -n 19 ionice -c 3 /usr/sbin/fstrim --all --verbose
+} >> /var/log/fstrim.log 2>&1
