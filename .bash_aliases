@@ -8,7 +8,19 @@ S='--preserve-root' C='--color=auto' qst='-c --quiet --status --strict'
 I='--exclude-dir={.git,node_modules,.venv,__pycache__,build,target,.cache,.svn,.hg}'
 ls_basic='--color=auto -hGF --group-directories-first'
 # coreutils
-alias chown="chown ${S}" chmod="chmod ${S}" chgrp="chgrp ${S}" rm="/usr/bin/rm -iI ${S}"
+alias chown="chown ${S}" chmod="chmod ${S}" chgrp="chgrp ${S}"
+# -I goes after the user's options (before any --) so that -f in rm -rf
+# cannot switch the prompt off; the last of -f/-i/-I wins.
+unalias rm 2> /dev/null
+function rm {
+	local args=() arg done_opts=
+	for arg; do
+		[[ -z $done_opts && $arg == -- ]] && args+=(-I) done_opts=1
+		args+=("$arg")
+	done
+	[[ -z $done_opts ]] && args+=(-I)
+	command rm ${S} "${args[@]}"
+}
 alias ls="/usr/bin/ls ${ls_basic}"
 alias lS="/usr/bin/ls ${ls_basic} -r"
 alias la="/usr/bin/ls ${ls_basic} -A"

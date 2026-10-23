@@ -49,9 +49,9 @@ command -v lesspipe > /dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 [[ -z "$debian_chroot" && -r /etc/debian_chroot ]] && debian_chroot="$(< /etc/debian_chroot)" && export debian_chroot
 [[ -r ~/.profile ]] && . ~/.profile
 
-alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
 unset LC_ALL
 export LC_COLLATE=C CPU_NUMBER="$(($(getconf _NPROCESSORS_ONLN)))"
+alias sort="sort --parallel=${CPU_NUMBER}" parallel="parallel -j ${CPU_NUMBER}"
 export NIX_BUILD_CORES=0 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 export VMOPTIONS="${HOME}/.jetbrains.vmoptions.sh" CLICOLOR=1 GROFF_NO_SGR=1
 export EDITOR=nvim VISUAL=nvim SUDO_EDITOR=nvim LIBPROC_HIDE_KERNEL=1
@@ -73,7 +73,7 @@ __prompt(){
         history -a
         local mark="\[${BGPURPLEB}${FGBLACK}\]\\\$\[${END}\] "
         (( status )) && mark="\[${FGRED}\]${status}\[${END}\] ${mark}"
-        __git_ps1 '' "${mark}" '%s '
+	__git_ps1 "\[${FGBLUE}\]\w\[${END}\] " "${mark}" '%s '
 }
 PROMPT_COMMAND=__prompt
 ask()
